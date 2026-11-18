@@ -35,7 +35,7 @@ export const ToastProvider = ({ children }) => {
           return (
             <div
               key={toast.id}
-              className="pointer-events-auto bg-charcoal text-ivory border border-gold/40 rounded shadow-xl p-3.5 flex items-start gap-3 transition-all duration-300 transform translate-y-0 opacity-100"
+              className="pointer-events-auto bg-[#181015] text-ivory-light border border-burgundy/50 rounded shadow-2xl p-3.5 flex items-start gap-3 transition-all duration-300 transform translate-y-0 opacity-100"
             >
               <div className="mt-0.5 flex-shrink-0 text-gold">
                 {isSuccess && <CheckCircle2 className="w-5 h-5 text-gold" />}

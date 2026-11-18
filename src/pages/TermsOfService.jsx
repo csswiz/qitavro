@@ -9,31 +9,31 @@ export default function TermsOfService() {
       subtitle="The foundational charter governing your patronage, reading orders, and use of the QITAVRO literary platform."
       lastUpdated="November 18, 2024"
     >
-      <div className="space-y-8 font-serif text-charcoal/90 text-sm sm:text-base leading-relaxed">
+      <div className="space-y-8 font-serif text-ivory/90 text-sm sm:text-base leading-relaxed">
         
         {/* Intro */}
-        <section className="border-b border-stone/40 pb-6">
-          <p className="text-base sm:text-lg italic text-charcoal/80 leading-relaxed font-serif">
-            Welcome to <strong className="text-burgundy">QITAVRO</strong> ("A World Between the Covers"). By accessing our online bookstore, browsing our collections, creating a wishlist, or completing an order, you agree to be bound by these Terms of Service. If you do not agree to these terms, please refrain from using our services.
+        <section className="border-b border-burgundy/25 pb-6">
+          <p className="text-base sm:text-lg italic text-ivory/80 leading-relaxed font-serif">
+            Welcome to <strong className="text-rose-light">QITAVRO</strong> ("A World Between the Covers"). By accessing our online bookstore, browsing our collections, creating a wishlist, or completing an order, you agree to be bound by these Terms of Service. If you do not agree to these terms, please refrain from using our services.
           </p>
         </section>
 
         {/* Section 1 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             1. Nature of the Literary Platform
           </h2>
           <p>
             QITAVRO is an independent, curated online bookstore offering new editions, clothbound classics, independent press publications, and authentic pre-loved literary works. Every book displayed in our catalogue is vetted for authenticity, legible typesetting, and editorial merit.
           </p>
-          <div className="bg-ivory p-4 rounded border-l-2 border-gold font-sans text-xs sm:text-sm text-charcoal/80">
-            <strong>Editorial Standard:</strong> We do not operate an open marketplace for unverified mass-scraping. Books presented on QITAVRO are curated or authenticated by our team before dispatch.
+          <div className="bg-[#181015] p-4 rounded border-l-2 border-gold font-sans text-xs sm:text-sm text-ivory/80">
+            <strong className="text-gold">Editorial Standard:</strong> We do not operate an open marketplace for unverified mass-scraping. Books presented on QITAVRO are curated or authenticated by our team before dispatch.
           </div>
         </section>
 
         {/* Section 2 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             2. Orders, Invoicing & Pricing
           </h2>
           <ul className="list-disc pl-5 space-y-2">
@@ -51,7 +51,7 @@ export default function TermsOfService() {
 
         {/* Section 3 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             3. Digital Editions, eBooks & Curated Volumes
           </h2>
           <p>
@@ -67,7 +67,7 @@ export default function TermsOfService() {
 
         {/* Section 4 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             4. Archival Shipping & Packaging
           </h2>
           <p>
@@ -82,16 +82,16 @@ export default function TermsOfService() {
 
         {/* Section 5 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             5. Cancellation, Return & Replacement Charter
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-3 font-sans text-xs">
-            <div className="p-3 bg-stone/20 rounded border border-stone/40">
-              <span className="font-bold text-burgundy block mb-1">Before Dispatch</span>
+            <div className="p-3 bg-[#181015] rounded border border-burgundy/30">
+              <span className="font-bold text-rose-light block mb-1">Before Dispatch</span>
               You may cancel any order before it is dispatched by writing to us with your Order ID for a 100% refund.
             </div>
-            <div className="p-3 bg-stone/20 rounded border border-stone/40">
-              <span className="font-bold text-burgundy block mb-1">Damaged on Arrival</span>
+            <div className="p-3 bg-[#181015] rounded border border-burgundy/30">
+              <span className="font-bold text-rose-light block mb-1">Damaged on Arrival</span>
               If a parcel arrives torn or water-damaged, notify us within 48 hours with photos for an immediate replacement or full refund.
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function TermsOfService() {
 
         {/* Section 6 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             6. Intellectual Property & The Reading Room
           </h2>
           <p>
@@ -112,7 +112,7 @@ export default function TermsOfService() {
 
         {/* Section 7 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             7. Governing Law & Dispute Resolution
           </h2>
           <p>
@@ -121,10 +121,10 @@ export default function TermsOfService() {
         </section>
 
         {/* Section 8 */}
-        <section className="space-y-2 pt-4 border-t border-stone/40 text-xs font-sans text-charcoal/70">
+        <section className="space-y-2 pt-4 border-t border-burgundy/25 text-xs font-sans text-ivory/70">
           <p>
             For questions or formal legal notices regarding these Terms of Service, please write to our legal team at:
-            <a href="mailto:legal@qitavro.com" className="text-burgundy font-semibold ml-1 hover:underline">
+            <a href="mailto:legal@qitavro.com" className="text-gold font-semibold ml-1 hover:underline">
               legal@qitavro.com
             </a>
           </p>

@@ -147,18 +147,18 @@ export default function Shop() {
   };
 
   return (
-    <div className="bg-ivory min-h-screen pb-20">
+    <div className="bg-black-obsidian text-ivory-light min-h-screen pb-20">
       {/* Header Banner */}
-      <div className="bg-white/60 border-b border-stone/60 py-8 sm:py-12 md:py-14">
+      <div className="bg-[#120C10] border-b border-burgundy/25 py-8 sm:py-12 md:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-burgundy font-semibold">
+            <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
               The Curated Library
             </span>
-            <h1 className="font-serif font-bold text-2xl sm:text-4xl md:text-5xl text-charcoal mt-1">
+            <h1 className="font-serif font-bold text-2xl sm:text-4xl md:text-5xl text-ivory-light mt-1">
               {activeCollection ? activeCollection.title : 'The Complete Catalogue'}
             </h1>
-            <p className="mt-2 sm:mt-3 font-serif italic text-sm sm:text-base md:text-lg text-charcoal/80 leading-relaxed">
+            <p className="mt-2 sm:mt-3 font-serif italic text-sm sm:text-base md:text-lg text-ivory/80 leading-relaxed">
               {activeCollection
                 ? activeCollection.intro
                 : 'Browse our entire sanctuary of timeless classics, philosophical treatises, and modern fiction chosen for enduring distinction.'}
@@ -167,18 +167,18 @@ export default function Shop() {
 
           {/* Search bar inside Shop */}
           <div className="mt-6 sm:mt-8 max-w-xl relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-burgundy pointer-events-none" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-rose-light pointer-events-none" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Filter by title, author, or keyword..."
-              className="w-full bg-white border border-stone focus:border-burgundy focus:ring-1 focus:ring-burgundy rounded py-2.5 pl-10 pr-9 text-xs sm:text-sm font-sans text-charcoal outline-none placeholder:text-charcoal/40 transition-colors shadow-subtle"
+              className="w-full bg-[#181015] border border-burgundy/35 focus:border-rose-light focus:ring-1 focus:ring-rose-light rounded py-2.5 pl-10 pr-9 text-xs sm:text-sm font-sans text-ivory-light outline-none placeholder:text-ivory/40 transition-colors shadow-subtle"
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-charcoal/40 hover:text-burgundy"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-ivory/40 hover:text-rose-light"
                 aria-label="Clear search"
               >
                 <X className="w-3.5 h-3.5" />
@@ -192,8 +192,8 @@ export default function Shop() {
               onClick={() => setSelectedGenre('')}
               className={`text-xs font-sans px-3 py-1.5 rounded flex-shrink-0 transition-colors ${
                 !selectedGenre && !activeCollection
-                  ? 'bg-burgundy text-ivory font-medium shadow-sm'
-                  : 'bg-stone/30 hover:bg-stone/60 text-charcoal'
+                  ? 'bg-burgundy text-ivory-light font-medium shadow-sm border border-burgundy-rose/40'
+                  : 'bg-[#181015] hover:bg-[#20131B] text-ivory/80 hover:text-rose-light border border-burgundy/25'
               }`}
             >
               All Genres
@@ -204,8 +204,8 @@ export default function Shop() {
                 onClick={() => setSelectedGenre(g === selectedGenre ? '' : g)}
                 className={`text-xs font-sans px-3 py-1.5 rounded flex-shrink-0 transition-colors ${
                   selectedGenre === g
-                    ? 'bg-burgundy text-ivory font-medium shadow-sm'
-                    : 'bg-stone/30 hover:bg-stone/60 text-charcoal'
+                    ? 'bg-burgundy text-ivory-light font-medium shadow-sm border border-burgundy-rose/40'
+                    : 'bg-[#181015] hover:bg-[#20131B] text-ivory/80 hover:text-rose-light border border-burgundy/25'
                 }`}
               >
                 {g}
@@ -218,38 +218,38 @@ export default function Shop() {
       {/* Main Content Area */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         {/* Controls Toolbar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 sm:pb-4 mb-4 sm:mb-6 border-b border-stone/60 gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 sm:pb-4 mb-4 sm:mb-6 border-b border-burgundy/25 gap-3">
           <div className="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto">
             {/* Mobile Filter Button */}
             <button
               onClick={() => setIsMobileFilterOpen(true)}
-              className="lg:hidden px-3 py-2 bg-white border border-stone rounded text-xs font-sans font-medium flex items-center gap-2 hover:border-burgundy transition-colors active:bg-stone/20"
+              className="lg:hidden px-3 py-2 bg-[#160E13] border border-burgundy/40 rounded text-xs font-sans font-medium flex items-center gap-2 hover:border-burgundy transition-colors text-ivory-light active:bg-[#20131B]"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-burgundy" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-rose-light" />
               <span>Filters</span>
               {hasActiveFilters && (
-                <span className="w-4 h-4 rounded-full bg-burgundy text-ivory text-[10px] font-bold flex items-center justify-center">
+                <span className="w-4 h-4 rounded-full bg-burgundy text-ivory-light text-[10px] font-bold flex items-center justify-center">
                   {activeFiltersCount}
                 </span>
               )}
             </button>
 
-            <span className="text-xs font-sans text-charcoal/70">
-              Showing <strong className="text-charcoal font-semibold">{visibleBooks.length}</strong> of{' '}
-              <strong className="text-charcoal font-semibold">{sortedBooks.length}</strong> editions
+            <span className="text-xs font-sans text-ivory/70">
+              Showing <strong className="text-ivory-light font-semibold">{visibleBooks.length}</strong> of{' '}
+              <strong className="text-ivory-light font-semibold">{sortedBooks.length}</strong> editions
             </span>
           </div>
 
           {/* Sorting */}
           <div className="flex items-center justify-between sm:justify-end gap-2.5">
-            <span className="text-xs font-sans text-charcoal/60 uppercase tracking-wider hidden sm:inline">
+            <span className="text-xs font-sans text-ivory/60 uppercase tracking-wider hidden sm:inline">
               Sort By:
             </span>
             <div className="relative w-full sm:w-auto">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full sm:w-auto bg-white border border-stone text-xs font-sans py-2 pl-3 pr-8 rounded text-charcoal focus:border-burgundy outline-none cursor-pointer"
+                className="w-full sm:w-auto bg-[#160E13] border border-burgundy/40 text-xs font-sans py-2 pl-3 pr-8 rounded text-ivory-light focus:border-rose-light outline-none cursor-pointer"
               >
                 <option value="popularity">Popularity (Readers' Choice)</option>
                 <option value="rating">Highest Literary Rating</option>
@@ -263,10 +263,10 @@ export default function Shop() {
 
         {/* Active Filter Tags */}
         {hasActiveFilters && (
-          <div className="mb-5 flex items-center gap-2 flex-wrap bg-white/40 p-2 sm:p-2.5 rounded border border-stone/40">
-            <span className="text-[11px] font-sans text-charcoal/60">Active:</span>
+          <div className="mb-5 flex items-center gap-2 flex-wrap bg-[#160E13] p-2 sm:p-2.5 rounded border border-burgundy/30">
+            <span className="text-[11px] font-sans text-ivory/60">Active:</span>
             {activeCollection && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-wine text-ivory px-2 py-0.5 rounded">
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-[#2A0E17] text-rose-light border border-burgundy/40 px-2 py-0.5 rounded">
                 Shelf: {activeCollection.title}
                 <button
                   onClick={() => {
@@ -274,55 +274,55 @@ export default function Shop() {
                     next.delete('collection');
                     setSearchParams(next);
                   }}
-                  className="hover:text-rose p-0.5"
+                  className="hover:text-gold p-0.5"
                 >
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {selectedGenre && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-burgundy text-ivory px-2 py-0.5 rounded">
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-burgundy text-ivory-light border border-burgundy-rose/40 px-2 py-0.5 rounded">
                 Genre: {selectedGenre}
-                <button onClick={() => setSelectedGenre('')} className="hover:text-rose p-0.5">
+                <button onClick={() => setSelectedGenre('')} className="hover:text-gold p-0.5">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {priceFilter && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-stone text-charcoal px-2 py-0.5 rounded">
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-[#201018] text-gold border border-burgundy/40 px-2 py-0.5 rounded">
                 Price: {priceFilter === 'under-299' ? 'Under ₹299' : priceFilter}
-                <button onClick={() => setPriceFilter('')} className="hover:text-burgundy p-0.5">
+                <button onClick={() => setPriceFilter('')} className="hover:text-rose-light p-0.5">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {ratingFilter > 0 && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-stone text-charcoal px-2 py-0.5 rounded">
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-[#201018] text-gold border border-burgundy/40 px-2 py-0.5 rounded">
                 ★ {ratingFilter}+
-                <button onClick={() => setRatingFilter(0)} className="hover:text-burgundy p-0.5">
+                <button onClick={() => setRatingFilter(0)} className="hover:text-rose-light p-0.5">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {onlyBestsellers && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-gold/30 text-charcoal px-2 py-0.5 rounded">
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-[#2A0E17] text-gold border border-burgundy/40 px-2 py-0.5 rounded">
                 Bestsellers
-                <button onClick={() => setOnlyBestsellers(false)} className="hover:text-burgundy p-0.5">
+                <button onClick={() => setOnlyBestsellers(false)} className="hover:text-rose-light p-0.5">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {onlyFeatured && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-rose/30 text-wine px-2 py-0.5 rounded">
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-[#2A0E17] text-rose-light border border-burgundy/40 px-2 py-0.5 rounded">
                 Editor's Picks
-                <button onClick={() => setOnlyFeatured(false)} className="hover:text-burgundy p-0.5">
+                <button onClick={() => setOnlyFeatured(false)} className="hover:text-gold p-0.5">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             <button
               onClick={handleResetFilters}
-              className="ml-auto text-[11px] font-sans text-burgundy hover:underline uppercase tracking-wider font-semibold"
+              className="ml-auto text-[11px] font-sans text-rose-light hover:underline uppercase tracking-wider font-semibold"
             >
               Clear All
             </button>
@@ -365,7 +365,7 @@ export default function Shop() {
               <div className="mt-10 sm:mt-12 text-center">
                 <button
                   onClick={handleLoadMore}
-                  className="w-full sm:w-auto px-8 py-3 bg-white hover:bg-ivory-light border border-stone hover:border-burgundy text-charcoal hover:text-burgundy text-xs font-sans uppercase tracking-widest font-semibold rounded transition-all shadow-subtle active:scale-98"
+                  className="w-full sm:w-auto px-8 py-3 bg-[#181015] hover:bg-[#20131B] border border-burgundy/40 hover:border-burgundy text-ivory-light hover:text-rose-light text-xs font-sans uppercase tracking-widest font-semibold rounded transition-all shadow-subtle active:scale-98"
                 >
                   Load More Editions ({sortedBooks.length - visibleCount} remaining)
                 </button>

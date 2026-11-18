@@ -21,7 +21,7 @@ export default function MobileBottomNav({ onOpenSearch }) {
 
   const items = [
     {
-      icon: <Home className="w-5 h-5 text-burgundy" strokeWidth={1.8} />,
+      icon: <Home className="w-5 h-5 text-rose-light group-hover:text-gold" strokeWidth={1.8} />,
       label: 'Home',
       active: isHomeActive,
       onClick: () => navigate('/'),
@@ -33,7 +33,7 @@ export default function MobileBottomNav({ onOpenSearch }) {
       ]
     },
     {
-      icon: <BookOpen className="w-5 h-5 text-burgundy" strokeWidth={1.8} />,
+      icon: <BookOpen className="w-5 h-5 text-rose-light group-hover:text-gold" strokeWidth={1.8} />,
       label: 'Shop',
       active: isShopActive,
       onClick: () => navigate('/shop'),
@@ -46,12 +46,12 @@ export default function MobileBottomNav({ onOpenSearch }) {
       ]
     },
     {
-      icon: <Search className="w-5 h-5 text-wine" strokeWidth={1.8} />,
+      icon: <Search className="w-5 h-5 text-rose-light group-hover:text-gold" strokeWidth={1.8} />,
       label: 'Search',
       onClick: onOpenSearch
     },
     {
-      icon: <Heart className="w-5 h-5 text-burgundy" strokeWidth={1.8} />,
+      icon: <Heart className="w-5 h-5 text-rose-light group-hover:text-gold" strokeWidth={1.8} />,
       label: 'Saved',
       active: isWishlistActive,
       badge: wishlistCount > 0 ? wishlistCount : undefined,
@@ -61,7 +61,7 @@ export default function MobileBottomNav({ onOpenSearch }) {
       ]
     },
     {
-      icon: <ShoppingBag className="w-5 h-5 text-burgundy" strokeWidth={1.8} />,
+      icon: <ShoppingBag className="w-5 h-5 text-rose-light group-hover:text-gold" strokeWidth={1.8} />,
       label: 'Bag',
       active: isCartActive,
       badge: cartCount > 0 ? cartCount : undefined,
@@ -89,8 +89,8 @@ export default function MobileBottomNav({ onOpenSearch }) {
           panelHeight={56}
           gap={8}
           roundness={0.65}
-          accentColor="#652E3C"
-          badgeColor="#652E3C"
+          accentColor="#9B2C46"
+          badgeColor="#833449"
           bounce={true}
           showLabels={true}
           showIndicators={true}

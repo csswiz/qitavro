@@ -4,28 +4,28 @@ import { Feather, BookOpen, Heart, Compass, ShieldCheck, ArrowRight } from 'luci
 
 export default function About() {
   return (
-    <div className="bg-ivory min-h-screen pb-24">
+    <div className="bg-black-obsidian min-h-screen pb-24 text-ivory-light">
       {/* Editorial Header with Official Brand Seal */}
-      <div className="bg-white/60 border-b border-stone/60 py-12 sm:py-20 md:py-24 text-center">
+      <div className="bg-[#120C10] border-b border-burgundy/25 py-12 sm:py-20 md:py-24 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           {/* Brand Seal */}
-          <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 p-2.5 rounded-[6px] bg-white border border-gold/40 shadow-book flex items-center justify-center">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 p-2.5 rounded-[6px] bg-[#181015] border border-burgundy/40 shadow-book flex items-center justify-center">
             <img src="/logo.svg" alt="QITAVRO Official Logo" className="w-full h-full object-contain" />
           </div>
 
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-8 h-[1px] bg-gold" />
-            <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-burgundy font-semibold">
+            <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
               The QITAVRO Manifesto
             </span>
             <span className="w-8 h-[1px] bg-gold" />
           </div>
 
-          <h1 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-charcoal leading-tight">
+          <h1 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-ivory-light leading-tight">
             "A World Between the Covers."
           </h1>
 
-          <p className="mt-4 sm:mt-6 font-serif italic text-base sm:text-xl text-charcoal/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-4 sm:mt-6 font-serif italic text-base sm:text-xl text-ivory/80 max-w-2xl mx-auto leading-relaxed">
             Founded on the quiet conviction that books are not disposable consumer goods, but sanctuaries of human consciousness and timeless conversation.
           </p>
         </div>
@@ -35,8 +35,8 @@ export default function About() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16">
         
         {/* Section 1: Why QITAVRO Exists */}
-        <section className="space-y-4 sm:space-y-6 font-serif text-base sm:text-lg text-charcoal/85 leading-[1.8]">
-          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-charcoal">
+        <section className="space-y-4 sm:space-y-6 font-serif text-base sm:text-lg text-ivory/85 leading-[1.8]">
+          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-ivory-light">
             Why QITAVRO Exists
           </h2>
           <div className="w-10 h-[2px] bg-gold mb-4" />
@@ -51,8 +51,8 @@ export default function About() {
         </section>
 
         {/* Visual Break / Quote Highlight */}
-        <div className="my-10 sm:my-14 p-6 sm:p-8 bg-wine text-ivory rounded-[3px] border border-gold/40 text-center shadow-book">
-          <p className="font-serif italic text-lg sm:text-2xl leading-relaxed text-stone-light">
+        <div className="my-10 sm:my-14 p-6 sm:p-8 bg-gradient-to-r from-[#200A11] via-[#35121D] to-[#16070D] text-ivory-light rounded-[4px] border border-burgundy/40 text-center shadow-2xl">
+          <p className="font-serif italic text-lg sm:text-2xl leading-relaxed text-ivory/90">
             "When you hold a truly extraordinary book in your hands, you hold the distilled lifetime, suffering, and epiphany of another human being."
           </p>
           <span className="block font-sans text-xs uppercase tracking-widest text-gold mt-4 font-semibold">
@@ -62,44 +62,44 @@ export default function About() {
 
         {/* Section 2: Our Three Pillars */}
         <section className="space-y-6 sm:space-y-8 pt-4 sm:pt-6">
-          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-charcoal">
+          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-ivory-light">
             Our Guiding Commitments
           </h2>
           <div className="w-10 h-[2px] bg-gold" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 pt-2">
-            <div className="bg-white p-5 sm:p-6 rounded border border-stone/70 shadow-subtle">
-              <div className="w-10 h-10 rounded bg-ivory flex items-center justify-center text-burgundy mb-4 border border-stone/50">
+            <div className="bg-[#140D12] p-5 sm:p-6 rounded-[4px] border border-burgundy/30 shadow-subtle text-ivory-light">
+              <div className="w-10 h-10 rounded bg-[#201018] flex items-center justify-center text-gold mb-4 border border-burgundy/40">
                 <Feather className="w-5 h-5" />
               </div>
-              <h3 className="font-serif font-bold text-lg text-charcoal mb-2">
+              <h3 className="font-serif font-bold text-lg text-ivory-light mb-2">
                 Curatorial Intention
               </h3>
-              <p className="text-xs font-sans text-charcoal/70 leading-relaxed">
+              <p className="text-xs font-sans text-ivory/70 leading-relaxed">
                 We reject endless catalogs of mediocre filler. Every volume must earn its place through exceptional prose, moral courage, or timeless intellectual insight.
               </p>
             </div>
 
-            <div className="bg-white p-5 sm:p-6 rounded border border-stone/70 shadow-subtle">
-              <div className="w-10 h-10 rounded bg-ivory flex items-center justify-center text-burgundy mb-4 border border-stone/50">
+            <div className="bg-[#140D12] p-5 sm:p-6 rounded-[4px] border border-burgundy/30 shadow-subtle text-ivory-light">
+              <div className="w-10 h-10 rounded bg-[#201018] flex items-center justify-center text-gold mb-4 border border-burgundy/40">
                 <BookOpen className="w-5 h-5" />
               </div>
-              <h3 className="font-serif font-bold text-lg text-charcoal mb-2">
+              <h3 className="font-serif font-bold text-lg text-ivory-light mb-2">
                 Physical Craftsmanship
               </h3>
-              <p className="text-xs font-sans text-charcoal/70 leading-relaxed">
+              <p className="text-xs font-sans text-ivory/70 leading-relaxed">
                 We champion clothbound hardcovers, deckle edges, archival paper, and faithful translations that honor the author's original linguistic melody.
               </p>
             </div>
 
-            <div className="bg-white p-5 sm:p-6 rounded border border-stone/70 shadow-subtle">
-              <div className="w-10 h-10 rounded bg-ivory flex items-center justify-center text-burgundy mb-4 border border-stone/50">
+            <div className="bg-[#140D12] p-5 sm:p-6 rounded-[4px] border border-burgundy/30 shadow-subtle text-ivory-light">
+              <div className="w-10 h-10 rounded bg-[#201018] flex items-center justify-center text-gold mb-4 border border-burgundy/40">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="font-serif font-bold text-lg text-charcoal mb-2">
+              <h3 className="font-serif font-bold text-lg text-ivory-light mb-2">
                 Protective Packaging
               </h3>
-              <p className="text-xs font-sans text-charcoal/70 leading-relaxed">
+              <p className="text-xs font-sans text-ivory/70 leading-relaxed">
                 We believe a book should arrive as a treasured gift. Double-boxed in reinforced archival cardboard so corners remain crisp and unbent.
               </p>
             </div>
@@ -107,8 +107,8 @@ export default function About() {
         </section>
 
         {/* Section 3: Vision for Thoughtful Discovery */}
-        <section className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-stone/60 space-y-4 sm:space-y-6 font-serif text-base sm:text-lg text-charcoal/85 leading-[1.8]">
-          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-charcoal">
+        <section className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-burgundy/25 space-y-4 sm:space-y-6 font-serif text-base sm:text-lg text-ivory/85 leading-[1.8]">
+          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-ivory-light">
             The Vision of Meaningful Reading
           </h2>
 
@@ -123,10 +123,10 @@ export default function About() {
           <div className="pt-6 sm:pt-8 text-center">
             <Link
               to="/shop"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-burgundy hover:bg-wine active:scale-98 text-ivory text-xs font-sans uppercase tracking-widest font-semibold rounded transition-colors shadow-subtle"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-burgundy hover:bg-burgundy-light active:scale-98 text-ivory-light text-xs font-sans uppercase tracking-widest font-semibold rounded transition-colors shadow-subtle border border-burgundy-rose/40"
             >
               <span>Explore The Curated Catalogue</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-gold" />
             </Link>
           </div>
         </section>

@@ -23,22 +23,22 @@ import { BookOpen } from 'lucide-react';
 
 function NotFound() {
   return (
-    <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 py-20 bg-ivory">
-      <div className="w-16 h-16 rounded-[6px] bg-white p-2.5 flex items-center justify-center border border-gold/40 mb-4 shadow-sm">
+    <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 py-20 bg-black-obsidian">
+      <div className="w-16 h-16 rounded-[6px] bg-[#181015] p-2.5 flex items-center justify-center border border-burgundy/40 mb-4 shadow-lg shadow-burgundy/20">
         <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
       </div>
-      <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-burgundy font-semibold">
+      <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-burgundy-rose font-semibold">
         Error 404
       </span>
-      <h2 className="font-serif font-bold text-3xl sm:text-4xl text-charcoal mt-1">
+      <h2 className="font-serif font-bold text-3xl sm:text-4xl text-ivory-light mt-1">
         A Page Left Blank
       </h2>
-      <p className="font-serif italic text-base text-charcoal/70 mt-2 max-w-md">
+      <p className="font-serif italic text-base text-ivory/70 mt-2 max-w-md">
         The leaf you are seeking has either been moved or exists only in another story.
       </p>
       <Link
         to="/"
-        className="mt-6 px-6 py-3 bg-burgundy hover:bg-wine text-ivory text-xs font-sans uppercase tracking-widest font-semibold rounded transition-colors shadow-subtle"
+        className="mt-6 px-6 py-3 bg-burgundy hover:bg-burgundy-light text-ivory-light text-xs font-sans uppercase tracking-widest font-semibold rounded transition-colors shadow-subtle border border-burgundy-rose/30"
       >
         Return to the Bookstore
       </Link>
@@ -53,7 +53,7 @@ export default function App() {
         <CartProvider>
           <Router>
             <ScrollToTop />
-            <div className="min-h-screen flex flex-col bg-ivory text-charcoal antialiased selection:bg-rose/40 selection:text-wine">
+            <div className="min-h-screen flex flex-col bg-black-obsidian text-ivory-light antialiased selection:bg-burgundy/45 selection:text-ivory-light">
               <Navbar />
               <main className="flex-1 pb-16 lg:pb-0">
                 <Routes>

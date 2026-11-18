@@ -9,18 +9,18 @@ export default function BuyingSellingDisclaimer() {
       subtitle="Important disclosures regarding pre-loved book patina, condition grading, authenticity, and inventory limits."
       lastUpdated="November 18, 2024"
     >
-      <div className="space-y-8 font-serif text-charcoal/90 text-sm sm:text-base leading-relaxed">
+      <div className="space-y-8 font-serif text-ivory/90 text-sm sm:text-base leading-relaxed">
         
         {/* Intro */}
-        <section className="border-b border-stone/40 pb-6">
-          <p className="text-base sm:text-lg italic text-charcoal/80 leading-relaxed font-serif">
-            This Buying & Selling Disclaimer provides clear disclosures regarding the nature of the books sold on <strong className="text-burgundy">QITAVRO</strong>, including pre-loved volumes, limited editions, transit precautions, and authorial views. Please read this notice carefully before acquiring any title from our catalogue.
+        <section className="border-b border-burgundy/25 pb-6">
+          <p className="text-base sm:text-lg italic text-ivory/80 leading-relaxed font-serif">
+            This Buying & Selling Disclaimer provides clear disclosures regarding the nature of the books sold on <strong className="text-rose-light">QITAVRO</strong>, including pre-loved volumes, limited editions, transit precautions, and authorial views. Please read this notice carefully before acquiring any title from our catalogue.
           </p>
         </section>
 
         {/* Section 1 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             1. Nature of Pre-Loved & Vintage Literature
           </h2>
           <p>
@@ -41,11 +41,11 @@ export default function BuyingSellingDisclaimer() {
 
         {/* Section 2 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             2. Photography & Color Fidelity
           </h2>
-          <div className="bg-ivory p-4 rounded border-l-2 border-gold font-sans text-xs sm:text-sm text-charcoal/80 space-y-1.5">
-            <strong>Visual Representation Notice:</strong>
+          <div className="bg-[#181015] p-4 rounded border-l-2 border-gold font-sans text-xs sm:text-sm text-ivory/80 space-y-1.5">
+            <strong className="text-gold">Visual Representation Notice:</strong>
             <p>
               We photograph or render covers with faithful natural lighting. However, due to color calibration differences across monitors, mobile OLED screens, and ambient room illumination, the physical hue of clothbound covers or metallic foil stampings may vary slightly from your screen preview.
             </p>
@@ -54,7 +54,7 @@ export default function BuyingSellingDisclaimer() {
 
         {/* Section 3 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             3. Editorial Good-Faith Authentication
           </h2>
           <p>
@@ -68,7 +68,7 @@ export default function BuyingSellingDisclaimer() {
 
         {/* Section 4 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             4. Content & Authorial Views Disclaimer
           </h2>
           <p>
@@ -82,7 +82,7 @@ export default function BuyingSellingDisclaimer() {
 
         {/* Section 5 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             5. In-Transit Courier Liability
           </h2>
           <p>
@@ -95,10 +95,10 @@ export default function BuyingSellingDisclaimer() {
         </section>
 
         {/* Section 6 */}
-        <section className="space-y-2 pt-4 border-t border-stone/40 text-xs font-sans text-charcoal/70">
+        <section className="space-y-2 pt-4 border-t border-burgundy/25 text-xs font-sans text-ivory/70">
           <p>
             For condition inquiries on specific individual books before placing an order, please contact our curatorial desk at:
-            <a href="mailto:curate@qitavro.com" className="text-burgundy font-semibold ml-1 hover:underline">
+            <a href="mailto:curate@qitavro.com" className="text-gold font-semibold ml-1 hover:underline">
               curate@qitavro.com
             </a>
           </p>

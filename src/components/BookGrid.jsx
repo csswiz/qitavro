@@ -14,16 +14,16 @@ export default function BookGrid({
 
   if (!books || books.length === 0) {
     return (
-      <div className="py-16 px-4 text-center bg-white/40 border border-stone/50 rounded-[3px] my-6">
-        <BookOpen className="w-12 h-12 mx-auto text-charcoal/20 mb-3 stroke-[1.2]" />
-        <h3 className="font-serif text-xl text-charcoal font-semibold">{emptyTitle}</h3>
-        <p className="font-sans text-xs sm:text-sm text-charcoal/70 mt-1 max-w-md mx-auto">
+      <div className="py-16 px-4 text-center bg-[#140D12] border border-burgundy/30 rounded-[4px] my-6 text-ivory-light">
+        <BookOpen className="w-12 h-12 mx-auto text-ivory/20 mb-3 stroke-[1.2]" />
+        <h3 className="font-serif text-xl text-ivory-light font-semibold">{emptyTitle}</h3>
+        <p className="font-sans text-xs sm:text-sm text-ivory/70 mt-1 max-w-md mx-auto">
           {emptyMessage}
         </p>
         {onResetFilters && (
           <button
             onClick={onResetFilters}
-            className="mt-4 px-4 py-2 bg-burgundy hover:bg-wine text-ivory text-xs font-sans rounded transition-colors"
+            className="mt-4 px-4 py-2 bg-burgundy hover:bg-burgundy-light text-ivory-light text-xs font-sans rounded transition-colors border border-burgundy-rose/30"
           >
             Clear All Filters
           </button>

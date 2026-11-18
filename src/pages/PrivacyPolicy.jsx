@@ -9,18 +9,18 @@ export default function PrivacyPolicy() {
       subtitle="Our charter on safeguarding your personal identity, reading history, and digital sanctuary."
       lastUpdated="November 18, 2024"
     >
-      <div className="space-y-8 font-serif text-charcoal/90 text-sm sm:text-base leading-relaxed">
+      <div className="space-y-8 font-serif text-ivory/90 text-sm sm:text-base leading-relaxed">
         
         {/* Intro */}
-        <section className="border-b border-stone/40 pb-6">
-          <p className="text-base sm:text-lg italic text-charcoal/80 leading-relaxed font-serif">
-            At <strong className="text-burgundy">QITAVRO</strong>, we believe what a person reads is an intimate facet of their consciousness. We treat your personal information with the same reverence and discretion with which an archivist treats rare parchment. We never sell, rent, or trade your personal reading lists or identity.
+        <section className="border-b border-burgundy/25 pb-6">
+          <p className="text-base sm:text-lg italic text-ivory/80 leading-relaxed font-serif">
+            At <strong className="text-rose-light">QITAVRO</strong>, we believe what a person reads is an intimate facet of their consciousness. We treat your personal information with the same reverence and discretion with which an archivist treats rare parchment. We never sell, rent, or trade your personal reading lists or identity.
           </p>
         </section>
 
         {/* Section 1 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             1. Information We Collect
           </h2>
           <p>We only gather data necessary to deliver your curated volumes and provide a seamless reading experience:</p>
@@ -42,7 +42,7 @@ export default function PrivacyPolicy() {
 
         {/* Section 2 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             2. How Your Information Is Used
           </h2>
           <ul className="list-disc pl-5 space-y-1.5">
@@ -55,11 +55,11 @@ export default function PrivacyPolicy() {
 
         {/* Section 3 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             3. Payment Security & Financial Data
           </h2>
-          <div className="bg-ivory p-4 rounded border-l-2 border-gold font-sans text-xs sm:text-sm text-charcoal/80 space-y-1.5">
-            <strong className="text-burgundy">Zero Storage of Financial Credentials:</strong>
+          <div className="bg-[#181015] p-4 rounded border-l-2 border-gold font-sans text-xs sm:text-sm text-ivory/80 space-y-1.5">
+            <strong className="text-gold">Zero Storage of Financial Credentials:</strong>
             <p>
               QITAVRO does NOT store or process your credit card numbers, debit card PINs, CVVs, or UPI credentials on our servers. All transactions are securely routed through RBI-authorized, PCI-DSS Level 1 compliant payment gateways featuring 256-bit SSL encryption.
             </p>
@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
 
         {/* Section 4 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             4. Third-Party Disclosures
           </h2>
           <p>
@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
 
         {/* Section 5 */}
         <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
             5. Cookies & Local Browser Storage
           </h2>
           <p>
@@ -94,35 +94,18 @@ export default function PrivacyPolicy() {
             <li>Your curated wishlist items so you can revisit saved editions.</li>
             <li>Lightweight session preferences for optimal performance.</li>
           </ul>
-          <p className="text-xs font-sans text-charcoal/70">
+          <p className="text-xs font-sans text-ivory/70">
             You can clear your browser's LocalStorage and cookies at any time via your browser settings.
           </p>
         </section>
 
         {/* Section 6 */}
-        <section className="space-y-3">
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
-            6. Your Privacy Rights & Data Erasure
-          </h2>
+        <section className="space-y-2 pt-4 border-t border-burgundy/25 text-xs font-sans text-ivory/70">
           <p>
-            You have full ownership of your personal data. At any time, you may request:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5">
-            <li>A full summary of the personal information stored in your customer record.</li>
-            <li>Correction of misspelled names or updated delivery addresses.</li>
-            <li>Permanent erasure of your customer account and contact history ("Right to be Forgotten"), subject only to statutory tax retention periods.</li>
-          </ul>
-        </section>
-
-        {/* Section 7 */}
-        <section className="space-y-2 pt-4 border-t border-stone/40 text-xs font-sans text-charcoal/70">
-          <h3 className="font-serif font-bold text-sm text-wine">Grievance & Privacy Officer</h3>
-          <p>
-            In accordance with the Information Technology Act, 2000 and rules made thereunder, any concerns regarding data privacy may be addressed to:
-          </p>
-          <p className="font-medium text-charcoal">
-            Privacy Desk, QITAVRO Editorial Bookstore<br />
-            Email: <a href="mailto:privacy@qitavro.com" className="text-burgundy hover:underline">privacy@qitavro.com</a>
+            To exercise your rights to data access, modification, or account deletion, contact our privacy officer at:
+            <a href="mailto:privacy@qitavro.com" className="text-gold font-semibold ml-1 hover:underline">
+              privacy@qitavro.com
+            </a>
           </p>
         </section>
 
