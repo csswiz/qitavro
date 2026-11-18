@@ -12,6 +12,10 @@ import About from './pages/About';
 import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import Checkout from './pages/Checkout';
+import TermsOfService from './pages/TermsOfService';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import ListingPolicy from './pages/ListingPolicy';
+import BuyingSellingDisclaimer from './pages/BuyingSellingDisclaimer';
 import { ToastProvider } from './context/ToastContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { CartProvider } from './context/CartContext';
@@ -63,6 +67,10 @@ export default function App() {
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/wishlist" element={<Wishlist />} />
                   <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/terms" element={<TermsOfService />} />
+                  <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/listing-policy" element={<ListingPolicy />} />
+                  <Route path="/disclaimer" element={<BuyingSellingDisclaimer />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

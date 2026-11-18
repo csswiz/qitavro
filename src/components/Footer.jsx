@@ -168,7 +168,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <span className="text-stone-light/60">Packaging & Archival Care</span>
+                <Link to="/listing-policy" className="hover:text-gold transition-colors">
+                  Listing & Grading Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/disclaimer" className="hover:text-gold transition-colors">
+                  Buying & Selling Disclaimer
+                </Link>
               </li>
               <li>
                 <span className="text-stone-light/60">Reading Queries: curate@qitavro.com</span>
@@ -188,10 +195,22 @@ export default function Footer() {
           <p className="font-sans text-center sm:text-left">
             © {new Date().getFullYear()} QITAVRO. All rights reserved. Thoughtfully crafted for curious minds.
           </p>
-          <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
-            <span className="hover:text-stone-light transition-colors cursor-pointer">Privacy Charter</span>
-            <span className="hover:text-stone-light transition-colors cursor-pointer">Terms of Reading</span>
-            <span className="text-gold/80 italic font-serif">"Stories worth keeping."</span>
+          <div className="flex items-center gap-3.5 sm:gap-5 flex-wrap justify-center text-[11px] font-sans">
+            <Link to="/terms" className="hover:text-stone-light transition-colors">
+              Terms of Service
+            </Link>
+            <span className="text-stone-light/30">•</span>
+            <Link to="/privacy" className="hover:text-stone-light transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-stone-light/30">•</span>
+            <Link to="/listing-policy" className="hover:text-stone-light transition-colors">
+              Listing Policy
+            </Link>
+            <span className="text-stone-light/30">•</span>
+            <Link to="/disclaimer" className="hover:text-stone-light transition-colors">
+              Disclaimer
+            </Link>
           </div>
         </div>
       </div>
