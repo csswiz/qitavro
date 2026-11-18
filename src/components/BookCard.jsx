@@ -17,7 +17,7 @@ export default function BookCard({ book, onQuickView }) {
 
   return (
     <div 
-      className="group relative flex flex-col bg-white rounded-[3px] border border-stone/60 p-2.5 sm:p-3.5 transition-all duration-300 hover:border-burgundy/40 hover:shadow-book"
+      className="group relative flex flex-col bg-white rounded-[3px] border border-stone/60 p-2.5 sm:p-3.5 transition-all duration-300 hover:border-primary/50 hover:shadow-luxury"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -37,17 +37,17 @@ export default function BookCard({ book, onQuickView }) {
         {/* Top Badges */}
         <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 flex flex-col gap-1 z-20 pointer-events-none">
           {book.badge ? (
-            <span className="bg-burgundy text-ivory text-[8px] sm:text-[9px] uppercase tracking-wider font-sans font-semibold px-1.5 sm:px-2 py-0.5 rounded shadow-sm">
+            <span className="bg-primary text-warmBrown-100 text-[8px] sm:text-[9px] uppercase tracking-wider font-sans font-semibold px-1.5 sm:px-2 py-0.5 rounded shadow-sm">
               {book.badge}
             </span>
           ) : book.bestseller ? (
-            <span className="bg-wine text-ivory text-[8px] sm:text-[9px] uppercase tracking-wider font-sans font-medium px-1.5 sm:px-2 py-0.5 rounded shadow-sm">
+            <span className="bg-secondary text-warmBrown-100 text-[8px] sm:text-[9px] uppercase tracking-wider font-sans font-medium px-1.5 sm:px-2 py-0.5 rounded shadow-sm border border-gold/30">
               Bestseller
             </span>
           ) : null}
 
           {discountPercent > 0 && (
-            <span className="bg-white/95 text-burgundy border border-burgundy/20 text-[8px] sm:text-[9px] font-sans font-semibold px-1 sm:px-1.5 py-0.5 rounded shadow-sm">
+            <span className="bg-white/95 text-primary border border-primary/20 text-[8px] sm:text-[9px] font-sans font-semibold px-1 sm:px-1.5 py-0.5 rounded shadow-sm">
               -{discountPercent}%
             </span>
           )}
@@ -78,7 +78,7 @@ export default function BookCard({ book, onQuickView }) {
               e.stopPropagation();
               onQuickView?.(book);
             }}
-            className="w-full py-2 bg-charcoal/90 hover:bg-burgundy text-ivory text-[11px] font-sans uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5 rounded backdrop-blur-sm transition-colors shadow active:scale-98"
+            className="w-full py-2 bg-secondary/95 hover:bg-primary text-warmBrown-100 text-[11px] font-sans uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5 rounded backdrop-blur-sm transition-colors shadow active:scale-98"
           >
             <Eye className="w-3.5 h-3.5" />
             Quick View
@@ -134,7 +134,7 @@ export default function BookCard({ book, onQuickView }) {
             {/* Direct Add to Cart Button */}
             <button
               onClick={() => addToCart(book, 1)}
-              className="p-1.5 sm:px-3 sm:py-1.5 bg-burgundy hover:bg-wine active:scale-95 text-ivory rounded text-xs font-sans font-medium flex items-center gap-1 transition-colors shadow-subtle"
+              className="p-1.5 sm:px-3 sm:py-1.5 bg-primary hover:bg-secondary active:scale-95 text-warmBrown-100 rounded text-xs font-sans font-medium flex items-center gap-1 transition-colors shadow-subtle"
               aria-label="Add to Bag"
               title="Add to Shopping Bag"
             >

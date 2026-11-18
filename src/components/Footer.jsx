@@ -4,16 +4,16 @@ import { BookOpen, Compass, Feather, ShieldCheck, Mail, ArrowUpRight } from 'luc
 
 export default function Footer() {
   return (
-    <footer className="bg-wine text-ivory border-t border-stone/20 pt-16 pb-28 sm:pb-24 lg:pb-12 font-sans">
+    <footer className="bg-secondary text-warmBrown-100 border-t border-gold/30 pt-16 pb-28 sm:pb-24 lg:pb-12 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Brand Value Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-stone/15">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-gold/15">
           <div className="flex items-start gap-3.5">
-            <div className="p-2.5 rounded bg-wine-deep border border-gold/30 text-gold flex-shrink-0">
+            <div className="p-2.5 rounded bg-darkBrown-deep border border-gold/30 text-gold flex-shrink-0">
               <Feather className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-base text-ivory">Editorial Curation</h4>
+              <h4 className="font-serif font-bold text-base text-warmBrown-100">Editorial Curation</h4>
               <p className="text-xs text-stone-light/80 mt-1 leading-relaxed">
                 Every title hand-selected for literary merit, enduring insight, and timeless resonance.
               </p>
@@ -21,11 +21,11 @@ export default function Footer() {
           </div>
 
           <div className="flex items-start gap-3.5">
-            <div className="p-2.5 rounded bg-wine-deep border border-gold/30 text-gold flex-shrink-0">
+            <div className="p-2.5 rounded bg-darkBrown-deep border border-gold/30 text-gold flex-shrink-0">
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-base text-ivory">Craftsmanship & Editions</h4>
+              <h4 className="font-serif font-bold text-base text-warmBrown-100">Craftsmanship & Editions</h4>
               <p className="text-xs text-stone-light/80 mt-1 leading-relaxed">
                 Acid-free paper, archival cloth bindings, deckle edges, and fine typography worth keeping.
               </p>
@@ -33,11 +33,11 @@ export default function Footer() {
           </div>
 
           <div className="flex items-start gap-3.5">
-            <div className="p-2.5 rounded bg-wine-deep border border-gold/30 text-gold flex-shrink-0">
+            <div className="p-2.5 rounded bg-darkBrown-deep border border-gold/30 text-gold flex-shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-base text-ivory">Protective Book Packaging</h4>
+              <h4 className="font-serif font-bold text-base text-warmBrown-100">Protective Book Packaging</h4>
               <p className="text-xs text-stone-light/80 mt-1 leading-relaxed">
                 Double-wrapped with organic kraft paper and reinforced corners to arrive in collector condition.
               </p>
