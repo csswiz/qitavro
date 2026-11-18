@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "slug": "darling-in-reds",
+    "title": "Darling in Red's",
+    "author": "Ace",
+    "price": 149,
+    "originalPrice": 299,
+    "rating": 4.9,
+    "reviews": 84,
+    "category": "Romance",
+    "condition": "Pre-loved",
+    "image": "/images/books/darling-in-reds.jpg",
+    "tagline": "Some hearts are meant to bleed together.",
+    "description": "Some hearts are meant to bleed together. An evocative dark romance enveloped in mystery, devotion, and a bond forged through crimson passion. When love demands everything, two souls discover that even thorns cannot break what destiny has carved in blood.",
+    "whyRecommend": "Darling in Red's delivers an intoxicating, visceral romance steeped in dark devotion. With its gothic undertones and unforgettable intensity, it reminds us that true passion often lives in the most vulnerable shadows of the human heart.",
+    "aboutAuthor": "Ace is an independent author acclaimed for gothic-tinged romances, creating heartfelt emotional arcs and poignant explorations of fierce, unwavering devotion.",
+    "publisher": "Independent Press",
+    "isbn": "9781958210398",
+    "language": "English",
+    "pages": 312,
+    "publicationDate": "2023-10-18",
+    "featured": true,
+    "bestseller": true,
+    "stock": 4,
+    "format": "Pre-loved Paperback",
+    "curatorNote": "A rare pre-loved dark romance volume. 'Some hearts are meant to bleed together.'",
+    "badge": "Pre-loved"
+  }
+]

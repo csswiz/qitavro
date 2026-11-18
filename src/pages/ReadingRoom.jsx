@@ -1,0 +1,298 @@
+import React, { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { BookOpen, ArrowLeft, ArrowRight, Clock, Calendar, User, Bookmark } from 'lucide-react';
+import articlesData from '../data/articles.json';
+import booksData from '../data/books.json';
+import BookCoverImage from '../components/BookCoverImage';
+
+export default function ReadingRoom() {
+  const { slug } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
+  // If a specific article slug is provided in URL
+  if (slug) {
+    const article = articlesData.find((a) => a.slug === slug);
+    if (!article) {
+      return (
+        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-16">
+          <h2 className="font-serif text-3xl font-bold text-charcoal">Article Not Found</h2>
+          <Link
+            to="/reading-room"
+            className="mt-4 px-6 py-2.5 bg-burgundy text-ivory text-xs font-sans uppercase tracking-widest font-semibold rounded"
+          >
+            Return to The Reading Room
+          </Link>
+        </div>
+      );
+    }
+
+    // Related recommended books for this article
+    const recommendedBooks = booksData.filter((b) =>
+      article.relatedBookIds?.includes(b.id)
+    );
+
+    return (
+      <div className="bg-ivory min-h-screen pb-24">
+        {/* Article Breadcrumb */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 border-b border-stone/50 text-xs font-sans text-charcoal/60 flex items-center justify-between">
+          <Link
+            to="/reading-room"
+            className="inline-flex items-center gap-1.5 hover:text-burgundy transition-colors text-charcoal"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Back to The Reading Room</span>
+          </Link>
+          <span className="uppercase tracking-widest text-[10px] text-burgundy font-semibold">
+            {article.category}
+          </span>
+        </div>
+
+        {/* Article Header */}
+        <header className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-8 text-center">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="w-6 h-[1px] bg-gold" />
+            <span className="text-[11px] font-sans uppercase tracking-[0.2em] text-wine font-semibold">
+              QITAVRO EDITORIAL
+            </span>
+            <span className="w-6 h-[1px] bg-gold" />
+          </div>
+
+          <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-charcoal leading-[1.15]">
+            {article.title}
+          </h1>
+
+          <p className="mt-4 font-serif italic text-base sm:text-lg text-charcoal/75 leading-relaxed">
+            "{article.excerpt}"
+          </p>
+
+          <div className="mt-6 flex items-center justify-center gap-4 text-xs font-sans text-charcoal/60 border-y border-stone/50 py-3">
+            <span className="font-serif italic text-charcoal font-medium">By {article.author}</span>
+            <span>•</span>
+            <span>{article.date}</span>
+            <span>•</span>
+            <span className="flex items-center gap-1 text-burgundy">
+              <Clock className="w-3 h-3" />
+              {article.readTime}
+            </span>
+          </div>
+        </header>
+
+        {/* Hero Image for Article */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12">
+          <div className="aspect-[16/9] rounded overflow-hidden shadow-book border border-stone/60">
+            <img
+              src={article.image}
+              alt={article.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Article Body */}
+        <article className="max-w-3xl mx-auto px-4 sm:px-6">
+          <div className="font-serif text-lg text-charcoal/90 leading-[1.8] space-y-6">
+            {article.content.map((paragraph, idx) => (
+              <p key={idx} className={idx === 0 ? 'drop-cap' : ''}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          {/* Curated Recommendations Mentioned in Article */}
+          {recommendedBooks.length > 0 && (
+            <div className="mt-16 pt-10 border-t border-stone/60">
+              <div className="mb-6">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-burgundy font-semibold">
+                  Companion Reading
+                </span>
+                <h3 className="font-serif font-bold text-2xl text-charcoal mt-1">
+                  Volumes Discussed in This Piece
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {recommendedBooks.map((book) => (
+                  <Link
+                    key={book.id}
+                    to={`/book/${book.slug}`}
+                    className="p-3 bg-white rounded border border-stone/60 hover:border-burgundy/40 shadow-subtle hover:shadow flex gap-3 group transition-all"
+                  >
+                    <div className="w-16 flex-shrink-0">
+                      <BookCoverImage
+                        src={book.image}
+                        alt={book.title}
+                        title={book.title}
+                        author={book.author}
+                        category={book.category}
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center min-w-0">
+                      <span className="text-[9px] uppercase font-sans text-burgundy font-semibold">
+                        {book.category}
+                      </span>
+                      <h4 className="font-serif font-semibold text-xs text-charcoal group-hover:text-burgundy truncate">
+                        {book.title}
+                      </h4>
+                      <p className="font-serif italic text-[11px] text-charcoal/70 truncate">
+                        {book.author}
+                      </p>
+                      <span className="font-serif font-bold text-wine text-xs mt-1">
+                        ₹{book.price}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Return link */}
+          <div className="mt-12 pt-6 border-t border-stone/40 text-center">
+            <Link
+              to="/reading-room"
+              className="inline-flex items-center gap-1.5 text-xs font-sans uppercase tracking-widest font-semibold text-burgundy hover:text-wine"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Back to Editorial Desk</span>
+            </Link>
+          </div>
+        </article>
+      </div>
+    );
+  }
+
+  // Reading Room Index View
+  const featuredArticle = articlesData[0];
+  const regularArticles = articlesData.slice(1);
+
+  return (
+    <div className="bg-ivory min-h-screen pb-24">
+      {/* Editorial Header */}
+      <div className="bg-white/60 border-b border-stone/60 py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-burgundy font-semibold">
+              Literary Magazine
+            </span>
+            <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-charcoal mt-1">
+              The Reading Room
+            </h1>
+            <p className="mt-3 font-serif italic text-base sm:text-lg text-charcoal/80 leading-relaxed">
+              Essays on unhurried reading, philosophical reflections on personal libraries, and literary criticism for contemplative readers.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
+        
+        {/* Featured Magazine Cover Article */}
+        {featuredArticle && (
+          <div className="bg-white rounded-[3px] border border-stone/70 overflow-hidden shadow-book">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-7 aspect-[16/10] overflow-hidden bg-wine">
+                <img
+                  src={featuredArticle.image}
+                  alt={featuredArticle.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-center">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[10px] uppercase font-sans tracking-widest text-burgundy font-bold">
+                    Featured Journal
+                  </span>
+                  <span className="text-charcoal/30">•</span>
+                  <span className="text-[10px] font-sans text-charcoal/50 uppercase tracking-wider">
+                    {featuredArticle.readTime}
+                  </span>
+                </div>
+
+                <h2 className="font-serif font-bold text-2xl sm:text-3xl text-charcoal leading-tight">
+                  {featuredArticle.title}
+                </h2>
+
+                <p className="font-serif italic text-xs text-charcoal/60 mt-1">
+                  By {featuredArticle.author}
+                </p>
+
+                <p className="mt-4 text-xs sm:text-sm font-sans text-charcoal/75 leading-relaxed">
+                  {featuredArticle.excerpt}
+                </p>
+
+                <div className="mt-6 pt-4 border-t border-stone/40">
+                  <Link
+                    to={`/reading-room/${featuredArticle.slug}`}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-burgundy hover:bg-wine text-ivory text-xs font-sans uppercase tracking-widest font-semibold rounded transition-colors shadow-subtle"
+                  >
+                    <span>Read Full Essay</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Article Grid */}
+        <div>
+          <div className="mb-8">
+            <span className="text-[11px] font-sans uppercase tracking-widest text-burgundy font-semibold">
+              Essays, Reviews & Lists
+            </span>
+            <h3 className="font-serif font-bold text-2xl sm:text-3xl text-charcoal mt-1">
+              Curated Literary Chronicles
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            {regularArticles.map((art) => (
+              <article
+                key={art.id}
+                className="group bg-white rounded border border-stone/60 p-6 flex flex-col justify-between shadow-subtle hover:shadow-book transition-all"
+              >
+                <div>
+                  <div className="flex items-center justify-between text-[10px] font-sans uppercase tracking-widest text-burgundy font-semibold mb-2">
+                    <span>{art.category}</span>
+                    <span className="text-charcoal/40 font-normal">{art.readTime}</span>
+                  </div>
+
+                  <Link to={`/reading-room/${art.slug}`}>
+                    <h4 className="font-serif font-bold text-xl text-charcoal group-hover:text-burgundy transition-colors leading-snug">
+                      {art.title}
+                    </h4>
+                  </Link>
+
+                  <p className="font-serif italic text-xs text-charcoal/60 mt-1">
+                    By {art.author} — {art.date}
+                  </p>
+
+                  <p className="mt-3 text-xs sm:text-sm text-charcoal/75 font-sans leading-relaxed line-clamp-3">
+                    {art.excerpt}
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-stone/40 flex items-center justify-between">
+                  <span className="text-[11px] font-sans text-stone-dark">
+                    {art.relatedBookIds?.length || 0} Companion Works
+                  </span>
+                  <Link
+                    to={`/reading-room/${art.slug}`}
+                    className="text-xs font-sans uppercase tracking-wider font-semibold text-burgundy group-hover:text-wine inline-flex items-center gap-1"
+                  >
+                    Read <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}

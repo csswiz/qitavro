@@ -1,0 +1,379 @@
+import React, { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Search, SlidersHorizontal, ArrowUpDown, X, BookOpen, RotateCcw } from 'lucide-react';
+import booksData from '../data/books.json';
+import collectionsData from '../data/collections.json';
+import BookGrid from '../components/BookGrid';
+import FilterSidebar from '../components/FilterSidebar';
+
+export default function Shop() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // State from URL or defaults
+  const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
+  const [selectedGenre, setSelectedGenre] = useState(searchParams.get('genre') || '');
+  const [priceFilter, setPriceFilter] = useState(searchParams.get('price') || '');
+  const [ratingFilter, setRatingFilter] = useState(Number(searchParams.get('rating')) || 0);
+  const [onlyBestsellers, setOnlyBestsellers] = useState(searchParams.get('bestseller') === 'true');
+  const [onlyFeatured, setOnlyFeatured] = useState(searchParams.get('featured') === 'true');
+  const [onlyInStock, setOnlyInStock] = useState(false);
+  const [sortBy, setSortBy] = useState('popularity');
+  const [visibleCount, setVisibleCount] = useState(12);
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+
+  // Sync state if URL search parameters change
+  const collectionParam = searchParams.get('collection');
+
+  useEffect(() => {
+    if (searchParams.get('search')) setSearchTerm(searchParams.get('search'));
+    if (searchParams.get('genre')) setSelectedGenre(searchParams.get('genre'));
+    if (searchParams.get('price')) setPriceFilter(searchParams.get('price'));
+    if (searchParams.get('bestseller') === 'true') setOnlyBestsellers(true);
+    if (searchParams.get('featured') === 'true') setOnlyFeatured(true);
+  }, [searchParams]);
+
+  // Unique genres from data
+  const genres = useMemo(() => {
+    return Array.from(new Set(booksData.map((b) => b.category))).sort();
+  }, []);
+
+  // Matched collection if collection query param present
+  const activeCollection = useMemo(() => {
+    if (!collectionParam) return null;
+    return collectionsData.find((c) => c.slug === collectionParam);
+  }, [collectionParam]);
+
+  // Filtering logic
+  const filteredBooks = useMemo(() => {
+    return booksData.filter((book) => {
+      // Collection filter
+      if (activeCollection && !activeCollection.bookIds.includes(book.id)) {
+        return false;
+      }
+
+      // Search term
+      if (searchTerm.trim()) {
+        const term = searchTerm.toLowerCase();
+        const matchesTitle = book.title.toLowerCase().includes(term);
+        const matchesAuthor = book.author.toLowerCase().includes(term);
+        const matchesCategory = book.category.toLowerCase().includes(term);
+        const matchesPublisher = book.publisher?.toLowerCase().includes(term);
+        if (!matchesTitle && !matchesAuthor && !matchesCategory && !matchesPublisher) {
+          return false;
+        }
+      }
+
+      // Genre
+      if (selectedGenre && book.category !== selectedGenre) {
+        return false;
+      }
+
+      // Price
+      if (priceFilter === 'under-299' && book.price > 299) return false;
+      if (priceFilter === '300-399' && (book.price < 300 || book.price > 399)) return false;
+      if (priceFilter === 'above-400' && book.price < 400) return false;
+
+      // Rating
+      if (ratingFilter > 0 && book.rating < ratingFilter) return false;
+
+      // Toggles
+      if (onlyBestsellers && !book.bestseller) return false;
+      if (onlyFeatured && !book.featured) return false;
+      if (onlyInStock && (!book.stock || book.stock <= 0)) return false;
+
+      return true;
+    });
+  }, [
+    activeCollection,
+    searchTerm,
+    selectedGenre,
+    priceFilter,
+    ratingFilter,
+    onlyBestsellers,
+    onlyFeatured,
+    onlyInStock,
+  ]);
+
+  // Sorting logic
+  const sortedBooks = useMemo(() => {
+    const list = [...filteredBooks];
+    switch (sortBy) {
+      case 'price-asc':
+        return list.sort((a, b) => a.price - b.price);
+      case 'price-desc':
+        return list.sort((a, b) => b.price - a.price);
+      case 'rating':
+        return list.sort((a, b) => b.rating - a.rating || (b.reviews || 0) - (a.reviews || 0));
+      case 'newest':
+        return list.sort((a, b) => new Date(b.publicationDate || 0) - new Date(a.publicationDate || 0));
+      case 'popularity':
+      default:
+        return list.sort((a, b) => (b.reviews || 0) - (a.reviews || 0));
+    }
+  }, [filteredBooks, sortBy]);
+
+  // Paginated books for Load More
+  const visibleBooks = useMemo(() => {
+    return sortedBooks.slice(0, visibleCount);
+  }, [sortedBooks, visibleCount]);
+
+  const activeFiltersCount = [
+    Boolean(selectedGenre),
+    Boolean(priceFilter),
+    Boolean(ratingFilter > 0),
+    Boolean(onlyBestsellers),
+    Boolean(onlyFeatured),
+    Boolean(onlyInStock),
+    Boolean(activeCollection),
+    Boolean(searchTerm),
+  ].filter(Boolean).length;
+
+  const hasActiveFilters = activeFiltersCount > 0;
+
+  const handleResetFilters = () => {
+    setSearchTerm('');
+    setSelectedGenre('');
+    setPriceFilter('');
+    setRatingFilter(0);
+    setOnlyBestsellers(false);
+    setOnlyFeatured(false);
+    setOnlyInStock(false);
+    setSearchParams({});
+    setVisibleCount(12);
+  };
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 8);
+  };
+
+  return (
+    <div className="bg-ivory min-h-screen pb-20">
+      {/* Header Banner */}
+      <div className="bg-white/60 border-b border-stone/60 py-8 sm:py-12 md:py-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-burgundy font-semibold">
+              The Curated Library
+            </span>
+            <h1 className="font-serif font-bold text-2xl sm:text-4xl md:text-5xl text-charcoal mt-1">
+              {activeCollection ? activeCollection.title : 'The Complete Catalogue'}
+            </h1>
+            <p className="mt-2 sm:mt-3 font-serif italic text-sm sm:text-base md:text-lg text-charcoal/80 leading-relaxed">
+              {activeCollection
+                ? activeCollection.intro
+                : 'Browse our entire sanctuary of timeless classics, philosophical treatises, and modern fiction chosen for enduring distinction.'}
+            </p>
+          </div>
+
+          {/* Search bar inside Shop */}
+          <div className="mt-6 sm:mt-8 max-w-xl relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-burgundy pointer-events-none" />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Filter by title, author, or keyword..."
+              className="w-full bg-white border border-stone focus:border-burgundy focus:ring-1 focus:ring-burgundy rounded py-2.5 pl-10 pr-9 text-xs sm:text-sm font-sans text-charcoal outline-none placeholder:text-charcoal/40 transition-colors shadow-subtle"
+            />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-charcoal/40 hover:text-burgundy"
+                aria-label="Clear search"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+
+          {/* Quick Genre Pills (Horizontally scrollable with smooth touch swiping) */}
+          <div className="mt-4 flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+            <button
+              onClick={() => setSelectedGenre('')}
+              className={`text-xs font-sans px-3 py-1.5 rounded flex-shrink-0 transition-colors ${
+                !selectedGenre && !activeCollection
+                  ? 'bg-burgundy text-ivory font-medium shadow-sm'
+                  : 'bg-stone/30 hover:bg-stone/60 text-charcoal'
+              }`}
+            >
+              All Genres
+            </button>
+            {genres.map((g) => (
+              <button
+                key={g}
+                onClick={() => setSelectedGenre(g === selectedGenre ? '' : g)}
+                className={`text-xs font-sans px-3 py-1.5 rounded flex-shrink-0 transition-colors ${
+                  selectedGenre === g
+                    ? 'bg-burgundy text-ivory font-medium shadow-sm'
+                    : 'bg-stone/30 hover:bg-stone/60 text-charcoal'
+                }`}
+              >
+                {g}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-6 sm:pt-8">
+        {/* Controls Toolbar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 sm:pb-4 mb-4 sm:mb-6 border-b border-stone/60 gap-3">
+          <div className="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto">
+            {/* Mobile Filter Button */}
+            <button
+              onClick={() => setIsMobileFilterOpen(true)}
+              className="lg:hidden px-3 py-2 bg-white border border-stone rounded text-xs font-sans font-medium flex items-center gap-2 hover:border-burgundy transition-colors active:bg-stone/20"
+            >
+              <SlidersHorizontal className="w-3.5 h-3.5 text-burgundy" />
+              <span>Filters</span>
+              {hasActiveFilters && (
+                <span className="w-4 h-4 rounded-full bg-burgundy text-ivory text-[10px] font-bold flex items-center justify-center">
+                  {activeFiltersCount}
+                </span>
+              )}
+            </button>
+
+            <span className="text-xs font-sans text-charcoal/70">
+              Showing <strong className="text-charcoal font-semibold">{visibleBooks.length}</strong> of{' '}
+              <strong className="text-charcoal font-semibold">{sortedBooks.length}</strong> editions
+            </span>
+          </div>
+
+          {/* Sorting */}
+          <div className="flex items-center justify-between sm:justify-end gap-2.5">
+            <span className="text-xs font-sans text-charcoal/60 uppercase tracking-wider hidden sm:inline">
+              Sort By:
+            </span>
+            <div className="relative w-full sm:w-auto">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="w-full sm:w-auto bg-white border border-stone text-xs font-sans py-2 pl-3 pr-8 rounded text-charcoal focus:border-burgundy outline-none cursor-pointer"
+              >
+                <option value="popularity">Popularity (Readers' Choice)</option>
+                <option value="rating">Highest Literary Rating</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="newest">Newest Arrivals</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Active Filter Tags */}
+        {hasActiveFilters && (
+          <div className="mb-5 flex items-center gap-2 flex-wrap bg-white/40 p-2 sm:p-2.5 rounded border border-stone/40">
+            <span className="text-[11px] font-sans text-charcoal/60">Active:</span>
+            {activeCollection && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-wine text-ivory px-2 py-0.5 rounded">
+                Shelf: {activeCollection.title}
+                <button
+                  onClick={() => {
+                    const next = new URLSearchParams(searchParams);
+                    next.delete('collection');
+                    setSearchParams(next);
+                  }}
+                  className="hover:text-rose p-0.5"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {selectedGenre && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-burgundy text-ivory px-2 py-0.5 rounded">
+                Genre: {selectedGenre}
+                <button onClick={() => setSelectedGenre('')} className="hover:text-rose p-0.5">
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {priceFilter && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-stone text-charcoal px-2 py-0.5 rounded">
+                Price: {priceFilter === 'under-299' ? 'Under ₹299' : priceFilter}
+                <button onClick={() => setPriceFilter('')} className="hover:text-burgundy p-0.5">
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {ratingFilter > 0 && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-stone text-charcoal px-2 py-0.5 rounded">
+                ★ {ratingFilter}+
+                <button onClick={() => setRatingFilter(0)} className="hover:text-burgundy p-0.5">
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {onlyBestsellers && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-gold/30 text-charcoal px-2 py-0.5 rounded">
+                Bestsellers
+                <button onClick={() => setOnlyBestsellers(false)} className="hover:text-burgundy p-0.5">
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {onlyFeatured && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-sans bg-rose/30 text-wine px-2 py-0.5 rounded">
+                Editor's Picks
+                <button onClick={() => setOnlyFeatured(false)} className="hover:text-burgundy p-0.5">
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            <button
+              onClick={handleResetFilters}
+              className="ml-auto text-[11px] font-sans text-burgundy hover:underline uppercase tracking-wider font-semibold"
+            >
+              Clear All
+            </button>
+          </div>
+        )}
+
+        {/* Layout: Sidebar + Grid */}
+        <div className="flex gap-8 items-start">
+          <FilterSidebar
+            genres={genres}
+            selectedGenre={selectedGenre}
+            onSelectGenre={setSelectedGenre}
+            priceFilter={priceFilter}
+            onSelectPrice={setPriceFilter}
+            ratingFilter={ratingFilter}
+            onSelectRating={setRatingFilter}
+            onlyBestsellers={onlyBestsellers}
+            onToggleBestsellers={() => setOnlyBestsellers(!onlyBestsellers)}
+            onlyFeatured={onlyFeatured}
+            onToggleFeatured={() => setOnlyFeatured(!onlyFeatured)}
+            onlyInStock={onlyInStock}
+            onToggleInStock={() => setOnlyInStock(!onlyInStock)}
+            onResetFilters={handleResetFilters}
+            hasActiveFilters={hasActiveFilters}
+            isMobileOpen={isMobileFilterOpen}
+            onCloseMobile={() => setIsMobileFilterOpen(false)}
+          />
+
+          <div className="flex-1 min-w-0">
+            <BookGrid
+              books={visibleBooks}
+              columns="grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3"
+              emptyTitle="No Editions Match Your Criteria"
+              emptyMessage="We could not find any books matching this combination of filters. Try clearing specific filters or explore our complete library."
+              onResetFilters={handleResetFilters}
+            />
+
+            {/* Load More Button */}
+            {visibleCount < sortedBooks.length && (
+              <div className="mt-10 sm:mt-12 text-center">
+                <button
+                  onClick={handleLoadMore}
+                  className="w-full sm:w-auto px-8 py-3 bg-white hover:bg-ivory-light border border-stone hover:border-burgundy text-charcoal hover:text-burgundy text-xs font-sans uppercase tracking-widest font-semibold rounded transition-all shadow-subtle active:scale-98"
+                >
+                  Load More Editions ({sortedBooks.length - visibleCount} remaining)
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

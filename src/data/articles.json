@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "slug": "the-art-of-unhurried-reading",
+    "title": "The Art of Unhurried Reading in an Accelerated World",
+    "author": "Elena Vance, Editor-at-Large",
+    "category": "Reading Guide",
+    "readTime": "6 min read",
+    "date": "November 12, 2026",
+    "image": "/images/articles/the-art-of-unhurried-reading.svg",
+    "excerpt": "Why speed-reading misses the soul of literature, and how reclaiming silence transforms ordinary sentences into quiet revelations.",
+    "featured": true,
+    "content": [
+      "In our culture of rapid consumption, reading is too often treated as an informational transaction—a checklist of pages flipped, summaries absorbed, or Goodreads metrics ticked off before the month ends. Yet the greatest books in human history were never written to be digested with algorithmic haste. They were composed sentence by sentence, breath by breath, with the expectation that a human heart would match their tempo.",
+      "Consider the experience of sitting with Fernando Pessoa's The Book of Disquiet or Marcus Aurelius's Meditations. To rush through their meditations is like galloping through a sacred cathedral; you may record the dimensions, but you miss the twilight filtering through the stained glass.",
+      "Unhurried reading requires an intentional clearing of the mental table. It asks that we put aside the notifications, brew a single pot of tea, and allow an author's cadence to wash over our thoughts until our breathing slows to match the prose.",
+      "When we read slowly, words regain their physical texture: the crisp snap of turning a heavy deckle-edge page, the resonance of a well-turned metaphor, the bittersweet silence at the close of an indelible paragraph.",
+      "This autumn, we invite you to abandon the pressure of reading numbers. Choose one book that speaks to your deepest curiosity. Read ten pages with undivided presence. That single hour of contemplation will outlive a hundred skimmed bestsellers."
+    ],
+    "relatedBookIds": [4, 3, 12]
+  },
+  {
+    "id": 2,
+    "slug": "on-building-a-personal-library",
+    "title": "On Building a Personal Sanctuary: The Philosophy of the Home Library",
+    "author": "Julian Sterling, Literary Director",
+    "category": "Literary Essay",
+    "readTime": "8 min read",
+    "date": "November 04, 2026",
+    "image": "/images/articles/on-building-a-personal-library.svg",
+    "excerpt": "A bookshelf is not mere interior decor; it is a physical cartography of your intellectual journey, private longings, and unread aspirations.",
+    "featured": false,
+    "content": [
+      "The Italian semiotician and novelist Umberto Eco famously defended the concept of the 'antilibrary'—the collection of unread books that surround us in our studies. An unread book is not an emblem of negligence or waste; it is a humbling reminder of how vast the world remains beyond the borders of what we already know.",
+      "At QITAVRO, we believe a home library should be an organic extension of who you are becoming. It is composed not of identical boxed sets purchased for color coordination, but of idiosyncratic discoveries: the second-hand volume with pencil marginalia, the translation discovered on a rainy trip to Lisbon, the clothbound classic that held you steady in a season of grief.",
+      "When you line your walls with books, you create an insulation against the noise of the outside world. The spines stand like faithful sentinels of human wisdom, ready to whisper counsel whenever you look up from your desk.",
+      "Do not be afraid of having more books than you can read before your final breath. To live amongst unread books is to live in constant anticipation of wonder."
+    ],
+    "relatedBookIds": [1, 8, 20]
+  },
+  {
+    "id": 3,
+    "slug": "rediscovering-stoner",
+    "title": "The Miracle of the Ordinary Life: Why John Williams' 'Stoner' Endures",
+    "author": "Claire Beauchamp, Senior Critic",
+    "category": "Book Review",
+    "readTime": "5 min read",
+    "date": "October 28, 2026",
+    "image": "/images/articles/rediscovering-stoner.svg",
+    "excerpt": "An examination of John Williams' 1965 masterpiece: how a quiet Missouri professor's unremarkable biography became one of modern fiction's most devastating triumphs.",
+    "featured": false,
+    "content": [
+      "On paper, the life of William Stoner seems almost tragic in its lack of worldly distinction. Born to hardscrabble farmers, he enters university, changes his major from agriculture to English upon hearing Shakespeare's Sonnet 73, and spends the next forty years teaching grammar and medieval literature in the same Midwestern halls.",
+      "He suffers an emotionally frigid marriage, academic sabotage, and a brief, doomed love affair. He writes one modest book. When he dies, his colleagues barely recall him. Yet reading Stoner leaves one in a state of solemn, luminous awe.",
+      "What Williams achieved is a moral triumph: he showed that a life devoted to craft, quiet dignity, and intellectual love is inherently sacred, regardless of whether the world applauds. It is a rebuke to modern celebrity culture and a sublime tribute to the quiet nobility in everyday endurance.",
+      "If you haven't read Stoner, do not delay. It will make you look upon your own quietest hours with tender forgiveness."
+    ],
+    "relatedBookIds": [12, 16, 24]
+  },
+  {
+    "id": 4,
+    "slug": "essential-reading-list-solitude",
+    "title": "A Reading List for Meaningful Solitude",
+    "author": "Editorial Board",
+    "category": "Reading List",
+    "readTime": "4 min read",
+    "date": "October 19, 2026",
+    "image": "/images/articles/essential-reading-list-solitude.svg",
+    "excerpt": "Five foundational books that transform being alone from an ache of loneliness into a rich, creative, and regenerative sanctuary.",
+    "featured": false,
+    "content": [
+      "There is a crucial distinction between loneliness and solitude. Loneliness is the painful feeling of lack; solitude is the deep, restorative presence of oneself and the universe. In literature, solitude has always been the fertile soil from which truth and beauty spring.",
+      "In Rainer Maria Rilke's Letters to a Young Poet, he advises the young Franz Kappus to love his solitude and carry the weight of it with sweet songs. Solitude, Rilke explains, must be spacious and immense if it is to foster genuine artistic insight.",
+      "Similarly, Marcus Aurelius reminds us that nowhere can a man find a quieter or more untroubled retreat than in his own soul, particularly when he has within him thoughts such as he need only regard to attain utter ease of spirit.",
+      "Our curated list brings together five works that serve as trustworthy guides for navigating your quietest evenings."
+    ],
+    "relatedBookIds": [24, 3, 21, 11]
+  },
+  {
+    "id": 5,
+    "slug": "translating-the-classics",
+    "title": "Translating the Ancient Soul: The Craft Behind Gregory Hays' Marcus Aurelius",
+    "author": "Marcus Thorne, Classical Scholar",
+    "category": "Literary Essay",
+    "readTime": "7 min read",
+    "date": "October 02, 2026",
+    "image": "/images/articles/translating-the-classics.svg",
+    "excerpt": "How modern translators stripped away Victorian archaisms to reveal the raw, direct, and urgent heartbeat of Roman Stoicism.",
+    "featured": false,
+    "content": [
+      "For centuries, translations of Marcus Aurelius made the Roman emperor sound like a 19th-century Anglican bishop—filled with 'thees', 'thous', and ponderous rhetorical flourishes. But in 2002, classical scholar Gregory Hays unveiled a translation that shocked and delighted readers with its razor-sharp brevity and conversational directness.",
+      "Marcus was not writing for a congregation or posterity; he was scribbling in military tents along the Danube frontier while battling Germanic tribes and dealing with the devastating Antonine Plague. His notes were urgent reminders to himself: 'Be simple. Be good.'",
+      "Hays recognized that the emperor's Greek was punchy, elliptical, and direct. By honoring this cadence, Hays brought Marcus Aurelius into the 21st century as an urgent, compassionate friend who speaks across eighteen centuries with intimate clarity.",
+      "A great translation is not merely a dictionary substitution; it is a resurrection."
+    ],
+    "relatedBookIds": [3, 9, 10]
+  }
+]
