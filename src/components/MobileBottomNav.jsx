@@ -1,6 +1,7 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Home, BookOpen, Search, Heart, ShoppingBag } from 'lucide-react';
+import Dock from './Dock';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 
@@ -8,67 +9,93 @@ export default function MobileBottomNav({ onOpenSearch }) {
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const navItemClass = (path) => {
-    const isActive = location.pathname === path;
-    return `flex flex-col items-center justify-center py-2 px-1 relative text-[10px] font-sans font-medium transition-all active:scale-90 ${
-      isActive ? 'text-burgundy font-semibold' : 'text-charcoal/70 hover:text-burgundy'
-    }`;
-  };
+  const isHomeActive = location.pathname === '/';
+  const isShopActive =
+    location.pathname.startsWith('/shop') ||
+    location.pathname.startsWith('/book') ||
+    location.pathname === '/collections';
+  const isWishlistActive = location.pathname === '/wishlist';
+  const isCartActive = location.pathname === '/cart' || location.pathname === '/checkout';
+
+  const items = [
+    {
+      icon: <Home className="w-5 h-5 text-burgundy" strokeWidth={1.8} />,
+      label: 'Home',
+      active: isHomeActive,
+      onClick: () => navigate('/'),
+      menu: [
+        { label: 'QITAVRO Sanctuary', onClick: () => navigate('/') },
+        { separator: true },
+        { label: 'The Reading Room', onClick: () => navigate('/reading-room') },
+        { label: 'About Our Philosophy', onClick: () => navigate('/about') }
+      ]
+    },
+    {
+      icon: <BookOpen className="w-5 h-5 text-burgundy" strokeWidth={1.8} />,
+      label: 'Shop',
+      active: isShopActive,
+      onClick: () => navigate('/shop'),
+      menu: [
+        { label: 'All Curated Editions', onClick: () => navigate('/shop') },
+        { separator: true },
+        { label: "Readers' Bestsellers", onClick: () => navigate('/shop?bestseller=true') },
+        { label: 'Under ₹299 Editions', onClick: () => navigate('/shop?price=under-299') },
+        { label: 'Thematic Shelves', onClick: () => navigate('/collections') }
+      ]
+    },
+    {
+      icon: <Search className="w-5 h-5 text-wine" strokeWidth={1.8} />,
+      label: 'Search',
+      onClick: onOpenSearch
+    },
+    {
+      icon: <Heart className="w-5 h-5 text-burgundy" strokeWidth={1.8} />,
+      label: 'Saved',
+      active: isWishlistActive,
+      badge: wishlistCount > 0 ? wishlistCount : undefined,
+      onClick: () => navigate('/wishlist'),
+      menu: [
+        { label: 'View Saved Shelf', onClick: () => navigate('/wishlist') }
+      ]
+    },
+    {
+      icon: <ShoppingBag className="w-5 h-5 text-burgundy" strokeWidth={1.8} />,
+      label: 'Bag',
+      active: isCartActive,
+      badge: cartCount > 0 ? cartCount : undefined,
+      onClick: () => navigate('/cart'),
+      menu: [
+        { label: 'View Shopping Bag', onClick: () => navigate('/cart') },
+        { separator: true },
+        { label: 'Proceed to Checkout', onClick: () => navigate('/checkout') }
+      ]
+    }
+  ];
 
   return (
-    <nav 
-      className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-ivory/95 backdrop-blur-md border-t border-stone/80 shadow-[0_-4px_20px_rgba(39,35,33,0.08)]"
+    <nav
+      className="lg:hidden fixed bottom-0 inset-x-0 z-40 pointer-events-none pb-2 flex justify-center"
       aria-label="Mobile Navigation Dock"
     >
-      <div className="grid grid-cols-5 h-14 max-w-md mx-auto items-center px-1">
-        {/* Home */}
-        <NavLink to="/" className={() => navItemClass('/')}>
-          <Home className="w-4 h-4 mb-0.5 stroke-[1.8]" />
-          <span>Home</span>
-        </NavLink>
-
-        {/* Shop */}
-        <NavLink to="/shop" className={() => navItemClass('/shop')}>
-          <BookOpen className="w-4 h-4 mb-0.5 stroke-[1.8]" />
-          <span>Shop</span>
-        </NavLink>
-
-        {/* Search trigger */}
-        <button
-          onClick={onOpenSearch}
-          className="flex flex-col items-center justify-center py-2 px-1 relative text-[10px] font-sans font-medium text-charcoal/70 hover:text-burgundy transition-all active:scale-90"
-          aria-label="Search bookstore"
-        >
-          <Search className="w-4 h-4 mb-0.5 text-burgundy stroke-[1.8]" />
-          <span>Search</span>
-        </button>
-
-        {/* Saved Wishlist */}
-        <NavLink to="/wishlist" className={() => navItemClass('/wishlist')}>
-          <div className="relative">
-            <Heart className="w-4 h-4 mb-0.5 stroke-[1.8]" />
-            {wishlistCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 min-w-3.5 h-3.5 px-1 rounded-full bg-rose text-wine text-[9px] font-bold flex items-center justify-center border border-white">
-                {wishlistCount}
-              </span>
-            )}
-          </div>
-          <span>Saved</span>
-        </NavLink>
-
-        {/* Shopping Bag */}
-        <NavLink to="/cart" className={() => navItemClass('/cart')}>
-          <div className="relative">
-            <ShoppingBag className="w-4 h-4 mb-0.5 stroke-[1.8]" />
-            {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 min-w-3.5 h-3.5 px-1 rounded-full bg-burgundy text-ivory text-[9px] font-bold flex items-center justify-center border border-white shadow-sm">
-                {cartCount}
-              </span>
-            )}
-          </div>
-          <span>Bag</span>
-        </NavLink>
+      <div className="relative w-full max-w-sm h-16 pointer-events-auto">
+        <Dock
+          items={items}
+          theme="qitavro"
+          baseItemSize={44}
+          magnification={58}
+          distance={120}
+          panelHeight={56}
+          gap={8}
+          roundness={0.65}
+          accentColor="#652E3C"
+          badgeColor="#652E3C"
+          bounce={true}
+          showLabels={true}
+          showIndicators={true}
+          showBadges={true}
+        />
       </div>
     </nav>
   );
