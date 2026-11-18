@@ -63,26 +63,26 @@ const THEMES = {
     '--dock-menu-shadow': '0 18px 40px -14px rgba(24, 24, 27, 0.3), 0 3px 10px rgba(24, 24, 27, 0.1)'
   },
   qitavro: {
-    '--dock-panel': 'rgba(248, 245, 238, 0.94)',
-    '--dock-panel-edge': 'rgba(101, 46, 60, 0.18)',
+    '--dock-panel': 'rgba(246, 240, 232, 0.92)',
+    '--dock-panel-edge': 'rgba(101, 46, 60, 0.15)',
     '--dock-panel-highlight': 'rgba(255, 255, 255, 0.95)',
-    '--dock-panel-shadow': '0 20px 40px -15px rgba(78, 32, 43, 0.22), 0 6px 16px -8px rgba(40, 35, 32, 0.12)',
-    '--dock-tile': 'linear-gradient(180deg, #ffffff 0%, #f4ede4 100%)',
-    '--dock-tile-edge': 'rgba(184, 146, 106, 0.35)',
+    '--dock-panel-shadow': '0 20px 40px -15px rgba(66, 31, 42, 0.25), 0 6px 16px -8px rgba(39, 35, 33, 0.15)',
+    '--dock-tile': 'linear-gradient(180deg, #ffffff 0%, #faf6f0 100%)',
+    '--dock-tile-edge': 'rgba(182, 154, 114, 0.3)',
     '--dock-tile-highlight': 'rgba(255, 255, 255, 1)',
-    '--dock-tile-shadow': '0 4px 12px -4px rgba(78, 32, 43, 0.15)',
-    '--dock-ink': '#282320',
-    '--dock-label': '#4E202B',
-    '--dock-label-ink': '#F8F5EE',
-    '--dock-dot': '#652E3C',
-    '--dock-separator': 'rgba(184, 146, 106, 0.35)',
+    '--dock-tile-shadow': '0 4px 12px -4px rgba(66, 31, 42, 0.15)',
+    '--dock-ink': '#272321',
+    '--dock-label': '#421f2a',
+    '--dock-label-ink': '#f6f0e8',
+    '--dock-dot': '#652e3c',
+    '--dock-separator': 'rgba(182, 154, 114, 0.3)',
     '--dock-press': 'brightness(0.92)',
-    '--dock-menu': 'rgba(248, 245, 238, 0.97)',
-    '--dock-menu-edge': 'rgba(101, 46, 60, 0.22)',
-    '--dock-menu-ink': '#282320',
-    '--dock-menu-muted': 'rgba(40, 35, 32, 0.55)',
-    '--dock-menu-separator': 'rgba(184, 146, 106, 0.25)',
-    '--dock-menu-shadow': '0 18px 40px -12px rgba(78, 32, 43, 0.28), 0 4px 12px rgba(40, 35, 32, 0.1)'
+    '--dock-menu': 'rgba(246, 240, 232, 0.96)',
+    '--dock-menu-edge': 'rgba(101, 46, 60, 0.2)',
+    '--dock-menu-ink': '#272321',
+    '--dock-menu-muted': 'rgba(39, 35, 33, 0.5)',
+    '--dock-menu-separator': 'rgba(182, 154, 114, 0.25)',
+    '--dock-menu-shadow': '0 18px 40px -12px rgba(66, 31, 42, 0.3), 0 4px 12px rgba(39, 35, 33, 0.1)'
   }
 };
 

@@ -16,7 +16,7 @@ export default function BookCard({ book, onQuickView }) {
     : 0;
 
   return (
-    <div 
+    <div
       className="group relative flex flex-col bg-white rounded-[3px] border border-stone/60 p-2.5 sm:p-3.5 transition-all duration-300 hover:border-burgundy/40 hover:shadow-book"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -60,11 +60,10 @@ export default function BookCard({ book, onQuickView }) {
             e.stopPropagation();
             toggleWishlist(book);
           }}
-          className={`absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 p-1.5 sm:p-2 rounded-full backdrop-blur-md transition-all duration-200 active:scale-90 ${
-            isSaved
-              ? 'bg-white text-burgundy shadow'
-              : 'bg-white/80 hover:bg-white text-charcoal/70 hover:text-burgundy'
-          }`}
+          className={`absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 p-1.5 sm:p-2 rounded-full backdrop-blur-md transition-all duration-200 active:scale-90 ${isSaved
+            ? 'bg-white text-burgundy shadow'
+            : 'bg-white/80 hover:bg-white text-charcoal/70 hover:text-burgundy'
+            }`}
           aria-label={isSaved ? 'Remove from Wishlist' : 'Add to Wishlist'}
         >
           <Heart className={`w-3.5 h-3.5 ${isSaved ? 'fill-burgundy text-burgundy' : ''}`} />

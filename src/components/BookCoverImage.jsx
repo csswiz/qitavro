@@ -36,9 +36,9 @@ export default function BookCoverImage({
           )}
         </>
       ) : (
-        /* Typographic Fallback Cover in Burgundy & Light Brown */
-        <div className="w-full h-full bg-[#4E202B] p-4 flex flex-col justify-between text-center border border-secondary/30">
-          <div className="border border-secondary/40 h-full p-3 flex flex-col justify-between">
+        /* Typographic Fallback Cover in Burgundy & Gold */
+        <div className="w-full h-full bg-[#421F2A] p-4 flex flex-col justify-between text-center border border-gold/30">
+          <div className="border border-gold/40 h-full p-3 flex flex-col justify-between">
             <span className="text-[9px] tracking-widest uppercase font-sans text-rose font-medium">
               {category || 'Qitavro Edition'}
             </span>
@@ -46,14 +46,14 @@ export default function BookCoverImage({
               <h4 className="font-serif font-bold text-sm text-ivory leading-tight line-clamp-3">
                 {title || alt}
               </h4>
-              <p className="font-serif italic text-xs text-secondary mt-1.5 line-clamp-1">
+              <p className="font-serif italic text-xs text-gold mt-1.5 line-clamp-1">
                 {author || 'Literary Classic'}
               </p>
             </div>
             <div className="flex items-center justify-center gap-1 opacity-70">
-              <span className="w-4 h-[1px] bg-secondary" />
+              <span className="w-4 h-[1px] bg-gold" />
               <span className="text-[8px] uppercase tracking-wider text-stone">QITAVRO</span>
-              <span className="w-4 h-[1px] bg-secondary" />
+              <span className="w-4 h-[1px] bg-gold" />
             </div>
           </div>
         </div>

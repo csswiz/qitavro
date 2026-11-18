@@ -7,70 +7,39 @@ export default {
   theme: {
     extend: {
       colors: {
-        // PRIMARY: Burgundy
-        primary: {
-          DEFAULT: '#652E3C', // Deep rich Burgundy
-          light: '#7B3B4B',
-          dark: '#4E202B',
-          hover: '#54222E',
-          wine: '#3A151F',
-          subtle: '#FAF3F4',
+        ivory: {
+          DEFAULT: '#F6F0E8',
+          light: '#FAF6F0',
+          dark: '#EBE2D5',
         },
         burgundy: {
           DEFAULT: '#652E3C',
-          light: '#7B3B4B',
-          dark: '#4E202B',
-          hover: '#54222E',
-          deep: '#3A151F',
+          light: '#7A3849',
+          dark: '#522531',
         },
         wine: {
-          DEFAULT: '#4E202B',
-          deep: '#35121B',
-          hover: '#421923',
-        },
-
-        // SECONDARY: Light Brown
-        secondary: {
-          DEFAULT: '#B8926A', // Elegant Light Brown / Warm Camel
-          light: '#D9C3AB',   // Soft light brown tint
-          dark: '#966F47',    // Warm roasted light brown
-          hover: '#A9835D',
-          subtle: '#F4EDE4',
-        },
-        brown: {
-          DEFAULT: '#B8926A',
-          light: '#D9C3AB',
-          dark: '#966F47',
-          hover: '#A9835D',
-          subtle: '#F4EDE4',
-        },
-        // Mapping gold & warm accents to secondary Light Brown for seamless consistency
-        gold: {
-          DEFAULT: '#B8926A', // Light Brown
-          light: '#D9C3AB',   // Soft Light Brown
-          dark: '#966F47',    // Rich Light Brown
-          hover: '#A9835D',
-        },
-
-        // BACKGROUNDS & NEUTRALS
-        ivory: {
-          DEFAULT: '#F8F5EE', // Warm Ivory with light brown warmth
-          light: '#FCFAF6',
-          dark: '#EDE5D8',
+          DEFAULT: '#421F2A',
+          deep: '#331720',
+          hover: '#3A1B25',
         },
         charcoal: {
-          DEFAULT: '#282320', // Warm Espresso / Dark Charcoal
-          light: '#3F3834',
-          muted: '#685E58',
+          DEFAULT: '#272321',
+          light: '#3C3734',
+          muted: '#635C57',
+        },
+        gold: {
+          DEFAULT: '#B69A72',
+          light: '#C7B08E',
+          dark: '#9E825A',
         },
         rose: {
-          DEFAULT: '#C9A89B', // Warm Toasted Rose-Brown
-          light: '#DDC5BC',
+          DEFAULT: '#C7A7A2',
+          light: '#DAC1BD',
         },
         stone: {
-          DEFAULT: '#E0D7CB', // Light Brown tinted Stone borders
-          light: '#ECE5DC',
-          dark: '#C5B9AA',
+          DEFAULT: '#DED6CC',
+          light: '#EBE5DC',
+          dark: '#C8BEB2',
         },
       },
       fontFamily: {
@@ -79,10 +48,10 @@ export default {
         sans: ['Inter', '"DM Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'book': '0 8px 24px -4px rgba(40, 35, 32, 0.12), 0 2px 6px -1px rgba(40, 35, 32, 0.06)',
-        'book-hover': '0 20px 32px -8px rgba(101, 46, 60, 0.22), 0 6px 12px -2px rgba(40, 35, 32, 0.08)',
-        'subtle': '0 2px 8px rgba(40, 35, 32, 0.05)',
-        'modal': '0 25px 50px -12px rgba(40, 35, 32, 0.25)',
+        'book': '0 8px 24px -4px rgba(39, 35, 33, 0.12), 0 2px 6px -1px rgba(39, 35, 33, 0.06)',
+        'book-hover': '0 20px 32px -8px rgba(66, 31, 42, 0.2), 0 6px 12px -2px rgba(39, 35, 33, 0.08)',
+        'subtle': '0 2px 8px rgba(39, 35, 33, 0.05)',
+        'modal': '0 25px 50px -12px rgba(39, 35, 33, 0.25)',
       },
     },
   },

@@ -37,7 +37,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 pointer-events-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-            
+
             {/* Left Column: Editorial Headline & Copy */}
             <div className="lg:col-span-7 flex flex-col items-start pr-0 lg:pr-6">
               <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
@@ -99,7 +99,7 @@ export default function Home() {
                     alt="QITAVRO Reading Sanctuary"
                     className="w-full h-full object-cover"
                   />
-                  
+
                   {/* Subtle Corner Foil Accent */}
                   <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-charcoal/80 backdrop-blur-md border border-gold/40 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded text-ivory text-right shadow-sm">
                     <span className="block font-serif italic text-[11px] sm:text-xs text-gold-light">
@@ -220,7 +220,7 @@ export default function Home() {
         <section className="bg-burgundy text-ivory py-12 sm:py-16 md:py-20 relative overflow-hidden border-y border-burgundy-dark">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-center">
-              
+
               {/* Left: Large Book Cover */}
               <div className="lg:col-span-5 flex justify-center">
                 <div className="w-full max-w-[220px] sm:max-w-[320px] shadow-2xl relative">

@@ -24,20 +24,18 @@ export default function Navbar() {
   }, []);
 
   const navLinkClass = ({ isActive }) =>
-    `relative py-1 font-serif text-base tracking-wide transition-colors ${
-      isActive
-        ? 'text-burgundy font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1.5px] after:bg-burgundy'
-        : 'text-charcoal/85 hover:text-burgundy'
+    `relative py-1 font-serif text-base tracking-wide transition-colors ${isActive
+      ? 'text-burgundy font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1.5px] after:bg-burgundy'
+      : 'text-charcoal/85 hover:text-burgundy'
     }`;
 
   return (
     <>
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-ivory/95 backdrop-blur-md shadow-sm border-b border-stone'
-            : 'bg-ivory border-b border-stone/60'
-        }`}
+        className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
+          ? 'bg-ivory/95 backdrop-blur-md shadow-sm border-b border-stone'
+          : 'bg-ivory border-b border-stone/60'
+          }`}
       >
         {/* Subtle Announcement / Curator Note Bar */}
         <div className="bg-wine text-ivory text-[10px] sm:text-[11px] font-sans py-1.5 px-3 text-center tracking-wider font-light flex items-center justify-center gap-2 sm:gap-3">
@@ -59,7 +57,7 @@ export default function Navbar() {
                     className="w-full h-full object-contain"
                   />
                 </div>
-                
+
                 <div className="flex flex-col">
                   <span className="font-serif text-xl sm:text-2xl font-bold tracking-[0.16em] sm:tracking-[0.18em] text-charcoal uppercase leading-none group-hover:text-burgundy transition-colors">
                     QITAVRO
@@ -89,18 +87,16 @@ export default function Navbar() {
                 <NavLink
                   to="/collections"
                   className={({ isActive }) =>
-                    `flex items-center gap-1 font-serif text-base tracking-wide transition-colors ${
-                      isActive
-                        ? 'text-burgundy font-semibold'
-                        : 'text-charcoal/85 hover:text-burgundy'
+                    `flex items-center gap-1 font-serif text-base tracking-wide transition-colors ${isActive
+                      ? 'text-burgundy font-semibold'
+                      : 'text-charcoal/85 hover:text-burgundy'
                     }`
                   }
                 >
                   <span>Collections</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      isCollectionsHovered ? 'rotate-180 text-burgundy' : 'text-charcoal/50'
-                    }`}
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${isCollectionsHovered ? 'rotate-180 text-burgundy' : 'text-charcoal/50'
+                      }`}
                   />
                 </NavLink>
 
