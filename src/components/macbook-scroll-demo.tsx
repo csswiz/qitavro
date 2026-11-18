@@ -7,7 +7,7 @@ export default function MacbookScrollDemo() {
       <MacbookScroll
         title={
           <span>
-            This Macbook is built with Tailwindcss. <br /> No kidding.
+            This Macbook is built by Rgv. <br /> No kidding.
           </span>
         }
         badge={
