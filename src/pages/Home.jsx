@@ -9,7 +9,7 @@ import BookCoverImage from '../components/BookCoverImage';
 import CollectionCard from '../components/CollectionCard';
 import Newsletter from '../components/Newsletter';
 import QuickViewModal from '../components/QuickViewModal';
-import HeroDragon3D from '../components/HeroDragon3D';
+import MacbookScrollDemo from '../components/macbook-scroll-demo';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 
@@ -30,107 +30,8 @@ export default function Home() {
 
   return (
     <div className="bg-ivory text-charcoal min-h-screen">
-      {/* 4.A HERO SECTION */}
-      <section className="relative overflow-hidden pt-6 pb-12 sm:pt-10 sm:pb-16 md:pt-14 md:pb-24 border-b border-stone/60">
-        {/* Live 3D Mythic Guardian Dragon (Moves Left to Right on Scroll within Hero) */}
-        <HeroDragon3D modelUrl="/models/dragon.glb" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 pointer-events-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-
-            {/* Left Column: Editorial Headline & Copy */}
-            <div className="lg:col-span-7 flex flex-col items-start pr-0 lg:pr-6">
-              <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
-                <span className="w-5 sm:w-6 h-[1.5px] bg-burgundy" />
-                <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-burgundy font-semibold">
-                  The Art of Reading
-                </span>
-              </div>
-
-              <h1 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-charcoal leading-[1.12] sm:leading-[1.08] tracking-tight">
-                "A World Between the Covers."
-              </h1>
-
-              <p className="mt-4 sm:mt-6 text-sm sm:text-lg font-serif italic text-charcoal/80 leading-relaxed max-w-xl">
-                Discover stories, timeless classics and extraordinary ideas, thoughtfully curated for curious minds.
-              </p>
-
-              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
-                <Link
-                  to="/shop"
-                  className="px-6 py-3.5 bg-burgundy hover:bg-wine active:scale-98 text-ivory rounded font-sans text-xs uppercase tracking-widest font-semibold inline-flex items-center justify-center gap-2 transition-all shadow-subtle hover:shadow text-center"
-                >
-                  <span>Explore the Collection</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-
-                <Link
-                  to="/about"
-                  className="px-6 py-3.5 bg-white/70 hover:bg-white text-charcoal border border-stone hover:border-burgundy rounded font-sans text-xs uppercase tracking-widest font-semibold transition-all shadow-subtle text-center"
-                >
-                  Discover Our Story
-                </Link>
-              </div>
-
-              {/* Sub-feature stats & promise */}
-              <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-stone/50 grid grid-cols-3 gap-3 sm:gap-6 w-full max-w-lg">
-                <div>
-                  <span className="block font-serif font-bold text-xl sm:text-2xl text-wine">24+</span>
-                  <span className="text-[9px] sm:text-[11px] font-sans text-charcoal/60 uppercase tracking-wider">Curated Editions</span>
-                </div>
-                <div>
-                  <span className="block font-serif font-bold text-xl sm:text-2xl text-wine">8</span>
-                  <span className="text-[9px] sm:text-[11px] font-sans text-charcoal/60 uppercase tracking-wider">Thematic Shelves</span>
-                </div>
-                <div>
-                  <span className="block font-serif font-bold text-xl sm:text-2xl text-wine">100%</span>
-                  <span className="text-[9px] sm:text-[11px] font-sans text-charcoal/60 uppercase tracking-wider">Literary Intent</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: High Quality Editorial Photography / Visual */}
-            <div className="lg:col-span-5 relative mt-4 lg:mt-0">
-              <div className="relative mx-auto max-w-[280px] sm:max-w-md lg:max-w-none">
-                {/* Book Frame with Shadow and Glow */}
-                <div className="relative aspect-[4/5] rounded-[3px] overflow-hidden shadow-book-hover border-2 sm:border-4 border-white bg-wine">
-                  <img
-                    src="/images/hero/hero-reading.svg"
-                    alt="QITAVRO Reading Sanctuary"
-                    className="w-full h-full object-cover"
-                  />
-
-                  {/* Subtle Corner Foil Accent */}
-                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-charcoal/80 backdrop-blur-md border border-gold/40 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded text-ivory text-right shadow-sm">
-                    <span className="block font-serif italic text-[11px] sm:text-xs text-gold-light">
-                      "Stories worth keeping."
-                    </span>
-                    <span className="text-[8px] sm:text-[9px] font-sans uppercase tracking-widest text-stone-light">
-                      QITAVRO EDITORIAL
-                    </span>
-                  </div>
-                </div>
-
-                {/* Overlaid Floating Card Accent */}
-                <div className="hidden sm:flex absolute -bottom-6 -left-6 bg-white p-4 rounded border border-stone shadow-xl items-center gap-3.5 max-w-xs">
-                  <div className="w-12 h-12 bg-ivory rounded flex items-center justify-center flex-shrink-0 border border-stone/70">
-                    <Feather className="w-5 h-5 text-burgundy" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif font-bold text-xs text-charcoal">
-                      Hand-Selected Editions
-                    </h4>
-                    <p className="text-[11px] font-sans text-charcoal/70 mt-0.5 leading-snug">
-                      Deckle-edge paper, archival cloths, and translations that honor the author's soul.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* 4.A HERO SECTION - Aceternity UI Macbook Scroll */}
+      <MacbookScrollDemo />
 
       {/* 4.B BRAND INTRODUCTION */}
       <section className="py-12 sm:py-16 md:py-20 bg-ivory-light border-b border-stone/60">
