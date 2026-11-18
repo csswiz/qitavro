@@ -24,7 +24,7 @@ export default function BuyingSellingDisclaimer() {
             1. Nature of Pre-Loved & Vintage Literature
           </h2>
           <p>
-            When you purchase a book marked with the <strong>"Pre-loved"</strong> badge (such as <em>Darling in Red's</em>):
+            When you purchase a book marked with the <strong>"Pre-loved"</strong> badge, or our digital releases such as the <em>Darling in Red's</em> eBook edition:
           </p>
           <ul className="list-disc pl-5 space-y-2">
             <li>

@@ -52,15 +52,16 @@ export default function TermsOfService() {
         {/* Section 3 */}
         <section className="space-y-3">
           <h2 className="font-serif font-bold text-xl sm:text-2xl text-wine border-b border-stone/30 pb-2">
-            3. Pre-Loved & Curated Editions
+            3. Digital Editions, eBooks & Curated Volumes
           </h2>
           <p>
-            QITAVRO takes pride in finding new homes for pre-loved books (such as <em>Darling in Red's</em> and classic paperbacks). When purchasing a pre-loved edition:
+            When purchasing an eBook or Digital Edition (such as <em>Darling in Red's</em> by Ace):
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li>You acknowledge that pre-loved copies may show gentle signs of previous readership, mild foxing, or natural paper patina that do not impair readability.</li>
-            <li>Each pre-loved listing indicates its condition grade (e.g., <em>Near Mint</em>, <em>Very Good</em>, or <em>Good</em>). Please review the condition before checkout.</li>
-            <li>Pre-loved volumes are frequently single-stock copies (1-of-1); orders are fulfilled strictly on a first-come, first-served basis.</li>
+            <li><strong>Instant Digital Delivery:</strong> eBooks are delivered immediately upon checkout completion via on-screen download links and sent directly to your email address with zero shipping delays.</li>
+            <li><strong>Formats & Compatibility:</strong> Our digital volumes are provided in standard EPUB and PDF formats, compatible with Kindle, Apple Books, Kobo, Android, iOS, PC, and Mac reading apps.</li>
+            <li><strong>Personal License:</strong> The acquisition of an eBook grants you a personal, perpetual, non-exclusive license for personal reading. Redistribution, unauthorized file sharing, or reproduction is strictly prohibited under copyright laws.</li>
+            <li><strong>Physical & Pre-Loved Works:</strong> Physical editions listed in our catalogue follow our archival condition grading matrix and tracked courier dispatch.</li>
           </ul>
         </section>
 

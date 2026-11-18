@@ -113,9 +113,11 @@ export default function Cart() {
                 )}
 
                 <div className="flex justify-between text-charcoal/80">
-                  <span>Archival Delivery</span>
+                  <span>{cart.every(i => i.isEbook || i.format?.toLowerCase().includes('ebook') || i.condition?.toLowerCase() === 'ebook') ? 'Digital Delivery' : 'Archival Delivery'}</span>
                   <span className="font-serif font-bold text-sm text-charcoal">
-                    {shippingFee === 0 ? (
+                    {cart.every(i => i.isEbook || i.format?.toLowerCase().includes('ebook') || i.condition?.toLowerCase() === 'ebook') ? (
+                      <span className="text-emerald-700">Instant Access (Free)</span>
+                    ) : shippingFee === 0 ? (
                       <span className="text-emerald-700">Complimentary</span>
                     ) : (
                       `₹${shippingFee}`
@@ -123,9 +125,15 @@ export default function Cart() {
                   </span>
                 </div>
 
-                {subtotal < 499 && (
+                {!cart.every(i => i.isEbook || i.format?.toLowerCase().includes('ebook') || i.condition?.toLowerCase() === 'ebook') && subtotal < 499 && (
                   <p className="text-[11px] text-burgundy font-sans">
                     Add ₹{499 - subtotal} more for complimentary delivery.
+                  </p>
+                )}
+
+                {cart.every(i => i.isEbook || i.format?.toLowerCase().includes('ebook') || i.condition?.toLowerCase() === 'ebook') && (
+                  <p className="text-[11px] text-emerald-700 font-sans">
+                    ✦ Instant EPUB & PDF download link delivered to your email after checkout.
                   </p>
                 )}
               </div>

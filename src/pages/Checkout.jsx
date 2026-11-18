@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AlertCircle, ShieldCheck, ArrowLeft, Truck, Check, Lock, BookOpen } from 'lucide-react';
+import { AlertCircle, ShieldCheck, ArrowLeft, Truck, Check, Lock, BookOpen, Download } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import BookCoverImage from '../components/BookCoverImage';
 
@@ -285,13 +285,29 @@ export default function Checkout() {
               "A World Between the Covers."
             </p>
 
-            <div className="my-4 sm:my-5 p-3.5 sm:p-4 bg-white/80 rounded border border-stone text-xs font-sans text-charcoal/80 text-left leading-relaxed space-y-2">
+            <div className="my-4 sm:my-5 p-3.5 sm:p-4 bg-white/80 rounded border border-stone text-xs font-sans text-charcoal/80 text-left leading-relaxed space-y-3">
               <p>
                 As outlined in the QITAVRO specification, live gateway processing and merchant fulfillment are not connected in this prototype.
               </p>
               <p>
-                Your selected editions and simulated address for <strong>{formData.name}</strong> have been validated through the complete React Context and LocalStorage architecture.
+                Your order for <strong>{formData.name}</strong> ({formData.email}) has been validated through the complete React Context and LocalStorage architecture.
               </p>
+
+              {cart.some(i => i.isEbook || i.format?.toLowerCase().includes('ebook') || i.condition?.toLowerCase() === 'ebook') && (
+                <div className="p-3 bg-emerald-50 border border-emerald-200 rounded text-emerald-900 space-y-2">
+                  <div className="font-semibold flex items-center gap-1.5 text-emerald-800">
+                    <Download className="w-4 h-4 text-emerald-700" />
+                    <span>eBook Digital Edition Ready</span>
+                  </div>
+                  <p className="text-[11px] text-emerald-700 leading-snug">
+                    Instant access link has been generated for <em>Darling in Red's</em> (EPUB & PDF).
+                  </p>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-700 text-white rounded text-[11px] font-semibold shadow-xs">
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Download EPUB / PDF (Simulated)</span>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-2.5">

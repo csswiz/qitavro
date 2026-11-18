@@ -9,7 +9,7 @@
     "rating": 4.9,
     "reviews": 84,
     "category": "Romance",
-    "condition": "Pre-loved",
+    "condition": "eBook",
     "image": "/images/books/darling-in-reds.jpg",
     "tagline": "Some hearts are meant to bleed together.",
     "description": "Some hearts are meant to bleed together. An evocative dark romance enveloped in mystery, devotion, and a bond forged through crimson passion. When love demands everything, two souls discover that even thorns cannot break what destiny has carved in blood.",
@@ -22,9 +22,14 @@
     "publicationDate": "2023-10-18",
     "featured": true,
     "bestseller": true,
-    "stock": 4,
-    "format": "Pre-loved Paperback",
-    "curatorNote": "A rare pre-loved dark romance volume. 'Some hearts are meant to bleed together.'",
-    "badge": "Pre-loved"
+    "stock": 999,
+    "format": "Digital Edition (eBook)",
+    "isEbook": true,
+    "fileFormats": "EPUB & PDF (DRM-Free)",
+    "fileSize": "4.2 MB",
+    "compatibility": "Kindle, Apple Books, Kobo, Android, iOS, PC & Mac",
+    "delivery": "Instant Digital Delivery to your Email & Post-Checkout",
+    "curatorNote": "Exclusive Digital Edition. 'Some hearts are meant to bleed together.' Delivered instantly.",
+    "badge": "eBook"
   }
 ]

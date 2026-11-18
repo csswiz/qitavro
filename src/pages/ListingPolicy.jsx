@@ -58,7 +58,7 @@ export default function ListingPolicy() {
                 Near Mint / Fine
               </span>
               <p className="text-charcoal/80 mt-1">
-                Minimal shelf wear on cover corners. Clean, crisp leaves with tight binding and zero highlighting or interior markings (e.g., our curated copies of <em>Darling in Red's</em>).
+                Minimal shelf wear on cover corners. Clean, crisp leaves with tight binding and zero highlighting or interior markings.
               </p>
             </div>
 

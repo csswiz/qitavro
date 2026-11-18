@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Star, Heart, ShoppingBag, ArrowLeft, Check, ShieldCheck, Truck, RotateCcw, BookOpen, Share2 } from 'lucide-react';
+import { Star, Heart, ShoppingBag, ArrowLeft, Check, ShieldCheck, Truck, RotateCcw, BookOpen, Share2, Download, Sparkles, Smartphone } from 'lucide-react';
 import booksData from '../data/books.json';
 import BookCoverImage from '../components/BookCoverImage';
 import BookGrid from '../components/BookGrid';
@@ -44,6 +44,7 @@ export default function BookDetails() {
   }
 
   const isSaved = isInWishlist(book.id);
+  const isEbook = Boolean(book.isEbook || book.format?.toLowerCase().includes('ebook') || book.condition?.toLowerCase() === 'ebook');
   const discountPercent = book.originalPrice
     ? Math.round(((book.originalPrice - book.price) / book.originalPrice) * 100)
     : 0;
@@ -104,8 +105,17 @@ export default function BookDetails() {
                 <span>Original Guaranteed</span>
               </div>
               <div className="flex items-center gap-2 p-2 sm:p-2.5 bg-white/70 rounded border border-stone/60">
-                <Truck className="w-4 h-4 text-burgundy flex-shrink-0" />
-                <span>Dispatched in 24h</span>
+                {isEbook ? (
+                  <>
+                    <Download className="w-4 h-4 text-burgundy flex-shrink-0" />
+                    <span>Instant Download</span>
+                  </>
+                ) : (
+                  <>
+                    <Truck className="w-4 h-4 text-burgundy flex-shrink-0" />
+                    <span>Dispatched in 24h</span>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -200,36 +210,42 @@ export default function BookDetails() {
 
             {/* Stock status */}
             <div className="flex items-center gap-2 text-xs font-sans text-charcoal/80 mb-5 sm:mb-6">
-              <span className="w-2 h-2 rounded-full bg-emerald-600 flex-shrink-0" />
-              <span>In Stock — {book.stock || 18} archival copies ready for dispatch</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-600 flex-shrink-0 animate-pulse" />
+              <span>
+                {isEbook
+                  ? 'Digital Edition Available — Instant Download & Email Delivery'
+                  : `In Stock — ${book.stock || 18} archival copies ready for dispatch`}
+              </span>
             </div>
 
             {/* Quantity Selector & Add to Bag */}
             <div className="pt-4 sm:pt-5 border-t border-stone/60 flex flex-col gap-3.5 sm:gap-4">
-              <div className="flex items-center gap-3 sm:gap-4">
-                <span className="text-xs font-sans uppercase tracking-wider text-charcoal/70">
-                  Quantity:
-                </span>
-                <div className="flex items-center border border-stone bg-white rounded">
-                  <button
-                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="px-3 py-1.5 text-charcoal hover:bg-stone/30 transition-colors text-sm"
-                    aria-label="Decrease quantity"
-                  >
-                    -
-                  </button>
-                  <span className="w-9 text-center font-sans text-xs font-semibold text-charcoal">
-                    {quantity}
+              {!isEbook && (
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <span className="text-xs font-sans uppercase tracking-wider text-charcoal/70">
+                    Quantity:
                   </span>
-                  <button
-                    onClick={() => setQuantity((q) => Math.min(book.stock || 20, q + 1))}
-                    className="px-3 py-1.5 text-charcoal hover:bg-stone/30 transition-colors text-sm"
-                    aria-label="Increase quantity"
-                  >
-                    +
-                  </button>
+                  <div className="flex items-center border border-stone bg-white rounded">
+                    <button
+                      onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                      className="px-3 py-1.5 text-charcoal hover:bg-stone/30 transition-colors text-sm"
+                      aria-label="Decrease quantity"
+                    >
+                      -
+                    </button>
+                    <span className="w-9 text-center font-sans text-xs font-semibold text-charcoal">
+                      {quantity}
+                    </span>
+                    <button
+                      onClick={() => setQuantity((q) => Math.min(book.stock || 20, q + 1))}
+                      className="px-3 py-1.5 text-charcoal hover:bg-stone/30 transition-colors text-sm"
+                      aria-label="Increase quantity"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="flex gap-2.5 sm:gap-3">
                 <button
@@ -237,7 +253,7 @@ export default function BookDetails() {
                   className="flex-1 py-3 sm:py-3.5 px-4 sm:px-6 bg-burgundy hover:bg-wine active:scale-98 text-ivory rounded font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all shadow-subtle hover:shadow"
                 >
                   <ShoppingBag className="w-4 h-4" />
-                  <span>Add to Bag ({quantity})</span>
+                  <span>{isEbook ? 'Get eBook Instant Access' : `Add to Bag (${quantity})`}</span>
                 </button>
 
                 <button
@@ -255,10 +271,20 @@ export default function BookDetails() {
               </div>
             </div>
 
-            {/* Archival Packaging Notice */}
+            {/* Packaging / Delivery Notice */}
             <div className="mt-6 sm:mt-8 p-3.5 sm:p-4 bg-stone/20 rounded border border-stone/40 text-[11px] sm:text-xs font-sans text-charcoal/75 leading-relaxed">
-              <strong className="text-charcoal font-semibold block mb-0.5">QITAVRO Archival Standard:</strong>
-              Protected in moisture-barrier paper, acid-free bookmarks included, shipped in rigid bookfold cartons to prevent edge wear.
+              <strong className="text-charcoal font-semibold block mb-0.5">
+                {isEbook ? 'QITAVRO Digital eBook Delivery:' : 'QITAVRO Archival Standard:'}
+              </strong>
+              {isEbook ? (
+                <span>
+                  Immediate digital delivery after checkout. You will receive an instant download link on screen and via email containing DRM-free EPUB and PDF formats. Compatible with Apple Books, Kindle, Kobo, Android, iOS, PC, and Mac.
+                </span>
+              ) : (
+                <span>
+                  Protected in moisture-barrier paper, acid-free bookmarks included, shipped in rigid bookfold cartons to prevent edge wear.
+                </span>
+              )}
             </div>
 
           </div>
@@ -355,8 +381,28 @@ export default function BookDetails() {
                   </div>
                   <div>
                     <dt className="text-charcoal/50 uppercase tracking-wider">Format</dt>
-                    <dd className="font-serif text-charcoal text-sm mt-0.5">{book.format || 'Hardcover Archive'}</dd>
+                    <dd className="font-serif text-charcoal text-sm mt-0.5">{book.format || (isEbook ? 'Digital Edition (eBook)' : 'Hardcover Archive')}</dd>
                   </div>
+                  {isEbook && (
+                    <>
+                      <div>
+                        <dt className="text-charcoal/50 uppercase tracking-wider">File Formats</dt>
+                        <dd className="font-serif text-charcoal text-sm mt-0.5">{book.fileFormats || 'EPUB & PDF (DRM-Free)'}</dd>
+                      </div>
+                      <div>
+                        <dt className="text-charcoal/50 uppercase tracking-wider">File Size</dt>
+                        <dd className="font-serif text-charcoal text-sm mt-0.5">{book.fileSize || '4.2 MB'}</dd>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <dt className="text-charcoal/50 uppercase tracking-wider">Compatible Devices</dt>
+                        <dd className="font-sans text-charcoal text-xs mt-0.5">{book.compatibility || 'Kindle, Apple Books, Kobo, Android, iOS, PC & Mac'}</dd>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <dt className="text-charcoal/50 uppercase tracking-wider">Delivery Method</dt>
+                        <dd className="font-sans text-emerald-800 text-xs mt-0.5 font-medium">{book.delivery || 'Instant Digital Download link sent to email & available in browser post-checkout'}</dd>
+                      </div>
+                    </>
+                  )}
                 </dl>
               </div>
             )}
