@@ -46,8 +46,8 @@ export default function HeroDragon3D({
     const ambientLight = new THREE.AmbientLight(0xfff5ea, 1.4);
     scene.add(ambientLight);
 
-    // Warm Gold Key Light
-    const goldKeyLight = new THREE.DirectionalLight(0xb69a72, 2.5);
+    // Warm Light Brown Key Light
+    const goldKeyLight = new THREE.DirectionalLight(0xb8926a, 2.5);
     goldKeyLight.position.set(3.5, 4.0, 3.0);
     scene.add(goldKeyLight);
 
@@ -80,7 +80,7 @@ export default function HeroDragon3D({
     }
     particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
     const particleMat = new THREE.PointsMaterial({
-      color: 0xb69a72,
+      color: 0xb8926a,
       size: 0.035,
       transparent: true,
       opacity: 0.65,
@@ -88,11 +88,11 @@ export default function HeroDragon3D({
     const sparkles = new THREE.Points(particleGeo, particleMat);
     dragonPivot.add(sparkles);
 
-    // Stylized Golden Placeholder while GLB streams
+    // Stylized Light Brown / Burgundy Placeholder while GLB streams
     function createPlaceholder() {
       const g = new THREE.Group();
       const gold = new THREE.MeshStandardMaterial({
-        color: 0xb69a72,
+        color: 0xb8926a,
         roughness: 0.35,
         metalness: 0.8,
       });
@@ -112,7 +112,7 @@ export default function HeroDragon3D({
       g.add(head);
 
       const wingMat = new THREE.MeshStandardMaterial({
-        color: 0xd4af37,
+        color: 0xd9c3ab,
         side: THREE.DoubleSide,
         roughness: 0.3,
       });

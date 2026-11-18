@@ -5,8 +5,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color: #272321;
-    background-color: #F6F0E8;
+    color: #282320;
+    background-color: #F8F5EE;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -17,8 +17,8 @@
   }
 
   ::selection {
-    background-color: rgba(199, 167, 162, 0.45);
-    color: #421F2A;
+    background-color: rgba(184, 146, 106, 0.35);
+    color: #4E202B;
   }
 }
 
@@ -30,11 +30,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #F6F0E8;
+    background: #F8F5EE;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #C8BEB2;
+    background: #D9C3AB;
     border-radius: 4px;
   }
 

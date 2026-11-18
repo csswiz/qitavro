@@ -39,11 +39,11 @@ export default function Navbar() {
             : 'bg-ivory border-b border-stone/60'
         }`}
       >
-        {/* Subtle Announcement / Curator Note Bar - Dark Luxury Brown with Gold */}
-        <div className="bg-secondary text-warmBrown-100 text-[10px] sm:text-[11px] font-sans py-1.5 px-3 text-center tracking-wider font-light flex items-center justify-center gap-2 sm:gap-3 border-b border-primary/20">
+        {/* Subtle Announcement / Curator Note Bar */}
+        <div className="bg-wine text-ivory text-[10px] sm:text-[11px] font-sans py-1.5 px-3 text-center tracking-wider font-light flex items-center justify-center gap-2 sm:gap-3">
           <span>Complimentary delivery across India on orders above ₹499</span>
           <span className="hidden sm:inline text-gold">•</span>
-          <span className="hidden md:inline text-warmBrown-200/80">Use code <strong className="text-gold font-medium">READ10</strong> for 10% off</span>
+          <span className="hidden md:inline text-stone-light">Use code <strong className="text-gold font-medium">READ10</strong> for 10% off</span>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
