@@ -83,8 +83,8 @@ export default function Navbar() {
               </NavLink>
             </nav>
 
-            {/* Right: Search, Wishlist, Cart */}
-            <div className="flex items-center space-x-2 sm:space-x-4">
+            {/* Right: Search, Wishlist, Cart (Desktop only, hidden on mobile since it is in the bottom dock) */}
+            <div className="hidden lg:flex items-center space-x-2 sm:space-x-4">
               {/* Search trigger */}
               <button
                 onClick={() => setIsSearchOpen(true)}
