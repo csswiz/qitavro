@@ -37,9 +37,9 @@ export default function Navbar() {
       >
         {/* Subtle Announcement / Curator Note Bar */}
         <div className="bg-[#200A11] border-b border-burgundy/30 text-ivory-light text-[10px] sm:text-[11px] font-sans py-1.5 px-3 text-center tracking-wider font-light flex items-center justify-center gap-2 sm:gap-3">
-          <span>Instant Digital Delivery • Complete EPUB & PDF</span>
+          <span>QITAVRO Literary Sanctuary</span>
           <span className="text-gold">•</span>
-          <span>"Darling in Red's" by Ace • Special Launch Price <strong className="text-gold font-medium">₹149</strong></span>
+          <span>Curated Independent Editions & Instant Digital Reads</span>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,10 +73,7 @@ export default function Navbar() {
                 Home
               </NavLink>
               <NavLink to="/shop" className={navLinkClass}>
-                eBook Store
-              </NavLink>
-              <NavLink to="/book/darling-in-reds" className={navLinkClass}>
-                Darling in Red's
+                Shop
               </NavLink>
               <NavLink to="/about" className={navLinkClass}>
                 About

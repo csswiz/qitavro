@@ -109,7 +109,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
           {/* Suggestions Pill Tags (Swipeable on mobile) */}
           <div className="mt-2.5 sm:mt-3 flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1">
             <span className="text-[11px] sm:text-xs text-ivory/60 font-sans flex-shrink-0">Curations:</span>
-            {['Romance', 'Ace', "Darling in Red's", 'eBook', 'Digital Edition'].map((tag) => (
+            {['Romance', "Darling in Red's", 'Digital Edition', 'eBook'].map((tag) => (
               <button
                 key={tag}
                 onClick={() => handleSelectTag(tag)}
@@ -185,7 +185,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
                   <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 mx-auto text-ivory/30 mb-2 stroke-[1.2]" />
                   <p className="font-serif text-base sm:text-lg text-ivory-light">No editions found matching "{searchTerm}"</p>
                   <p className="font-sans text-xs text-ivory/60 mt-1 max-w-sm mx-auto">
-                    Try searching for Ace, Romance, or Darling in Red's.
+                    Try searching for Romance or Darling in Red's.
                   </p>
                   <div className="mt-4">
                     <Link

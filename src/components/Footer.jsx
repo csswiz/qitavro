@@ -63,13 +63,13 @@ export default function Footer() {
               </div>
             </Link>
             <p className="mt-4 font-serif italic text-sm text-gold-light leading-relaxed">
-              "Some hearts are meant to bleed together."
+              "A World Between the Covers."
             </p>
             <p className="mt-2 text-xs text-ivory/70 font-sans leading-relaxed max-w-sm">
-              An independent literary boutique dedicated to unforgettable dark romance and poignant storytelling by acclaimed voices.
+              An independent literary bookstore and curated digital sanctuary designed for intentional readers.
             </p>
             <div className="mt-5 text-xs text-ivory/50 font-sans">
-              Featuring "Darling in Red's" by Ace — Available now in instant eBook edition.
+              Dedicated to bringing exceptional literature and distinctive voices to your private library.
             </div>
           </div>
 
@@ -85,47 +85,37 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/book/darling-in-reds" className="hover:text-rose-light transition-colors">
-                  Darling in Red's
-                </Link>
-              </li>
-              <li>
                 <Link to="/shop?genre=Romance" className="hover:text-rose-light transition-colors">
-                  Dark Romance
+                  Romance
                 </Link>
               </li>
               <li>
                 <Link to="/shop?bestseller=true" className="hover:text-rose-light transition-colors">
-                  Bestsellers
+                  Featured Reads
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Editorial & Story */}
+          {/* About & Ethos */}
           <div className="md:col-span-3">
             <h5 className="font-serif font-bold text-sm text-gold tracking-wider uppercase mb-4">
-              Story & Author
+              The Sanctuary
             </h5>
             <ul className="space-y-2 text-xs text-ivory/70">
               <li>
-                <Link to="/book/darling-in-reds" className="hover:text-rose-light transition-colors">
-                  Synopsis & Excerpt
-                </Link>
-              </li>
-              <li>
                 <Link to="/about" className="hover:text-rose-light transition-colors">
-                  About Author Ace
+                  Our Philosophy
                 </Link>
               </li>
               <li>
-                <Link to="/book/darling-in-reds" className="hover:text-rose-light transition-colors">
-                  Kindle & Device Setup
+                <Link to="/listing-policy" className="hover:text-rose-light transition-colors">
+                  Listing & Curation Policy
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-rose-light transition-colors">
-                  Our Literary Philosophy
+                <Link to="/disclaimer" className="hover:text-rose-light transition-colors">
+                  Buying & Selling Disclaimer
                 </Link>
               </li>
             </ul>

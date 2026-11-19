@@ -113,11 +113,11 @@ export default function About() {
           </h2>
 
           <p>
-            We believe in stories that linger in the blood long after the final sentence has dissolved. Where an evening spent immersed in an evocative romance like <em>Darling in Red's</em> replaces an hour of anxious digital exhaustion.
+            We believe in stories that linger long after the final sentence has dissolved. Where an evening spent immersed in a singular, evocative book replaces an hour of anxious digital exhaustion.
           </p>
 
           <p>
-            Whether this is your first exploration into Ace's gothic romances or a cherished return to dark devotion, we are honored to bring this world to your screen.
+            Whether you are discovering new independent authors or finding solace in timeless themes, we are honored to curate these journeys for your reading sanctuary.
           </p>
 
           <div className="pt-6 sm:pt-8 text-center">

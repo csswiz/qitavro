@@ -34,13 +34,13 @@ export default function MobileBottomNav({ onOpenSearch }) {
     },
     {
       icon: <BookOpen className="w-5 h-5 text-rose-light group-hover:text-gold" strokeWidth={1.8} />,
-      label: 'eBook',
+      label: 'Shop',
       active: isShopActive,
       onClick: () => navigate('/shop'),
       menu: [
-        { label: "Darling in Red's", onClick: () => navigate('/book/darling-in-reds') },
+        { label: 'Browse Catalogue', onClick: () => navigate('/shop') },
         { separator: true },
-        { label: 'eBook Store', onClick: () => navigate('/shop') }
+        { label: 'Saved Books', onClick: () => navigate('/wishlist') }
       ]
     },
     {
