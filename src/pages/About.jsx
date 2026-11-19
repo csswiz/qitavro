@@ -42,11 +42,11 @@ export default function About() {
           <div className="w-10 h-[2px] bg-gold mb-4" />
           
           <p className="drop-cap">
-            In modern retail, books have been reduced to algorithmic inventory—shuffled into high-speed warehouses, discounted for clicks, and sold alongside kitchen appliances and cleaning detergents. In this transaction, the romance of discovering an unexpected voice, the tactile wonder of deckle-edged paper, and the sacred intimacy of reading are quietly extinguished.
+            In modern retail, books have been reduced to algorithmic inventory—shuffled into automated feeds, discounted for clicks, and buried under relentless digital noise. In this transaction, the romance of discovering an unforgettable story, the sacred intimacy of turning a page, and the emotional resonance of literature are quietly lost.
           </p>
 
           <p>
-            QITAVRO was born as an antidote to this digital commodification. Named with an homage to the ancient root for the written word and the Mediterranean harbor where trade in illuminated manuscripts once flourished, QITAVRO is an independent online bookstore designed with the reverence of a luxury literary publication and the warmth of a neighborhood bookdealer.
+            QITAVRO was born as an antidote to this digital commodification. Named with an homage to the ancient root for the written word and the timeless devotion of classic storytelling, QITAVRO is an independent literary boutique designed with the reverence of a luxury publication and the warmth of a dedicated book lover.
           </p>
         </section>
 
@@ -85,10 +85,10 @@ export default function About() {
                 <BookOpen className="w-5 h-5" />
               </div>
               <h3 className="font-serif font-bold text-lg text-ivory-light mb-2">
-                Physical Craftsmanship
+                DRM-Free Reader Freedom
               </h3>
               <p className="text-xs font-sans text-ivory/70 leading-relaxed">
-                We champion clothbound hardcovers, deckle edges, archival paper, and faithful translations that honor the author's original linguistic melody.
+                We believe you should truly own what you buy. Every digital edition arrives in universal EPUB & PDF formats, ready to read across your favorite devices forever.
               </p>
             </div>
 
@@ -97,10 +97,10 @@ export default function About() {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h3 className="font-serif font-bold text-lg text-ivory-light mb-2">
-                Protective Packaging
+                Instant Delivery & Care
               </h3>
               <p className="text-xs font-sans text-ivory/70 leading-relaxed">
-                We believe a book should arrive as a treasured gift. Double-boxed in reinforced archival cardboard so corners remain crisp and unbent.
+                No shipping waits or damaged parcels. Your eBook is available immediately post-checkout, with a permanent backup download link delivered to your email.
               </p>
             </div>
           </div>
@@ -113,11 +113,11 @@ export default function About() {
           </h2>
 
           <p>
-            We dream of a world where readers read fewer books, but read them with infinitely greater depth. Where an evening spent with Marcus Aurelius or John Williams replaces an evening of anxious digital exhaustion.
+            We believe in stories that linger in the blood long after the final sentence has dissolved. Where an evening spent immersed in an evocative romance like <em>Darling in Red's</em> replaces an hour of anxious digital exhaustion.
           </p>
 
           <p>
-            Whether you are curating your first bookshelf or adding to a lifelong private library, we are honored to be your quiet companions on this journey.
+            Whether this is your first exploration into Ace's gothic romances or a cherished return to dark devotion, we are honored to bring this world to your screen.
           </p>
 
           <div className="pt-6 sm:pt-8 text-center">

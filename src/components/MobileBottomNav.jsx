@@ -28,21 +28,19 @@ export default function MobileBottomNav({ onOpenSearch }) {
       menu: [
         { label: 'QITAVRO Sanctuary', onClick: () => navigate('/') },
         { separator: true },
-        { label: 'The Reading Room', onClick: () => navigate('/reading-room') },
-        { label: 'About Our Philosophy', onClick: () => navigate('/about') }
+        { label: 'About QITAVRO', onClick: () => navigate('/about') },
+        { label: 'Disclaimer & Policies', onClick: () => navigate('/disclaimer') }
       ]
     },
     {
       icon: <BookOpen className="w-5 h-5 text-rose-light group-hover:text-gold" strokeWidth={1.8} />,
-      label: 'Shop',
+      label: 'eBook',
       active: isShopActive,
       onClick: () => navigate('/shop'),
       menu: [
-        { label: 'All Curated Editions', onClick: () => navigate('/shop') },
+        { label: "Darling in Red's", onClick: () => navigate('/book/darling-in-reds') },
         { separator: true },
-        { label: "Readers' Bestsellers", onClick: () => navigate('/shop?bestseller=true') },
-        { label: 'Under ₹299 Editions', onClick: () => navigate('/shop?price=under-299') },
-        { label: 'Thematic Shelves', onClick: () => navigate('/collections') }
+        { label: 'eBook Store', onClick: () => navigate('/shop') }
       ]
     },
     {

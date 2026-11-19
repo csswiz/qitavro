@@ -13,9 +13,9 @@ export default function Footer() {
               <Feather className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-base text-ivory-light">Editorial Curation</h4>
+              <h4 className="font-serif font-bold text-base text-ivory-light">Editorial Devotion</h4>
               <p className="text-xs text-ivory/70 mt-1 leading-relaxed">
-                Every title hand-selected for literary merit, enduring insight, and timeless resonance.
+                Hand-selected dark romance celebrating visceral emotion, heartfelt tension, and authentic prose.
               </p>
             </div>
           </div>
@@ -25,9 +25,9 @@ export default function Footer() {
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-base text-ivory-light">Craftsmanship & Editions</h4>
+              <h4 className="font-serif font-bold text-base text-ivory-light">DRM-Free Freedom</h4>
               <p className="text-xs text-ivory/70 mt-1 leading-relaxed">
-                Acid-free paper, archival cloth bindings, deckle edges, and fine typography worth keeping.
+                Complete EPUB & PDF formats compatible with Kindle, Apple Books, Kobo, Android, iOS & PC.
               </p>
             </div>
           </div>
@@ -37,9 +37,9 @@ export default function Footer() {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-base text-ivory-light">Protective Book Packaging</h4>
+              <h4 className="font-serif font-bold text-base text-ivory-light">Instant Digital Delivery</h4>
               <p className="text-xs text-ivory/70 mt-1 leading-relaxed">
-                Double-wrapped with organic kraft paper and reinforced corners to arrive in collector condition.
+                Direct download immediately post-checkout, with a permanent backup copy emailed straight to you.
               </p>
             </div>
           </div>
@@ -63,13 +63,13 @@ export default function Footer() {
               </div>
             </Link>
             <p className="mt-4 font-serif italic text-sm text-gold-light leading-relaxed">
-              "A World Between the Covers."
+              "Some hearts are meant to bleed together."
             </p>
             <p className="mt-2 text-xs text-ivory/70 font-sans leading-relaxed max-w-sm">
-              An independent literary bookstore combining the thoughtful curation of a storied bookseller with the aesthetic devotion of a luxury print publication.
+              An independent literary boutique dedicated to unforgettable dark romance and poignant storytelling by acclaimed voices.
             </p>
             <div className="mt-5 text-xs text-ivory/50 font-sans">
-              Founded on the belief that what you read quietly shapes who you become.
+              Featuring "Darling in Red's" by Ace — Available now in instant eBook edition.
             </div>
           </div>
 
@@ -85,62 +85,47 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/shop?genre=Fiction" className="hover:text-rose-light transition-colors">
-                  Modern Fiction
+                <Link to="/book/darling-in-reds" className="hover:text-rose-light transition-colors">
+                  Darling in Red's
                 </Link>
               </li>
               <li>
-                <Link to="/shop?genre=Classics" className="hover:text-rose-light transition-colors">
-                  Timeless Classics
+                <Link to="/shop?genre=Romance" className="hover:text-rose-light transition-colors">
+                  Dark Romance
                 </Link>
               </li>
               <li>
-                <Link to="/shop?genre=Philosophy" className="hover:text-rose-light transition-colors">
-                  Philosophy & Stoics
-                </Link>
-              </li>
-              <li>
-                <Link to="/shop?price=under-299" className="hover:text-rose-light transition-colors">
-                  Under ₹299 Shelf
-                </Link>
-              </li>
-              <li>
-                <Link to="/collections" className="hover:text-rose-light transition-colors">
-                  Curated Collections
+                <Link to="/shop?bestseller=true" className="hover:text-rose-light transition-colors">
+                  Bestsellers
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Editorial & Reading Room */}
+          {/* Editorial & Story */}
           <div className="md:col-span-3">
             <h5 className="font-serif font-bold text-sm text-gold tracking-wider uppercase mb-4">
-              The Reading Room
+              Story & Author
             </h5>
             <ul className="space-y-2 text-xs text-ivory/70">
               <li>
-                <Link to="/reading-room" className="hover:text-rose-light transition-colors">
-                  The Editorial Journal
+                <Link to="/book/darling-in-reds" className="hover:text-rose-light transition-colors">
+                  Synopsis & Excerpt
                 </Link>
               </li>
               <li>
-                <Link to="/reading-room/the-art-of-unhurried-reading" className="hover:text-rose-light transition-colors">
-                  The Art of Unhurried Reading
+                <Link to="/about" className="hover:text-rose-light transition-colors">
+                  About Author Ace
                 </Link>
               </li>
               <li>
-                <Link to="/reading-room/on-building-a-personal-library" className="hover:text-rose-light transition-colors">
-                  On the Personal Sanctuary
+                <Link to="/book/darling-in-reds" className="hover:text-rose-light transition-colors">
+                  Kindle & Device Setup
                 </Link>
               </li>
               <li>
-                <Link to="/reading-room/rediscovering-stoner" className="hover:text-rose-light transition-colors">
-                  Why John Williams' Stoner Endures
-                </Link>
-              </li>
-              <li>
-                <Link to="/reading-room/essential-reading-list-solitude" className="hover:text-rose-light transition-colors">
-                  Readings for Solitude
+                <Link to="/about" className="hover:text-rose-light transition-colors">
+                  Our Literary Philosophy
                 </Link>
               </li>
             </ul>

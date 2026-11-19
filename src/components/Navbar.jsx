@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Search, Heart, ShoppingBag, ChevronDown } from 'lucide-react';
+import { Search, Heart, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import SearchOverlay from './SearchOverlay';
 import MobileBottomNav from './MobileBottomNav';
-import collectionsData from '../data/collections.json';
 
 export default function Navbar() {
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isCollectionsHovered, setIsCollectionsHovered] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
@@ -39,9 +37,9 @@ export default function Navbar() {
       >
         {/* Subtle Announcement / Curator Note Bar */}
         <div className="bg-[#200A11] border-b border-burgundy/30 text-ivory-light text-[10px] sm:text-[11px] font-sans py-1.5 px-3 text-center tracking-wider font-light flex items-center justify-center gap-2 sm:gap-3">
-          <span>Complimentary delivery across India on orders above ₹499</span>
-          <span className="hidden sm:inline text-gold">•</span>
-          <span className="hidden md:inline text-ivory/70">Use code <strong className="text-gold font-medium">READ10</strong> for 10% off</span>
+          <span>Instant Digital Delivery • Complete EPUB & PDF</span>
+          <span className="text-gold">•</span>
+          <span>"Darling in Red's" by Ace • Special Launch Price <strong className="text-gold font-medium">₹149</strong></span>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,68 +73,16 @@ export default function Navbar() {
                 Home
               </NavLink>
               <NavLink to="/shop" className={navLinkClass}>
-                Shop
+                eBook Store
               </NavLink>
-
-              {/* Collections with Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsCollectionsHovered(true)}
-                onMouseLeave={() => setIsCollectionsHovered(false)}
-              >
-                <NavLink
-                  to="/collections"
-                  className={({ isActive }) =>
-                    `flex items-center gap-1 font-serif text-base tracking-wide transition-colors ${isActive
-                      ? 'text-rose-light font-semibold'
-                      : 'text-ivory/80 hover:text-rose-light'
-                    }`
-                  }
-                >
-                  <span>Collections</span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${isCollectionsHovered ? 'rotate-180 text-rose-light' : 'text-ivory/50'
-                      }`}
-                  />
-                </NavLink>
-
-                {/* Dropdown Menu */}
-                {isCollectionsHovered && (
-                  <div className="absolute top-full -left-6 w-72 bg-[#150D12] rounded-[3px] shadow-modal border border-burgundy/40 p-2.5 pt-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                    <div className="px-2 pb-2 mb-2 border-b border-burgundy/25 text-[10px] uppercase tracking-widest font-sans font-semibold text-rose-light">
-                      Curated Shelves
-                    </div>
-                    <div className="flex flex-col gap-0.5">
-                      {collectionsData.map((col) => (
-                        <Link
-                          key={col.id}
-                          to={`/shop?collection=${col.slug}`}
-                          className="px-2.5 py-1.5 rounded hover:bg-[#20131B] text-left text-xs font-serif text-ivory/90 hover:text-rose-light transition-colors flex items-center justify-between group"
-                        >
-                          <span className="font-medium">{col.title}</span>
-                          <span className="text-[10px] text-ivory/40 font-sans group-hover:text-rose-light">
-                            {col.bookIds.length} books
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                    <div className="mt-2 pt-2 border-t border-burgundy/25 px-2">
-                      <Link
-                        to="/collections"
-                        className="text-[11px] font-sans text-rose-light hover:text-ivory-light font-semibold uppercase tracking-wider block text-center"
-                      >
-                        View All Collections →
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <NavLink to="/reading-room" className={navLinkClass}>
-                The Reading Room
+              <NavLink to="/book/darling-in-reds" className={navLinkClass}>
+                Darling in Red's
               </NavLink>
               <NavLink to="/about" className={navLinkClass}>
                 About
+              </NavLink>
+              <NavLink to="/disclaimer" className={navLinkClass}>
+                Disclaimer
               </NavLink>
             </nav>
 

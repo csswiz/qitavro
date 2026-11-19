@@ -153,15 +153,15 @@ export default function Shop() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
-              The Curated Library
+              The Digital Sanctuary
             </span>
             <h1 className="font-serif font-bold text-2xl sm:text-4xl md:text-5xl text-ivory-light mt-1">
-              {activeCollection ? activeCollection.title : 'The Complete Catalogue'}
+              {activeCollection ? activeCollection.title : 'The eBook Catalogue'}
             </h1>
             <p className="mt-2 sm:mt-3 font-serif italic text-sm sm:text-base md:text-lg text-ivory/80 leading-relaxed">
               {activeCollection
                 ? activeCollection.intro
-                : 'Browse our entire sanctuary of timeless classics, philosophical treatises, and modern fiction chosen for enduring distinction.'}
+                : "Discover exclusive digital editions, evocative romance, and compelling stories by acclaimed independent voices. Available for instant download."}
             </p>
           </div>
 
