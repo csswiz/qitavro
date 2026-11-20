@@ -19,6 +19,11 @@ export default function HeroDragon3D({
   const containerRef = useRef(null);
 
   useEffect(() => {
+    // 0. Performance Guard: Only enable on desktop screens (>=1024px) with desktop GPU
+    if (typeof window === 'undefined') return;
+    const isDesktop = window.innerWidth >= 1024 && !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (!isDesktop) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -33,11 +38,11 @@ export default function HeroDragon3D({
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
-      antialias: true,
+      antialias: false, // Performance: antialias false saves ~40% GPU fillrate
       powerPreference: 'high-performance',
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25)); // Cap at 1.25 to prevent 4K overhead
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
