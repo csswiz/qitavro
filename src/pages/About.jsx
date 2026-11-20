@@ -1,13 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Feather, BookOpen, Heart, Compass, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Feather, BookOpen, Heart, Compass, ShieldCheck, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function About() {
   return (
     <div className="bg-black-obsidian min-h-screen pb-24 text-ivory-light">
       {/* Editorial Header with Official Brand Seal */}
-      <div className="bg-[#120C10] border-b border-burgundy/25 py-12 sm:py-20 md:py-24 text-center">
+      <div className="bg-[#120C10] border-b border-burgundy/25 py-10 sm:py-16 md:py-20 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="flex justify-start mb-4">
+            <Link
+              to="/shop"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-ivory/60 hover:text-rose-light transition-colors active:scale-95 px-3 py-1.5 rounded bg-[#181015] border border-burgundy/30"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-gold" />
+              <span>Back to Bookstore</span>
+            </Link>
+          </div>
+
           {/* Brand Seal */}
           <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 p-2.5 rounded-[6px] bg-[#181015] border border-burgundy/40 shadow-book flex items-center justify-center">
             <img src="/logo.svg" alt="QITAVRO Official Logo" className="w-full h-full object-contain" />

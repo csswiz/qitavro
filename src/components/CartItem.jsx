@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Trash2, Plus, Minus } from 'lucide-react';
+import { Trash2, Plus, Minus, X } from 'lucide-react';
 import BookCoverImage from './BookCoverImage';
 import { useCart } from '../context/CartContext';
 
@@ -81,14 +81,15 @@ export default function CartItem({ item }) {
           </span>
         </div>
 
-        {/* Remove Button */}
+        {/* Remove / Close Cross Button */}
         <button
           onClick={() => removeFromCart(item.id)}
-          className="p-1.5 sm:p-2 text-ivory/40 hover:text-rose-light transition-colors active:scale-95"
+          className="p-1.5 sm:p-2 text-ivory/50 hover:text-rose-light hover:bg-[#1E1018] rounded-full transition-colors active:scale-95 flex items-center gap-1 border border-burgundy/20 hover:border-burgundy/50"
           aria-label="Remove item"
           title="Remove from bag"
         >
-          <Trash2 className="w-4 h-4" />
+          <X className="w-4 h-4 text-rose-light" />
+          <span className="text-[10px] font-sans text-ivory/60 sm:hidden">Remove</span>
         </button>
       </div>
     </div>

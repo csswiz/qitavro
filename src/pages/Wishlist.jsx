@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Trash2, ShoppingBag, ArrowRight, BookOpen } from 'lucide-react';
+import { Heart, Trash2, ShoppingBag, ArrowRight, ArrowLeft, BookOpen, X } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
 import BookCoverImage from '../components/BookCoverImage';
@@ -20,7 +20,14 @@ export default function Wishlist() {
       <div className="bg-[#120C10] border-b border-burgundy/25 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
           <div>
-            <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
+            <Link
+              to="/shop"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-ivory/60 hover:text-rose-light transition-colors mb-2.5 active:scale-95"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-gold" />
+              <span>Back to Shop</span>
+            </Link>
+            <span className="block text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
               Personal Archive
             </span>
             <h1 className="font-serif font-bold text-2xl sm:text-4xl text-ivory-light mt-1">
@@ -49,8 +56,22 @@ export default function Wishlist() {
             {wishlist.map((book) => (
               <div
                 key={book.id}
-                className="bg-[#140D12] rounded-[4px] border border-burgundy/30 p-2.5 sm:p-4 shadow-subtle hover:border-burgundy/70 hover:shadow-[0_12px_30px_-8px_rgba(101,46,60,0.35)] flex flex-col justify-between transition-all"
+                className="relative bg-[#140D12] rounded-[4px] border border-burgundy/30 p-2.5 sm:p-4 shadow-subtle hover:border-burgundy/70 hover:shadow-[0_12px_30px_-8px_rgba(101,46,60,0.35)] flex flex-col justify-between transition-all group"
               >
+                {/* Cross Button to easily close/remove card from wishlist */}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    removeFromWishlist(book.id);
+                  }}
+                  className="absolute top-2 right-2 sm:top-3 sm:right-3 z-20 p-1.5 bg-[#180E14]/90 hover:bg-burgundy text-ivory/70 hover:text-ivory-light border border-burgundy/40 rounded-full transition-all active:scale-90 shadow-sm"
+                  aria-label="Remove edition from saved shelf"
+                  title="Remove from saved shelf"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+
                 <div>
                   <Link to={`/book/${book.slug}`} className="block">
                     <BookCoverImage

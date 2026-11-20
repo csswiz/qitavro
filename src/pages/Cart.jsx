@@ -37,7 +37,14 @@ export default function Cart() {
       {/* Page Header */}
       <div className="bg-[#120C10] border-b border-burgundy/25 py-10 md:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
+          <Link
+            to="/shop"
+            className="inline-flex items-center gap-1.5 text-xs font-sans text-ivory/60 hover:text-rose-light transition-colors mb-2.5 active:scale-95"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 text-gold" />
+            <span>Back to Shop</span>
+          </Link>
+          <span className="block text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
             Order Review
           </span>
           <h1 className="font-serif font-bold text-3xl sm:text-4xl text-ivory-light mt-1">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, Compass, Feather } from 'lucide-react';
+import { ArrowRight, ArrowLeft, BookOpen, Compass, Feather } from 'lucide-react';
 import collectionsData from '../data/collections.json';
 import booksData from '../data/books.json';
 import BookCoverImage from '../components/BookCoverImage';
@@ -12,7 +12,14 @@ export default function Collections() {
       <div className="bg-[#120C10] border-b border-burgundy/25 py-8 sm:py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
+            <Link
+              to="/shop"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-ivory/60 hover:text-rose-light transition-colors mb-2.5 active:scale-95"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-gold" />
+              <span>Back to Shop</span>
+            </Link>
+            <span className="block text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
               Thematic Literature
             </span>
             <h1 className="font-serif font-bold text-2xl sm:text-4xl md:text-5xl text-ivory-light mt-1">

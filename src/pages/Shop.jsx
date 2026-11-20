@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Search, SlidersHorizontal, ArrowUpDown, X, BookOpen, RotateCcw, MessageSquare, Tag, ArrowRight } from 'lucide-react';
+import { Search, SlidersHorizontal, ArrowUpDown, X, BookOpen, RotateCcw, MessageSquare, Tag, ArrowRight, ArrowLeft } from 'lucide-react';
 import booksData from '../data/books.json';
 import collectionsData from '../data/collections.json';
 import BookGrid from '../components/BookGrid';
@@ -21,6 +21,8 @@ export default function Shop() {
   const [sortBy, setSortBy] = useState('popularity');
   const [visibleCount, setVisibleCount] = useState(12);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [showWhatsAppBanner, setShowWhatsAppBanner] = useState(true);
+  const [showSellBanner, setShowSellBanner] = useState(true);
 
   // Sync state if URL search parameters change
   const collectionParam = searchParams.get('collection');
@@ -153,7 +155,14 @@ export default function Shop() {
       <div className="bg-[#120C10] border-b border-burgundy/25 py-8 sm:py-12 md:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-ivory/60 hover:text-rose-light transition-colors mb-2.5 active:scale-95"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-gold" />
+              <span>Back to Home</span>
+            </Link>
+            <span className="block text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
               The Digital Sanctuary
             </span>
             <h1 className="font-serif font-bold text-2xl sm:text-4xl md:text-5xl text-ivory-light mt-1">
@@ -219,63 +228,83 @@ export default function Shop() {
       {/* Main Content Area */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         
-        {/* Highlight Banner: How to Buy on WhatsApp */}
-        <div className="mb-6 p-4 sm:p-5 rounded-[6px] bg-gradient-to-r from-[#181015] via-[#24101A] to-[#181015] border-2 border-burgundy/60 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 flex items-center justify-center flex-shrink-0 text-[#25D366] mt-0.5">
-              <MessageSquare className="w-5 h-5" />
+        {/* Highlight Banner: How to Buy on WhatsApp (Dismissable) */}
+        {showWhatsAppBanner && (
+          <div className="relative mb-6 p-4 sm:p-5 pr-10 sm:pr-12 rounded-[6px] bg-gradient-to-r from-[#181015] via-[#24101A] to-[#181015] border-2 border-burgundy/60 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <button
+              onClick={() => setShowWhatsAppBanner(false)}
+              className="absolute top-2.5 right-2.5 p-1.5 text-ivory/50 hover:text-rose-light hover:bg-[#201018] rounded-full transition-colors active:scale-90"
+              aria-label="Close banner card"
+              title="Close card"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <div className="flex items-start gap-3.5">
+              <div className="w-10 h-10 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 flex items-center justify-center flex-shrink-0 text-[#25D366] mt-0.5">
+                <MessageSquare className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2">
+                  <span className="font-serif font-bold text-sm sm:text-base text-ivory-light">
+                    Direct Acquisition via WhatsApp
+                  </span>
+                  <span className="text-[9px] uppercase tracking-wider font-sans font-semibold px-2 py-0.5 rounded bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/30">
+                    Instant Team Support
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm font-sans text-ivory/80 mt-1 leading-relaxed max-w-2xl">
+                  To acquire any book from our catalogue, simply connect with our curatorial desk on WhatsApp. We provide verified UPI / card payment coordination and immediate digital delivery straight to your email and WhatsApp!
+                </p>
+              </div>
             </div>
-            <div>
-              <div className="inline-flex items-center gap-2">
-                <span className="font-serif font-bold text-sm sm:text-base text-ivory-light">
-                  Direct Acquisition via WhatsApp
+
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                'Hi QITAVRO Team! 👋 I would like to inquire about purchasing books from your collection. Please guide me.'
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full md:w-auto px-5 py-2.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-98 text-black font-sans text-xs uppercase tracking-widest font-bold rounded flex items-center justify-center gap-2 transition-all shadow-md flex-shrink-0 text-center"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>Chat on WhatsApp</span>
+            </a>
+          </div>
+        )}
+
+        {/* Sell Your Book on QITAVRO for ₹99 Promotion (Dismissable) */}
+        {showSellBanner && (
+          <div className="relative mb-6 p-3.5 sm:p-4 pr-10 sm:pr-12 rounded-[6px] bg-[#140D12] border border-gold/40 shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <button
+              onClick={() => setShowSellBanner(false)}
+              className="absolute top-2.5 right-2.5 p-1.5 text-ivory/50 hover:text-gold hover:bg-[#201018] rounded-full transition-colors active:scale-90"
+              aria-label="Close banner card"
+              title="Close card"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded bg-[#201018] flex items-center justify-center text-gold border border-gold/40 flex-shrink-0">
+                <Tag className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="font-serif font-bold text-xs sm:text-sm text-ivory-light block">
+                  Have books to sell? List them on QITAVRO for ₹99
                 </span>
-                <span className="text-[9px] uppercase tracking-wider font-sans font-semibold px-2 py-0.5 rounded bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/30">
-                  Instant Team Support
+                <span className="text-[10px] sm:text-[11px] font-sans text-ivory/60">
+                  Flat one-time fee • 0% sales commission • Inquiries routed directly to your WhatsApp.
                 </span>
               </div>
-              <p className="text-xs sm:text-sm font-sans text-ivory/80 mt-1 leading-relaxed max-w-2xl">
-                To acquire any book from our catalogue, simply connect with our curatorial desk on WhatsApp. We provide verified UPI / card payment coordination and immediate digital delivery straight to your email and WhatsApp!
-              </p>
             </div>
+            <Link
+              to="/sell"
+              className="px-4 py-2 bg-burgundy hover:bg-burgundy-light text-ivory-light rounded text-xs font-sans uppercase tracking-wider font-semibold border border-burgundy-rose/40 flex items-center gap-1.5 transition-colors flex-shrink-0"
+            >
+              <span>List Book (₹99)</span>
+              <ArrowRight className="w-3.5 h-3.5 text-gold" />
+            </Link>
           </div>
-
-          <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-              'Hi QITAVRO Team! 👋 I would like to inquire about purchasing books from your collection. Please guide me.'
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full md:w-auto px-5 py-2.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-98 text-black font-sans text-xs uppercase tracking-widest font-bold rounded flex items-center justify-center gap-2 transition-all shadow-md flex-shrink-0 text-center"
-          >
-            <MessageSquare className="w-4 h-4" />
-            <span>Chat on WhatsApp</span>
-          </a>
-        </div>
-
-        {/* Sell Your Book on QITAVRO for ₹99 Promotion */}
-        <div className="mb-6 p-3.5 sm:p-4 rounded-[6px] bg-[#140D12] border border-gold/40 shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded bg-[#201018] flex items-center justify-center text-gold border border-gold/40 flex-shrink-0">
-              <Tag className="w-4 h-4" />
-            </div>
-            <div>
-              <span className="font-serif font-bold text-xs sm:text-sm text-ivory-light block">
-                Have books to sell? List them on QITAVRO for ₹99
-              </span>
-              <span className="text-[10px] sm:text-[11px] font-sans text-ivory/60">
-                Flat one-time fee • 0% sales commission • Inquiries routed directly to your WhatsApp.
-              </span>
-            </div>
-          </div>
-          <Link
-            to="/sell"
-            className="px-4 py-2 bg-burgundy hover:bg-burgundy-light text-ivory-light rounded text-xs font-sans uppercase tracking-wider font-semibold border border-burgundy-rose/40 flex items-center gap-1.5 transition-colors flex-shrink-0"
-          >
-            <span>List Book (₹99)</span>
-            <ArrowRight className="w-3.5 h-3.5 text-gold" />
-          </Link>
-        </div>
+        )}
 
         {/* Controls Toolbar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 sm:pb-4 mb-4 sm:mb-6 border-b border-burgundy/25 gap-3">

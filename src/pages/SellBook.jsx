@@ -13,7 +13,9 @@ import {
   CheckCircle2, 
   Tag, 
   Clock, 
-  AlertCircle 
+  AlertCircle,
+  ArrowLeft,
+  X 
 } from 'lucide-react';
 import { useToast } from '../context/ToastContext';
 import { getWhatsAppListingUrl, WHATSAPP_NUMBER } from '../utils/whatsapp';
@@ -70,8 +72,18 @@ export default function SellBook() {
   return (
     <div className="bg-black-obsidian min-h-screen pb-24 text-ivory-light">
       {/* 1. Header Banner */}
-      <div className="bg-[#120C10] border-b border-burgundy/25 py-10 sm:py-16 text-center">
+      <div className="bg-[#120C10] border-b border-burgundy/25 py-8 sm:py-14 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="flex justify-start mb-4">
+            <Link
+              to="/shop"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-ivory/60 hover:text-rose-light transition-colors active:scale-95 px-3 py-1.5 rounded bg-[#181015] border border-burgundy/30"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-gold" />
+              <span>Back to Shop</span>
+            </Link>
+          </div>
+
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-6 h-[1.5px] bg-rose-light" />
             <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
@@ -435,7 +447,16 @@ export default function SellBook() {
                 </div>
 
                 {isSubmitted && (
-                  <div className="p-4 bg-[#181015] border-l-2 border-gold rounded text-xs font-sans text-ivory/90 space-y-2 mt-4 animate-in fade-in">
+                  <div className="relative p-4 pr-10 bg-[#181015] border-l-2 border-gold rounded text-xs font-sans text-ivory/90 space-y-2 mt-4 animate-in fade-in">
+                    <button
+                      type="button"
+                      onClick={() => setIsSubmitted(false)}
+                      className="absolute top-3 right-3 p-1 text-ivory/50 hover:text-rose-light rounded-full transition-colors"
+                      aria-label="Dismiss notice"
+                      title="Dismiss"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
                     <div className="flex items-center gap-2 text-gold font-bold">
                       <CheckCircle2 className="w-4 h-4" />
                       <span>Submission Draft Saved!</span>

@@ -11,6 +11,7 @@ import {
   Smartphone,
   BookOpen,
   Sparkles,
+  X,
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import BookCoverImage from '../components/BookCoverImage';
@@ -309,8 +310,24 @@ export default function Checkout() {
 
       {/* Demonstration Explanation Modal */}
       {isDemoModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md">
-          <div className="bg-[#140D12] rounded-[4px] border border-burgundy/40 p-5 sm:p-8 max-w-lg w-full shadow-2xl text-center text-ivory-light">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md"
+          onClick={() => setIsDemoModalOpen(false)}
+        >
+          <div 
+            className="relative bg-[#140D12] rounded-[4px] border border-burgundy/40 p-5 sm:p-8 max-w-lg w-full shadow-2xl text-center text-ivory-light"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Top Right Cross Close Button */}
+            <button
+              onClick={() => setIsDemoModalOpen(false)}
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 p-1.5 text-ivory/60 hover:text-rose-light hover:bg-[#20131B] border border-burgundy/30 rounded-full transition-all active:scale-90"
+              aria-label="Close modal"
+              title="Close"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
             <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[6px] bg-[#181015] p-2 mx-auto mb-3 sm:mb-4 border border-burgundy/40 shadow-sm flex items-center justify-center">
               <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
             </div>

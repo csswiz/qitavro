@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, ArrowRight, BookOpen, Star } from 'lucide-react';
+import { Search, X, ArrowRight, ArrowLeft, BookOpen, Star } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import booksData from '../data/books.json';
 import BookCoverImage from './BookCoverImage';
@@ -71,16 +71,26 @@ export default function SearchOverlay({ isOpen, onClose }) {
         <div className="max-w-4xl mx-auto w-full">
           {/* Header Row */}
           <div className="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-burgundy/25">
-            <span className="font-serif italic text-xs sm:text-sm text-gold tracking-wide">
-              Search the QITAVRO Catalogue
-            </span>
             <button
               onClick={onClose}
-              className="p-1 sm:p-1.5 text-ivory/60 hover:text-rose-light rounded hover:bg-[#20131B] transition-colors flex items-center gap-1.5 text-xs font-sans font-medium"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-rose-light hover:text-ivory-light p-1 -ml-1 rounded active:scale-95 transition-colors"
+              aria-label="Back"
+            >
+              <ArrowLeft className="w-4 h-4 text-gold" />
+              <span className="font-medium">Back</span>
+            </button>
+
+            <span className="font-serif italic text-xs sm:text-sm text-gold tracking-wide">
+              Search Catalogue
+            </span>
+
+            <button
+              onClick={onClose}
+              className="p-1 sm:p-1.5 text-ivory/60 hover:text-rose-light rounded-full hover:bg-[#20131B] border border-burgundy/30 transition-colors flex items-center gap-1 text-xs font-sans font-medium active:scale-90"
               aria-label="Close search"
             >
-              <span className="hidden sm:inline text-ivory/40">Press ESC or</span>
-              <X className="w-5 h-5" />
+              <span className="hidden sm:inline text-ivory/40 text-[10px] pr-1">ESC</span>
+              <X className="w-4 h-4" />
             </button>
           </div>
 

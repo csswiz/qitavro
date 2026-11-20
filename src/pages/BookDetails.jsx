@@ -66,17 +66,51 @@ export default function BookDetails() {
 
   return (
     <div className="bg-black-obsidian min-h-screen pb-24 text-ivory-light">
-      {/* Breadcrumb Navigation (Horizontally swipeable on mobile) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-5 border-b border-burgundy/25 text-xs font-sans text-ivory/60 flex items-center gap-2 overflow-x-auto no-scrollbar whitespace-nowrap">
-        <Link to="/" className="hover:text-rose-light transition-colors flex-shrink-0">Home</Link>
-        <span>/</span>
-        <Link to="/shop" className="hover:text-rose-light transition-colors flex-shrink-0">Shop</Link>
-        <span>/</span>
-        <Link to={`/shop?genre=${encodeURIComponent(book.category)}`} className="hover:text-rose-light transition-colors flex-shrink-0">
-          {book.category}
-        </Link>
-        <span>/</span>
-        <span className="text-ivory-light font-medium truncate">{book.title}</span>
+      {/* Top Navigation Bar with Dedicated Back Button & Breadcrumbs */}
+      <div className="border-b border-burgundy/25 bg-[#120C10]/90 sticky top-16 sm:top-20 z-30 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar whitespace-nowrap text-xs font-sans text-ivory/60">
+            {/* Dedicated Back Button */}
+            <button
+              onClick={() => {
+                if (window.history.state && window.history.state.idx > 0) {
+                  navigate(-1);
+                } else {
+                  navigate('/shop');
+                }
+              }}
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded bg-[#181015] hover:bg-burgundy text-ivory-light font-medium border border-burgundy/40 transition-colors flex-shrink-0 active:scale-95 shadow-sm"
+              aria-label="Go back"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-gold" />
+              <span>Back</span>
+            </button>
+
+            <span className="text-ivory/30">|</span>
+
+            {/* Breadcrumb Links */}
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <Link to="/" className="hover:text-rose-light transition-colors flex-shrink-0">Home</Link>
+              <span>/</span>
+              <Link to="/shop" className="hover:text-rose-light transition-colors flex-shrink-0">Shop</Link>
+              <span>/</span>
+              <Link to={`/shop?genre=${encodeURIComponent(book.category)}`} className="hover:text-rose-light transition-colors flex-shrink-0">
+                {book.category}
+              </Link>
+              <span>/</span>
+              <span className="text-ivory-light font-medium truncate max-w-[120px] sm:max-w-[260px]">{book.title}</span>
+            </div>
+          </div>
+
+          {/* Quick Catalogue shortcut */}
+          <Link
+            to="/shop"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-rose-light hover:text-ivory-light transition-colors font-medium flex-shrink-0"
+          >
+            <span>All Books</span>
+            <BookOpen className="w-3.5 h-3.5 text-gold" />
+          </Link>
+        </div>
       </div>
 
       {/* Main Product Showcase */}

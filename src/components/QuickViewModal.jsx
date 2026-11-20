@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Star, Heart, ShoppingBag, ArrowRight, Check, BookOpen, MessageSquare } from 'lucide-react';
+import { X, Star, Heart, ShoppingBag, ArrowRight, ArrowLeft, Check, BookOpen, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BookCoverImage from './BookCoverImage';
 import { useCart } from '../context/CartContext';
@@ -52,14 +52,29 @@ export default function QuickViewModal({ book, isOpen, onClose }) {
         className="relative bg-[#140D12] rounded-[4px] shadow-modal max-w-3xl w-full max-h-[92vh] overflow-y-auto border border-burgundy/40 p-4 sm:p-8 text-ivory-light"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 text-ivory/60 hover:text-rose-light hover:bg-[#20131B] rounded transition-colors"
-          aria-label="Close modal"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        {/* Sticky Mobile/Desktop Header with Back and Cross Close Buttons */}
+        <div className="sticky -top-4 sm:-top-8 -mx-4 sm:-mx-8 px-4 sm:px-8 py-2.5 sm:py-3 bg-[#140D12]/95 backdrop-blur-md border-b border-burgundy/30 flex items-center justify-between z-30 mb-4 sm:mb-6">
+          <button
+            onClick={onClose}
+            className="inline-flex items-center gap-1.5 text-xs font-sans text-ivory/70 hover:text-rose-light transition-colors p-1 -ml-1 rounded active:scale-95"
+            aria-label="Back to browse"
+          >
+            <ArrowLeft className="w-4 h-4 text-gold" />
+            <span className="font-medium">Back</span>
+          </button>
+
+          <span className="font-serif italic text-xs text-gold/80 truncate px-2 hidden sm:inline">
+            Quick Preview · {book.title}
+          </span>
+
+          <button
+            onClick={onClose}
+            className="p-1.5 text-ivory/70 hover:text-rose-light hover:bg-[#20131B] border border-burgundy/30 rounded-full transition-all active:scale-90"
+            aria-label="Close modal"
+          >
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start pt-2 sm:pt-0">
           {/* Left: Book Cover */}
@@ -246,6 +261,15 @@ export default function QuickViewModal({ book, isOpen, onClose }) {
                   Full Specifications & Reflections
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
+
+                <button
+                  onClick={onClose}
+                  className="text-ivory/50 hover:text-rose-light text-[11px] font-sans flex items-center gap-1 transition-colors px-2.5 py-1 rounded bg-[#180E14] hover:bg-[#20131B] border border-burgundy/25"
+                  aria-label="Close modal"
+                >
+                  <X className="w-3 h-3" />
+                  <span>Close</span>
+                </button>
               </div>
             </div>
           </div>

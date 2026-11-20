@@ -1,5 +1,5 @@
 import React from 'react';
-import { Filter, X, RotateCcw, Check, Star } from 'lucide-react';
+import { Filter, X, RotateCcw, Check, Star, ArrowLeft } from 'lucide-react';
 
 export default function FilterSidebar({
   genres = [],
@@ -180,21 +180,44 @@ export default function FilterSidebar({
       {/* Mobile drawer view */}
       {isMobileOpen && (
         <div className="fixed inset-0 z-50 flex lg:hidden bg-black/85 backdrop-blur-sm">
-          <div className="relative w-80 max-w-[85vw] bg-[#140D12] border-r border-burgundy/40 h-full p-6 overflow-y-auto shadow-2xl flex flex-col justify-between">
-            <button
-              onClick={onCloseMobile}
-              className="absolute top-4 right-4 p-2 text-ivory/70 hover:text-rose-light"
-              aria-label="Close filters"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <div className="pt-4">{content}</div>
-            <div className="mt-8 pt-4 border-t border-burgundy/25">
+          <div className="relative w-80 max-w-[85vw] bg-[#140D12] border-r border-burgundy/40 h-full p-5 sm:p-6 overflow-y-auto shadow-2xl flex flex-col justify-between">
+            <div>
+              {/* Mobile Drawer Top Bar with Back and Cross */}
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-burgundy/30">
+                <button
+                  onClick={onCloseMobile}
+                  className="inline-flex items-center gap-1.5 text-xs font-sans text-rose-light hover:text-ivory-light p-1 -ml-1 rounded active:scale-95"
+                  aria-label="Back"
+                >
+                  <ArrowLeft className="w-4 h-4 text-gold" />
+                  <span className="font-semibold">Back</span>
+                </button>
+
+                <button
+                  onClick={onCloseMobile}
+                  className="p-1.5 bg-[#1C0D15] border border-burgundy/40 text-ivory/70 hover:text-rose-light rounded-full transition-all active:scale-90"
+                  aria-label="Close filters"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              <div>{content}</div>
+            </div>
+
+            <div className="mt-8 pt-4 border-t border-burgundy/25 flex gap-2">
               <button
                 onClick={onCloseMobile}
-                className="w-full py-2.5 bg-burgundy hover:bg-burgundy-light text-ivory-light text-xs font-sans uppercase tracking-widest font-semibold rounded border border-burgundy-rose/30"
+                className="flex-1 py-2.5 bg-burgundy hover:bg-burgundy-light active:scale-98 text-ivory-light text-xs font-sans uppercase tracking-widest font-semibold rounded border border-burgundy-rose/30 transition-all text-center"
               >
                 Apply Filters
+              </button>
+              <button
+                onClick={onCloseMobile}
+                className="px-3 py-2.5 bg-[#181015] border border-burgundy/30 text-ivory/70 hover:text-rose-light rounded text-xs font-sans"
+                aria-label="Close"
+              >
+                Close
               </button>
             </div>
           </div>
