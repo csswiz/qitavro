@@ -21,9 +21,6 @@ import FluidHeroNavbar from '../components/ui/woodpeck-hero-landing-animation';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 
-// Lazy-load 3D components so Three.js is not loaded synchronously upfront
-const HeroDragon3D = React.lazy(() => import('../components/HeroDragon3D'));
-
 export default function Home() {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
@@ -65,12 +62,7 @@ export default function Home() {
         }}
       />
 
-      <div id="explore-shelf" className="relative">
-        {/* Live 3D Mythic Guardian Dragon (Hanging souvenir, lazy-loaded on desktop) */}
-        <React.Suspense fallback={null}>
-          <HeroDragon3D modelUrl="/models/dragon.glb" />
-        </React.Suspense>
-      </div>
+      <div id="explore-shelf" />
 
       {/* 2. BRAND PHILOSOPHY */}
       <section className="py-12 sm:py-16 md:py-20 bg-[#10090D] border-b border-burgundy/25">
