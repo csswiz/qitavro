@@ -7,7 +7,7 @@ import BookGrid from '../components/BookGrid';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useToast } from '../context/ToastContext';
-import { getWhatsAppBuyUrl, DISPLAY_WHATSAPP_NUMBER } from '../utils/whatsapp';
+import { getWhatsAppBuyUrl } from '../utils/whatsapp';
 
 export default function BookDetails() {
   const { slug } = useParams();
@@ -213,7 +213,7 @@ export default function BookDetails() {
               </div>
               <div className="text-xs font-sans text-ivory/80 leading-relaxed">
                 <strong className="text-ivory-light font-medium block">
-                  Purchases Handled Directly on WhatsApp ({DISPLAY_WHATSAPP_NUMBER}):
+                  Purchases Handled Directly on WhatsApp:
                 </strong>
                 To buy this book, message our team on WhatsApp. We provide instant order verification, secure UPI / card payment, and immediate download links.
               </div>

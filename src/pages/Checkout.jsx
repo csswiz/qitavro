@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import BookCoverImage from '../components/BookCoverImage';
-import { getWhatsAppCartUrl, WHATSAPP_NUMBER, DISPLAY_WHATSAPP_NUMBER } from '../utils/whatsapp';
+import { getWhatsAppCartUrl, WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function Checkout() {
   const { cart, subtotal, discountAmount, total, appliedCoupon } = useCart();
@@ -23,7 +23,7 @@ export default function Checkout() {
   const [formData, setFormData] = useState({
     name: 'Alexander Sterling',
     email: 'alexander@literarysanctuary.org',
-    phone: '+91 98765 43210',
+    phone: '',
     readingDevice: 'Apple Books (iPhone / iPad / Mac)',
     dedicationNote: 'For a late-night reader with an affinity for gothic romance.',
   });
@@ -84,7 +84,7 @@ export default function Checkout() {
             <strong className="font-semibold block text-sm font-serif text-ivory-light">
               Demonstration Store Notice:
             </strong>
-            QITAVRO is an interactive editorial demonstration application. Real payment gateways and live automated merchant accounts are intentionally disengaged. Orders can be completed directly through our curatorial desk on WhatsApp ({DISPLAY_WHATSAPP_NUMBER}).
+            QITAVRO is an interactive editorial demonstration application. Real payment gateways and live automated merchant accounts are intentionally disengaged. Orders can be completed directly through our curatorial desk on WhatsApp.
           </div>
         </div>
       </div>
@@ -141,7 +141,7 @@ export default function Checkout() {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full bg-[#181015] border border-burgundy/35 focus:border-rose-light rounded px-3.5 py-2.5 text-xs font-sans text-ivory-light outline-none"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 XXXXX XXXXX"
                   />
                   <span className="text-[10px] text-ivory/50 font-sans mt-1 block">
                     Used for WhatsApp order confirmation and download backup.

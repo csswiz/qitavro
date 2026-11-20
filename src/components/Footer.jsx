@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Compass, Feather, ShieldCheck, Mail, ArrowUpRight, MessageSquare } from 'lucide-react';
-import { WHATSAPP_NUMBER, DISPLAY_WHATSAPP_NUMBER } from '../utils/whatsapp';
+import { WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function Footer() {
   return (
@@ -166,7 +166,7 @@ export default function Footer() {
                   className="text-rose-light hover:text-gold transition-colors font-medium flex items-center gap-1.5"
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span>WhatsApp: {DISPLAY_WHATSAPP_NUMBER}</span>
+                  <span>Chat with Us on WhatsApp</span>
                 </a>
               </li>
               <li>

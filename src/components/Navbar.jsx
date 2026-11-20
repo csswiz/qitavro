@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import SearchOverlay from './SearchOverlay';
 import MobileBottomNav from './MobileBottomNav';
+import { WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function Navbar() {
   const { cartCount } = useCart();
@@ -40,12 +41,14 @@ export default function Navbar() {
           <span>QITAVRO Literary Sanctuary</span>
           <span className="text-gold">•</span>
           <a
-            href="https://wa.me/917838354944?text=Hi%20QITAVRO%20Team!%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20purchasing%20or%20listing%20books."
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+              'Hi QITAVRO Team! 👋 I would like to inquire about purchasing or listing books.'
+            )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gold text-ivory/90 transition-colors underline decoration-gold/40 underline-offset-2"
           >
-            WhatsApp Desk: +91 78383 54944
+            Order / Inquire via WhatsApp
           </a>
           <span className="text-gold">•</span>
           <Link to="/sell" className="hover:text-gold text-rose-light font-medium underline">
