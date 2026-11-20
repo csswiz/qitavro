@@ -1,6 +1,6 @@
 import React from 'react';
 import LegalLayout from '../components/LegalLayout';
-import { ShieldCheck, BookOpen, Truck, RefreshCw } from 'lucide-react';
+import { ShieldCheck, BookOpen, RefreshCw } from 'lucide-react';
 
 export default function TermsOfService() {
   return (

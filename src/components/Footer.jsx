@@ -150,7 +150,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/listing-policy" className="hover:text-rose-light transition-colors">
-                  Listing & Grading Policy
+                  eBook Listing Policy
                 </Link>
               </li>
               <li>

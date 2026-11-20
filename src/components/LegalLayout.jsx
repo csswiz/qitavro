@@ -19,13 +19,13 @@ const navItems = [
     path: '/listing-policy',
     label: 'Listing Policy',
     icon: ListChecks,
-    desc: 'Curated editions & condition standards',
+    desc: 'Digital formatting standards & author guidelines',
   },
   {
     path: '/disclaimer',
     label: 'Buying & Selling Disclaimer',
     icon: AlertCircle,
-    desc: 'Disclosures for pre-loved & rare works',
+    desc: 'Disclosures for eBook editions & DRM-free access',
   },
 ];
 
@@ -159,7 +159,7 @@ export default function LegalLayout({
                 <span>Legal & Curation Desk</span>
               </div>
               <p className="text-[11px] leading-relaxed text-ivory/70">
-                Have specific queries regarding condition grading, archival shipments, or policy interpretations?
+                Have specific queries regarding digital eBook licensing, formatting standards, or policy interpretations?
               </p>
               <a
                 href="mailto:legal@qitavro.com"
@@ -181,7 +181,7 @@ export default function LegalLayout({
                 <span>Legal & Curation Desk</span>
               </div>
               <p className="text-[11px] leading-relaxed text-ivory/70">
-                Have specific queries regarding condition grading, archival shipments, or policy interpretations?
+                Have specific queries regarding digital eBook licensing, formatting standards, or policy interpretations?
               </p>
               <a
                 href="mailto:legal@qitavro.com"
