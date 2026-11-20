@@ -7,7 +7,7 @@
     "description": "Monumental works that have withstood decades and centuries, continuing to illuminate the human condition with unmatched depth and lyrical grace.",
     "intro": "A classic is a book that has never finished saying what it has to say. We selected these clothbound and deckle-edged volumes not as museum artifacts, but as urgent companions for contemporary living.",
     "coverImage": "/images/collections/the-classics-collection.svg",
-    "bookIds": [8, 9, 13, 17, 22, 24],
+    "bookIds": [1, 2, 3],
     "featured": true
   },
   {
@@ -18,7 +18,7 @@
     "description": "Lesser-known masterworks, quiet revelations, and cult classics curated for discerning readers seeking uncommon discoveries.",
     "intro": "The truest literary treasures rarely shout from airport bestseller racks. These are the books passed hand-to-hand among poets, translators, and thoughtful bookshop proprietors.",
     "coverImage": "/images/collections/hidden-literary-gems.svg",
-    "bookIds": [4, 5, 12, 21, 23, 24],
+    "bookIds": [1, 2, 3],
     "featured": true
   },
   {
@@ -29,7 +29,7 @@
     "description": "Books that reward returning to them at different seasons of your life, revealing subtle layers each time you turn their pages.",
     "intro": "When you reread a great book, you don't see more in it than you did before; you see more in you than there was before. These are the lifelong volumes on our private shelves.",
     "coverImage": "/images/collections/books-worth-rereading.svg",
-    "bookIds": [1, 3, 8, 11, 12, 22],
+    "bookIds": [1, 2, 3],
     "featured": true
   },
   {
@@ -40,7 +40,7 @@
     "description": "Foundational texts from ancient stoics to existential thinkers, offering clarity and grounding in a chaotic world.",
     "intro": "Philosophy at its finest is not dry academic jargon, but an intimate manual for how to bear sorrow, navigate choice, and cultivate an unshakeable inner citadel.",
     "coverImage": "/images/collections/philosophy-and-thought.svg",
-    "bookIds": [3, 10, 11, 23, 4],
+    "bookIds": [1, 2, 3],
     "featured": true
   },
   {
@@ -51,7 +51,7 @@
     "description": "Mesmerizing narratives, spellbinding prose, and unforgettable characters that celebrate the sublime narrative art.",
     "intro": "Fiction allows us to live a thousand lives before we die. From the gothic shadows of Barcelona to futuristic allegories of empathy, immerse yourself in our essential modern fiction.",
     "coverImage": "/images/collections/fiction-essentials.svg",
-    "bookIds": [1, 14, 15, 7, 18, 16],
+    "bookIds": [1, 2, 3],
     "featured": true
   },
   {
@@ -62,7 +62,7 @@
     "description": "Cozy, absorbing, and atmospheric reads designed to accompany a steaming pot of coffee, soft rain, and unhurried afternoons.",
     "intro": "Books meant to be savored in comfortable armchairs over two leisurely days. Atmospheric bookstores, magical Tokyo cafes, and quiet winter mornings in rural Ireland.",
     "coverImage": "/images/collections/weekend-reading.svg",
-    "bookIds": [6, 7, 16, 21, 18],
+    "bookIds": [1, 2, 3],
     "featured": true
   },
   {
@@ -73,7 +73,7 @@
     "description": "Every reader deserves access to brilliant books. Discover world-class fiction, philosophy, and timeless poetry under ₹299.",
     "intro": "Great literature should never be an exclusive luxury. We partner with classical publishers to offer these seminal volumes at accessible price points without compromising paper quality or typography.",
     "coverImage": "/images/collections/under-299.svg",
-    "bookIds": [8, 13, 24, 17, 22, 7, 6, 3, 11, 16, 21, 23],
+    "bookIds": [1, 2, 3],
     "featured": true
   },
   {
@@ -84,7 +84,7 @@
     "description": "The personal favorites of our editorial team—books that inspired our manifesto and embody the literary soul of QITAVRO.",
     "intro": "These are the books we press into the hands of our closest friends. Each has demonstrated an extraordinary fidelity to language, atmosphere, and authentic insight.",
     "coverImage": "/images/collections/editors-recommendations.svg",
-    "bookIds": [1, 4, 12, 14, 3, 5],
+    "bookIds": [1, 2, 3],
     "featured": true
   }
 ]

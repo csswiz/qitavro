@@ -8,10 +8,12 @@ import { getWhatsAppBuyUrl } from '../utils/whatsapp';
 
 export default function QuickViewModal({ book, isOpen, onClose }) {
   const [quantity, setQuantity] = useState(1);
+  const [selectedImage, setSelectedImage] = useState(book?.image);
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
 
   useEffect(() => {
+    setSelectedImage(book?.image);
     setQuantity(1);
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -61,10 +63,10 @@ export default function QuickViewModal({ book, isOpen, onClose }) {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start pt-2 sm:pt-0">
           {/* Left: Book Cover */}
-          <div className="md:col-span-5 flex justify-center">
+          <div className="md:col-span-5 flex flex-col items-center">
             <div className="w-full max-w-[180px] sm:max-w-[260px]">
               <BookCoverImage
-                src={book.image}
+                src={selectedImage || book.image}
                 alt={book.title}
                 title={book.title}
                 author={book.author}
@@ -77,6 +79,27 @@ export default function QuickViewModal({ book, isOpen, onClose }) {
                 </span>
               </div>
             </div>
+
+            {/* Gallery Thumbnails if available */}
+            {book.previewImages && book.previewImages.length > 0 && (
+              <div className="mt-3 w-full max-w-[180px] sm:max-w-[260px]">
+                <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
+                  {book.previewImages.slice(0, 6).map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedImage(img)}
+                      className={`relative w-9 h-12 rounded overflow-hidden border transition-all flex-shrink-0 ${
+                        (selectedImage || book.image) === img
+                          ? 'border-gold scale-105'
+                          : 'border-burgundy/40 opacity-70 hover:opacity-100'
+                      }`}
+                    >
+                      <img src={img} alt={`Preview ${idx}`} className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Right: Book Details */}

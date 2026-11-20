@@ -19,12 +19,14 @@ export default function BookDetails() {
   const { addToast } = useToast();
 
   const book = booksData.find((b) => b.slug === slug || String(b.id) === slug);
+  const [selectedImage, setSelectedImage] = useState(book?.image);
 
   // Scroll to top on slug change
   useEffect(() => {
     window.scrollTo(0, 0);
     setQuantity(1);
-  }, [slug]);
+    setSelectedImage(book?.image);
+  }, [slug, book]);
 
   if (!book) {
     return (
@@ -85,7 +87,7 @@ export default function BookDetails() {
           <div className="lg:col-span-5 flex flex-col items-center">
             <div className="w-full max-w-[260px] sm:max-w-[340px] shadow-2xl relative">
               <BookCoverImage
-                src={book.image}
+                src={selectedImage || book.image}
                 alt={book.title}
                 title={book.title}
                 author={book.author}
@@ -98,6 +100,34 @@ export default function BookDetails() {
                 </div>
               )}
             </div>
+
+            {/* Preview Gallery Thumbnails if available */}
+            {book.previewImages && book.previewImages.length > 0 && (
+              <div className="mt-4 w-full max-w-[260px] sm:max-w-[340px]">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] font-sans uppercase tracking-widest text-gold font-medium">
+                    Edition & Excerpt Gallery ({book.previewImages.length})
+                  </span>
+                  <span className="text-[9px] text-ivory/50 font-sans">Click to inspect</span>
+                </div>
+                <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+                  {book.previewImages.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedImage(img)}
+                      className={`relative w-12 h-16 rounded overflow-hidden border-2 transition-all flex-shrink-0 ${
+                        (selectedImage || book.image) === img
+                          ? 'border-gold shadow-md scale-105'
+                          : 'border-burgundy/40 opacity-70 hover:opacity-100 hover:border-burgundy'
+                      }`}
+                      title={`Preview ${idx === 0 ? 'Cover' : `Page ${idx}`}`}
+                    >
+                      <img src={img} alt={`Preview ${idx}`} className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Quick trust cues under cover */}
             <div className="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-[260px] sm:max-w-[340px] text-[10px] sm:text-[11px] font-sans text-ivory/70">
