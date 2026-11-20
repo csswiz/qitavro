@@ -211,39 +211,55 @@ export function BrandWordmark({
   const isBurgundy = theme === 'burgundy';
 
   return (
-    <div className="flex items-center select-none group">
+    <div className="flex items-center gap-2.5 sm:gap-3 select-none group">
+      {/* Official QITAVRO Emblem Logo */}
+      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-[4px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+        <img
+          src="/logo.svg"
+          alt={`${brandName} Logo`}
+          className="w-full h-full object-contain"
+        />
+      </div>
+
       {/* Brand text */}
-      <div
-        className={`flex items-baseline font-serif font-bold text-lg sm:text-xl tracking-[0.18em] transition-colors duration-300 ${
-          isScrolled
-            ? isBurgundy
-              ? 'text-ivory-light group-hover:text-rose-light'
-              : 'text-neutral-900'
-            : 'text-white'
-        }`}
-        style={{
-          fontFamily: isBurgundy
-            ? "var(--font-serif, 'Cinzel', serif)"
-            : "var(--font-aeonik-pro, system-ui, -apple-system, sans-serif)",
-        }}
-      >
-        {isAroof ? (
-          <>
-            <span>a</span>
-            <RoofMark
-              fill={isScrolled ? accentColor : '#ffffff'}
-              width="0.16em"
-              height="0.1em"
-              style={{
-                marginLeft: '0.08em',
-                marginRight: '0.04em',
-                verticalAlign: 'baseline',
-              }}
-            />
-            <span>roof</span>
-          </>
-        ) : (
-          <span>{brandName}</span>
+      <div className="flex flex-col">
+        <div
+          className={`flex items-baseline font-serif font-bold text-lg sm:text-xl tracking-[0.18em] transition-colors duration-300 ${
+            isScrolled
+              ? isBurgundy
+                ? 'text-ivory-light group-hover:text-rose-light'
+                : 'text-neutral-900'
+              : 'text-white'
+          }`}
+          style={{
+            fontFamily: isBurgundy
+              ? "var(--font-serif, 'Cinzel', serif)"
+              : "var(--font-aeonik-pro, system-ui, -apple-system, sans-serif)",
+          }}
+        >
+          {isAroof ? (
+            <>
+              <span>a</span>
+              <RoofMark
+                fill={isScrolled ? accentColor : '#ffffff'}
+                width="0.16em"
+                height="0.1em"
+                style={{
+                  marginLeft: '0.08em',
+                  marginRight: '0.04em',
+                  verticalAlign: 'baseline',
+                }}
+              />
+              <span>roof</span>
+            </>
+          ) : (
+            <span>{brandName}</span>
+          )}
+        </div>
+        {isBurgundy && (
+          <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.24em] font-sans text-burgundy-rose font-medium mt-0.5 leading-none">
+            Literary Bookstore
+          </span>
         )}
       </div>
     </div>
@@ -565,6 +581,19 @@ function FloatingNavbar({
         }`}
         aria-hidden={!mobileMenuOpen}
       >
+        {/* Brand Emblem in Mobile Drawer */}
+        <div className="flex flex-col items-center mb-6">
+          <div className="w-14 h-14 rounded-[6px] p-2 bg-[#181015] border border-burgundy/40 shadow-lg mb-2.5 flex items-center justify-center">
+            <img src="/logo.svg" alt={`${brandName} Logo`} className="w-full h-full object-contain" />
+          </div>
+          <span className="font-serif text-2xl font-bold tracking-[0.2em] text-ivory-light uppercase leading-none">
+            {brandName}
+          </span>
+          <span className="text-[9px] uppercase tracking-[0.28em] font-sans text-gold font-medium mt-1 leading-none">
+            Literary Bookstore
+          </span>
+        </div>
+
         <ul className="flex flex-col gap-4 sm:gap-6 list-none m-0 p-0 text-center w-full max-w-sm my-auto">
           {navLinks.map((link) => (
             <li key={link.name}>

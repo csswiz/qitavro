@@ -135,8 +135,8 @@ export default function Wishlist() {
         ) : (
           /* Empty Wishlist State */
           <div className="py-12 sm:py-16 text-center max-w-md mx-auto bg-[#140D12] p-6 sm:p-8 rounded-[4px] border border-burgundy/30 text-ivory-light shadow-subtle">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#1C0D15] mx-auto flex items-center justify-center text-rose-light mb-4 border border-burgundy/40">
-              <Heart className="w-6 h-6 sm:w-7 sm:h-7 stroke-[1.2]" />
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[6px] p-2 bg-[#1C0D15] mx-auto flex items-center justify-center mb-4 border border-burgundy/40 shadow-md">
+              <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
             </div>
             <h2 className="font-serif font-bold text-xl sm:text-2xl text-ivory-light">
               Your Saved Shelf is Empty

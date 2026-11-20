@@ -58,6 +58,9 @@ export default function LegalLayout({
       <div className="bg-gradient-to-r from-[#200A11] via-[#35121D] to-[#16070D] text-ivory-light py-8 sm:py-14 border-b border-burgundy/40 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center gap-2 mb-2 sm:mb-3">
+            <div className="w-5 h-5 rounded-[3px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+              <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
+            </div>
             <span className="w-4 sm:w-5 h-[1.5px] bg-gold" />
             <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-gold font-semibold">
               QITAVRO Governance & Trust
@@ -73,8 +76,8 @@ export default function LegalLayout({
           )}
         </div>
         {/* Subtle decorative background watermark */}
-        <div className="absolute right-0 bottom-0 translate-x-10 translate-y-10 text-white/5 font-serif font-bold text-8xl sm:text-9xl select-none pointer-events-none">
-          Q
+        <div className="absolute right-4 bottom-2 opacity-5 select-none pointer-events-none w-32 h-32 sm:w-48 sm:h-48">
+          <img src="/logo.svg" alt="" className="w-full h-full object-contain filter invert" />
         </div>
       </div>
 

@@ -84,6 +84,11 @@ export default function SellBook() {
             </Link>
           </div>
 
+          {/* Official Brand Seal */}
+          <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 p-2 rounded-[6px] bg-[#181015] border border-burgundy/40 shadow-md flex items-center justify-center">
+            <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
+          </div>
+
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-6 h-[1.5px] bg-rose-light" />
             <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">

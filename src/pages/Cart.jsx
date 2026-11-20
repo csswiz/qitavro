@@ -216,8 +216,8 @@ export default function Cart() {
           /* Empty Cart State with Recommendations */
           <div className="py-12">
             <div className="max-w-md mx-auto text-center bg-[#140D12] p-8 rounded-[4px] border border-burgundy/30 shadow-subtle text-ivory-light">
-              <div className="w-16 h-16 rounded-full bg-[#1C0D15] mx-auto flex items-center justify-center text-gold mb-4 border border-burgundy/40">
-                <ShoppingBag className="w-7 h-7 stroke-[1.2]" />
+              <div className="w-16 h-16 rounded-[6px] p-2 bg-[#1C0D15] mx-auto flex items-center justify-center mb-4 border border-burgundy/40 shadow-md">
+                <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
               </div>
               <h2 className="font-serif font-bold text-2xl text-ivory-light">
                 Your Reading Bag is Empty

@@ -256,11 +256,16 @@ export default function BookDetails() {
 
             {/* Curator Quote Note */}
             {book.curatorNote && (
-              <div className="p-3.5 sm:p-4 bg-[#140D12] border-l-2 border-gold rounded-r text-xs sm:text-sm font-serif italic text-ivory/90 mb-4 sm:mb-5 leading-relaxed">
-                "{book.curatorNote}"
-                <span className="block not-italic font-sans text-[9px] sm:text-[10px] text-ivory/50 uppercase tracking-widest mt-1">
-                  — QITAVRO Editorial Note
-                </span>
+              <div className="p-3.5 sm:p-4 bg-[#140D12] border-l-2 border-gold rounded-r text-xs sm:text-sm font-serif italic text-ivory/90 mb-4 sm:mb-5 leading-relaxed flex items-start gap-3">
+                <div className="w-6 h-6 rounded-[3px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex-shrink-0 mt-0.5">
+                  <img src="/logo.svg" alt="QITAVRO Emblem" className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  "{book.curatorNote}"
+                  <span className="block not-italic font-sans text-[9px] sm:text-[10px] text-ivory/50 uppercase tracking-widest mt-1">
+                    — QITAVRO Editorial Note
+                  </span>
+                </div>
               </div>
             )}
 
