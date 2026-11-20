@@ -36,10 +36,14 @@ export default function Navbar() {
           }`}
       >
         {/* Subtle Announcement / Curator Note Bar */}
-        <div className="bg-[#200A11] border-b border-burgundy/30 text-ivory-light text-[10px] sm:text-[11px] font-sans py-1.5 px-3 text-center tracking-wider font-light flex items-center justify-center gap-2 sm:gap-3">
+        <div className="bg-[#200A11] border-b border-burgundy/30 text-ivory-light text-[10px] sm:text-[11px] font-sans py-1.5 px-3 text-center tracking-wider font-light flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
           <span>QITAVRO Literary Sanctuary</span>
           <span className="text-gold">•</span>
-          <span>Curated Independent Editions & Instant Digital Reads</span>
+          <span>Acquire Any Book via WhatsApp</span>
+          <span className="text-gold">•</span>
+          <Link to="/sell" className="hover:text-gold text-rose-light font-medium underline">
+            List your book for sale (₹99) →
+          </Link>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,12 +72,17 @@ export default function Navbar() {
             </div>
 
             {/* Centre: Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-7">
               <NavLink to="/" className={navLinkClass}>
                 Home
               </NavLink>
               <NavLink to="/shop" className={navLinkClass}>
                 Shop
+              </NavLink>
+              <NavLink to="/sell" className={navLinkClass}>
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-burgundy/60 text-gold border border-gold/40 text-xs font-semibold shadow-xs">
+                  Sell Book (₹99)
+                </span>
               </NavLink>
               <NavLink to="/about" className={navLinkClass}>
                 About

@@ -181,13 +181,22 @@ export default function Home() {
               Current Shelf
             </h2>
           </div>
-          <Link
-            to="/shop"
-            className="mt-3 md:mt-0 inline-flex items-center gap-1.5 text-xs font-sans uppercase tracking-widest font-semibold text-rose-light hover:text-ivory-light transition-colors"
-          >
-            <span>View Catalogue</span>
-            <ArrowRight className="w-3.5 h-3.5 text-gold" />
-          </Link>
+          <div className="flex items-center gap-2.5 sm:gap-4 flex-wrap">
+            <Link
+              to="/sell"
+              className="mt-3 md:mt-0 inline-flex items-center gap-1.5 text-xs font-sans uppercase tracking-widest font-semibold px-3 py-1.5 rounded bg-[#181015] hover:bg-burgundy text-gold border border-gold/40 transition-colors"
+            >
+              <span>Sell on QITAVRO (₹99)</span>
+              <ArrowRight className="w-3.5 h-3.5 text-gold" />
+            </Link>
+            <Link
+              to="/shop"
+              className="mt-3 md:mt-0 inline-flex items-center gap-1.5 text-xs font-sans uppercase tracking-widest font-semibold text-rose-light hover:text-ivory-light transition-colors"
+            >
+              <span>View Catalogue</span>
+              <ArrowRight className="w-3.5 h-3.5 text-gold" />
+            </Link>
+          </div>
         </div>
 
         {/* The singular book available in store */}

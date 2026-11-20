@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Eye, ShoppingBag, Star } from 'lucide-react';
+import { Heart, Eye, ShoppingBag, Star, MessageSquare } from 'lucide-react';
 import BookCoverImage from './BookCoverImage';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
+import { getWhatsAppBuyUrl } from '../utils/whatsapp';
 
 export default function BookCard({ book, onQuickView }) {
   const { addToCart } = useCart();
@@ -121,6 +122,19 @@ export default function BookCard({ book, onQuickView }) {
           </div>
 
           <div className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
+            {/* Direct Buy via WhatsApp button */}
+            <a
+              href={getWhatsAppBuyUrl(book)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="p-1.5 sm:px-2.5 sm:py-1.5 bg-[#25D366]/20 hover:bg-[#25D366] text-[#25D366] hover:text-black border border-[#25D366]/40 rounded text-[11px] sm:text-xs font-sans font-semibold flex items-center gap-1 transition-all active:scale-95"
+              title="Buy directly via WhatsApp"
+            >
+              <MessageSquare className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <span className="hidden sm:inline">WhatsApp</span>
+            </a>
+
             {/* Mobile quick view */}
             <button
               onClick={() => onQuickView?.(book)}
@@ -133,7 +147,7 @@ export default function BookCard({ book, onQuickView }) {
             {/* Direct Add to Cart Button */}
             <button
               onClick={() => addToCart(book, 1)}
-              className="p-1.5 sm:px-3 sm:py-1.5 bg-burgundy hover:bg-burgundy-light active:scale-95 text-ivory-light rounded text-xs font-sans font-medium flex items-center gap-1 transition-colors shadow-subtle border border-burgundy-rose/30"
+              className="p-1.5 sm:px-2.5 sm:py-1.5 bg-burgundy hover:bg-burgundy-light active:scale-95 text-ivory-light rounded text-xs font-sans font-medium flex items-center gap-1 transition-colors shadow-subtle border border-burgundy-rose/30"
               aria-label="Add to Bag"
               title="Add to Shopping Bag"
             >

@@ -94,6 +94,11 @@ export default function Footer() {
                   Featured Reads
                 </Link>
               </li>
+              <li>
+                <Link to="/sell" className="hover:text-gold text-rose-light font-semibold transition-colors">
+                  Sell Your Book (₹99)
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { X, Star, Heart, ShoppingBag, ArrowRight, Check, BookOpen } from 'lucide-react';
+import { X, Star, Heart, ShoppingBag, ArrowRight, Check, BookOpen, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BookCoverImage from './BookCoverImage';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
+import { getWhatsAppBuyUrl } from '../utils/whatsapp';
 
 export default function QuickViewModal({ book, isOpen, onClose }) {
   const [quantity, setQuantity] = useState(1);
@@ -180,17 +181,28 @@ export default function QuickViewModal({ book, isOpen, onClose }) {
                 </div>
               )}
 
-              <div className="flex gap-2 sm:gap-2.5 mt-1 sm:mt-2">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-2.5 mt-1 sm:mt-2">
+                <a
+                  href={getWhatsAppBuyUrl(book)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 px-4 bg-[#25D366] hover:bg-[#20ba59] active:scale-98 text-black rounded font-sans text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 transition-all shadow-md text-center"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Buy on WhatsApp</span>
+                </a>
+
                 <button
                   onClick={handleAddToCart}
-                  className="flex-1 py-3 px-4 bg-burgundy hover:bg-burgundy-light active:scale-98 text-ivory-light rounded font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-colors shadow-subtle border border-burgundy-rose/30"
+                  className="py-3 px-4 bg-burgundy hover:bg-burgundy-light active:scale-98 text-ivory-light rounded font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-colors shadow-subtle border border-burgundy-rose/30"
                 >
                   <ShoppingBag className="w-4 h-4 text-gold" />
-                  {isEbook ? 'Get Instant eBook Access' : 'Add to Bag'}
+                  <span>{isEbook ? 'Add to Bag' : 'Bag'}</span>
                 </button>
+
                 <button
                   onClick={() => toggleWishlist(book)}
-                  className={`p-3 rounded border transition-colors active:scale-95 ${
+                  className={`p-3 rounded border transition-colors active:scale-95 flex items-center justify-center ${
                     isSaved
                       ? 'bg-burgundy border-burgundy-rose/40 text-ivory-light'
                       : 'border-burgundy/30 hover:border-burgundy text-ivory/80 bg-[#180E14]'

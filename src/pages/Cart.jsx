@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingBag, ArrowRight, ArrowLeft, Tag, ShieldCheck, Truck, BookOpen, Trash2 } from 'lucide-react';
+import { ShoppingBag, ArrowRight, ArrowLeft, Tag, ShieldCheck, Truck, BookOpen, Trash2, MessageSquare } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import CartItem from '../components/CartItem';
 import BookGrid from '../components/BookGrid';
 import booksData from '../data/books.json';
+import { getWhatsAppCartUrl } from '../utils/whatsapp';
 
 export default function Cart() {
   const {
@@ -184,13 +185,23 @@ export default function Cart() {
                 </span>
               </div>
 
-              {/* Proceed to Checkout Button */}
-              <div className="pt-2">
+              {/* Checkout & Direct WhatsApp Purchase */}
+              <div className="pt-2 space-y-2">
+                <a
+                  href={getWhatsAppCartUrl(cart, total)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-98 text-black rounded font-sans text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 transition-all shadow-md text-center"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Order via WhatsApp (₹{total})</span>
+                </a>
+
                 <button
                   onClick={() => navigate('/checkout')}
-                  className="w-full py-3.5 bg-burgundy hover:bg-burgundy-light text-ivory-light rounded font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all shadow-subtle hover:shadow border border-burgundy-rose/40"
+                  className="w-full py-3 bg-[#181015] hover:bg-[#20131B] text-ivory-light rounded font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all border border-burgundy/40"
                 >
-                  <span>Proceed to Checkout</span>
+                  <span>Review Details at Checkout</span>
                   <ArrowRight className="w-4 h-4 text-gold" />
                 </button>
               </div>

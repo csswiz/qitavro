@@ -16,6 +16,7 @@ import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ListingPolicy from './pages/ListingPolicy';
 import BuyingSellingDisclaimer from './pages/BuyingSellingDisclaimer';
+import SellBook from './pages/SellBook';
 import { ToastProvider } from './context/ToastContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { CartProvider } from './context/CartContext';
@@ -71,6 +72,9 @@ export default function App() {
                   <Route path="/privacy" element={<PrivacyPolicy />} />
                   <Route path="/listing-policy" element={<ListingPolicy />} />
                   <Route path="/disclaimer" element={<BuyingSellingDisclaimer />} />
+                  <Route path="/sell" element={<SellBook />} />
+                  <Route path="/list-book" element={<SellBook />} />
+                  <Route path="/payment" element={<SellBook />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

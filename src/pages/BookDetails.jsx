@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Star, Heart, ShoppingBag, ArrowLeft, Check, ShieldCheck, Truck, RotateCcw, BookOpen, Share2, Download, Sparkles, Smartphone } from 'lucide-react';
+import { Star, Heart, ShoppingBag, ArrowLeft, Check, ShieldCheck, Truck, RotateCcw, BookOpen, Share2, Download, Sparkles, Smartphone, MessageSquare } from 'lucide-react';
 import booksData from '../data/books.json';
 import BookCoverImage from '../components/BookCoverImage';
 import BookGrid from '../components/BookGrid';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useToast } from '../context/ToastContext';
+import { getWhatsAppBuyUrl } from '../utils/whatsapp';
 
 export default function BookDetails() {
   const { slug } = useParams();
@@ -218,8 +219,21 @@ export default function BookDetails() {
               </span>
             </div>
 
-            {/* Quantity Selector & Add to Bag */}
-            <div className="pt-4 sm:pt-5 border-t border-burgundy/25 flex flex-col gap-3.5 sm:gap-4">
+            {/* WhatsApp Direct Buying Highlight */}
+            <div className="p-3.5 sm:p-4 rounded-[4px] bg-[#181015] border border-[#25D366]/40 flex items-start gap-3 my-4">
+              <div className="w-8 h-8 rounded-full bg-[#25D366]/20 text-[#25D366] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <MessageSquare className="w-4 h-4" />
+              </div>
+              <div className="text-xs font-sans text-ivory/80 leading-relaxed">
+                <strong className="text-ivory-light font-medium block">
+                  Purchases Handled Directly on WhatsApp:
+                </strong>
+                To buy this book, message our team on WhatsApp. We provide instant order verification, secure UPI / card payment, and immediate download links.
+              </div>
+            </div>
+
+            {/* Quantity Selector & Action Buttons */}
+            <div className="pt-2 sm:pt-3 border-t border-burgundy/25 flex flex-col gap-3.5 sm:gap-4">
               {!isEbook && (
                 <div className="flex items-center gap-3 sm:gap-4">
                   <span className="text-xs font-sans uppercase tracking-wider text-ivory/70">
@@ -247,18 +261,30 @@ export default function BookDetails() {
                 </div>
               )}
 
-              <div className="flex gap-2.5 sm:gap-3">
+              {/* Primary Buy on WhatsApp + Secondary Add to Bag */}
+              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+                <a
+                  href={getWhatsAppBuyUrl(book)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3.5 px-6 bg-[#25D366] hover:bg-[#20ba59] active:scale-98 text-black rounded font-sans text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 transition-all shadow-lg text-center"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Buy Now via WhatsApp (₹{book.price})</span>
+                </a>
+
                 <button
                   onClick={() => addToCart(book, quantity)}
-                  className="flex-1 py-3 sm:py-3.5 px-4 sm:px-6 bg-burgundy hover:bg-burgundy-light active:scale-98 text-ivory-light rounded font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all shadow-subtle hover:shadow border border-burgundy-rose/40"
+                  className="py-3.5 px-5 bg-burgundy hover:bg-burgundy-light active:scale-98 text-ivory-light rounded font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all shadow-subtle border border-burgundy-rose/40"
+                  title="Add to Shopping Bag"
                 >
                   <ShoppingBag className="w-4 h-4 text-gold" />
-                  <span>{isEbook ? 'Get eBook Instant Access' : `Add to Bag (${quantity})`}</span>
+                  <span>{isEbook ? 'Add to Bag' : `Bag (${quantity})`}</span>
                 </button>
 
                 <button
                   onClick={() => toggleWishlist(book)}
-                  className={`p-3 sm:p-3.5 rounded border transition-colors active:scale-95 ${
+                  className={`p-3.5 rounded border transition-colors active:scale-95 flex items-center justify-center ${
                     isSaved
                       ? 'bg-burgundy border-burgundy-rose/40 text-ivory-light'
                       : 'border-burgundy/35 hover:border-burgundy text-ivory/80 bg-[#140D12]'

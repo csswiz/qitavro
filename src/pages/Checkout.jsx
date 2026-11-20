@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AlertCircle, ShieldCheck, ArrowLeft, Truck, Check, Lock, BookOpen, Download } from 'lucide-react';
+import { AlertCircle, ShieldCheck, ArrowLeft, Truck, Check, Lock, BookOpen, Download, MessageSquare } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import BookCoverImage from '../components/BookCoverImage';
+import { getWhatsAppCartUrl, WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function Checkout() {
   const { cart, subtotal, shippingFee, discountAmount, total, appliedCoupon } = useCart();
@@ -206,13 +207,23 @@ export default function Checkout() {
                 </label>
               </div>
 
-              <div className="pt-6">
+              <div className="pt-6 space-y-3">
+                <a
+                  href={getWhatsAppCartUrl(cart, total)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 bg-[#25D366] hover:bg-[#20ba59] active:scale-98 text-black rounded font-sans text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 transition-all shadow-lg text-center"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Complete Order via WhatsApp (₹{total})</span>
+                </a>
+
                 <button
                   type="submit"
-                  className="w-full py-4 bg-burgundy hover:bg-burgundy-light text-ivory-light rounded font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all shadow-subtle hover:shadow border border-burgundy-rose/40"
+                  className="w-full py-3 bg-[#181015] hover:bg-[#20131B] text-ivory/80 hover:text-ivory-light rounded font-sans text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-all border border-burgundy/40"
                 >
-                  <Lock className="w-4 h-4 text-gold" />
-                  <span>Authorize Demonstration Dispatch (₹{total})</span>
+                  <Lock className="w-3.5 h-3.5 text-gold" />
+                  <span>Simulate Order Dispatch</span>
                 </button>
               </div>
             </form>
@@ -327,20 +338,29 @@ export default function Checkout() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-2.5">
+              <a
+                href={getWhatsAppCartUrl(cart, total)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-2.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-98 text-black text-xs font-sans uppercase tracking-widest font-bold rounded flex items-center justify-center gap-1.5 transition-colors shadow"
+              >
+                <MessageSquare className="w-3.5 h-3.5" />
+                <span>Finish Order on WhatsApp</span>
+              </a>
               <button
                 onClick={() => {
                   setIsDemoModalOpen(false);
                   navigate('/shop');
                 }}
-                className="flex-1 py-2.5 bg-burgundy hover:bg-burgundy-light active:scale-98 text-ivory-light text-xs font-sans uppercase tracking-widest font-semibold rounded transition-colors border border-burgundy-rose/40"
+                className="py-2.5 px-4 bg-burgundy hover:bg-burgundy-light active:scale-98 text-ivory-light text-xs font-sans uppercase tracking-widest font-semibold rounded transition-colors border border-burgundy-rose/40"
               >
-                Return to Catalogue
+                Return to Shop
               </button>
               <button
                 onClick={() => setIsDemoModalOpen(false)}
                 className="px-4 py-2.5 bg-[#181015] border border-burgundy/30 text-ivory/80 hover:bg-[#20131B] text-xs font-sans rounded transition-colors"
               >
-                Close Dialog
+                Close
               </button>
             </div>
           </div>

@@ -39,6 +39,7 @@ export default function MobileBottomNav({ onOpenSearch }) {
       onClick: () => navigate('/shop'),
       menu: [
         { label: 'Browse Catalogue', onClick: () => navigate('/shop') },
+        { label: 'Sell Your Book (₹99)', onClick: () => navigate('/sell') },
         { separator: true },
         { label: 'Saved Books', onClick: () => navigate('/wishlist') }
       ]
