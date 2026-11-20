@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // ============================================================================
 // Types & Interfaces
@@ -151,43 +152,6 @@ function SpeakerActiveIcon({ className = 'w-5 h-5' }: { className?: string }) {
       <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
       <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
       <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-    </svg>
-  );
-}
-
-function MenuIcon({ className = 'w-6 h-6' }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <line x1="4" y1="7" x2="20" y2="7" />
-      <line x1="4" y1="12" x2="20" y2="12" />
-      <line x1="4" y1="17" x2="20" y2="17" />
-    </svg>
-  );
-}
-
-function CloseIcon({ className = 'w-6 h-6' }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <line x1="18" y1="6" x2="6" y2="18" />
-      <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
   );
 }
@@ -455,10 +419,10 @@ function FloatingNavbar({
   accentColor,
   theme = 'burgundy',
 }: NavbarProps) {
+  const navigate = useNavigate();
   const isBurgundy = theme === 'burgundy';
   const [activeItem, setActiveItem] = useState('Home');
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -471,154 +435,95 @@ function FloatingNavbar({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent background scrolling when mobile drawer is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavLinkItem) => {
+    setActiveItem(link.name);
+    if (link.external) {
+      // Allow native navigation for external targets (e.g., WhatsApp)
+      return;
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [mobileMenuOpen]);
+    if (link.href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(link.href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
+    e.preventDefault();
+    navigate(link.href);
+  };
 
-  const handleSelect = (name: string) => {
-    setActiveItem(name);
-    setMobileMenuOpen(false);
+  const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (ctaHref.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(ctaHref);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      e.preventDefault();
+      navigate(ctaHref);
+    }
   };
 
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 w-full z-[1002] px-4 sm:px-8 xl:px-12 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-between ${
-          visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-6 pointer-events-none'
-        } ${
-          mobileMenuOpen
-            ? 'bg-transparent border-b border-transparent py-4 sm:py-5'
-            : scrolled
-            ? isBurgundy
-              ? 'bg-[#12080E]/95 backdrop-blur-md border-b border-burgundy/40 shadow-[0_4px_24px_rgba(0,0,0,0.8)] py-2.5 sm:py-3.5 text-ivory-light'
-              : 'bg-white/95 backdrop-blur-md border-b border-black/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.06)] py-2.5 sm:py-3.5 text-neutral-900'
-            : 'bg-transparent border-b border-transparent py-4 sm:py-5 text-white'
-        }`}
+    <header
+      className={`fixed top-0 left-0 w-full z-[1002] px-4 sm:px-8 xl:px-12 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-between ${
+        visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-6 pointer-events-none'
+      } ${
+        scrolled
+          ? isBurgundy
+            ? 'bg-[#12080E]/95 backdrop-blur-md border-b border-burgundy/40 shadow-[0_4px_24px_rgba(0,0,0,0.8)] py-2.5 sm:py-3.5 text-ivory-light'
+            : 'bg-white/95 backdrop-blur-md border-b border-black/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.06)] py-2.5 sm:py-3.5 text-neutral-900'
+          : 'bg-transparent border-b border-transparent py-3 sm:py-5 text-white'
+      }`}
+    >
+      {/* Brand Logo */}
+      <a
+        href="/"
+        onClick={(e) => {
+          e.preventDefault();
+          navigate('/');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        className="flex items-center gap-2 outline-none select-none"
+        aria-label={`${brandName} Home`}
       >
-        {/* Brand Logo */}
-        <a
-          href="/"
-          className="flex items-center gap-2 outline-none select-none"
-          aria-label={`${brandName} Home`}
-        >
-          {brandLogo ? (
-            brandLogo
-          ) : (
-            <BrandWordmark
-              brandName={brandName}
-              accentColor={accentColor}
-              isScrolled={mobileMenuOpen ? false : scrolled}
-              theme={theme}
-            />
-          )}
-        </a>
+        {brandLogo ? (
+          brandLogo
+        ) : (
+          <BrandWordmark
+            brandName={brandName}
+            accentColor={accentColor}
+            isScrolled={scrolled}
+            theme={theme}
+          />
+        )}
+      </a>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-8 list-none m-0 p-0 ml-auto mr-5 xl:mr-8">
-          {navLinks.map((link) => {
-            const isActive = activeItem === link.name;
-            return (
-              <div key={link.name} className="relative">
-                <a
-                  href={link.href}
-                  onClick={() => handleSelect(link.name)}
-                  className={`text-xs xl:text-sm tracking-wide font-medium transition-all duration-300 py-1 inline-block ${
-                    scrolled
-                      ? isBurgundy
-                        ? isActive
-                          ? 'text-rose-light font-semibold'
-                          : 'text-ivory/80 hover:text-rose-light'
-                        : isActive
-                        ? 'text-neutral-900 font-semibold'
-                        : 'text-neutral-600 hover:text-neutral-950'
-                      : isActive
-                      ? 'text-white font-semibold'
-                      : 'text-white/80 hover:text-white'
-                  }`}
-                  style={{
-                    fontFamily: isBurgundy
-                      ? "var(--font-serif, 'Cinzel', serif)"
-                      : "var(--font-aeonik-pro, system-ui, -apple-system, sans-serif)",
-                  }}
-                >
-                  {link.name}
-                </a>
-              </div>
-            );
-          })}
-        </nav>
-
-        {/* Desktop CTA Button */}
-        <div className="hidden lg:flex items-center">
-          <a
-            href={ctaHref}
-            className={`px-4 xl:px-5 py-2 xl:py-2.5 rounded-full text-[11px] xl:text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-sm hover:shadow hover:scale-105 active:scale-95 ${
-              isBurgundy
-                ? 'bg-burgundy hover:bg-burgundy-light text-ivory-light border border-burgundy-rose/40 shadow-[0_4px_16px_rgba(155,44,70,0.4)]'
-                : scrolled
-                ? 'bg-neutral-900 text-white hover:bg-neutral-800'
-                : 'bg-white/90 backdrop-blur-md text-neutral-900 hover:bg-white'
-            }`}
-          >
-            {ctaText}
-          </a>
-        </div>
-
-        {/* Mobile / Tablet Hamburger Button */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className={`lg:hidden p-2 rounded-lg transition-colors z-[1002] ${
-            mobileMenuOpen
-              ? 'text-white hover:bg-white/10'
-              : scrolled && !isBurgundy
-              ? 'text-neutral-900 hover:bg-black/5'
-              : 'text-white hover:bg-white/10'
-          }`}
-          aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-        >
-          {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
-      </header>
-
-      {/* Mobile Drawer Menu */}
-      <div
-        className={`fixed inset-0 z-[1001] lg:hidden ${
-          isBurgundy ? 'bg-[#0E050A]/98' : 'bg-neutral-950/95'
-        } backdrop-blur-2xl transition-all duration-500 flex flex-col justify-center items-center px-6 sm:px-10 py-12 overflow-y-auto ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        aria-hidden={!mobileMenuOpen}
-      >
-        {/* Brand Emblem in Mobile Drawer */}
-        <div className="flex flex-col items-center mb-6">
-          <div className="w-14 h-14 rounded-[6px] p-2 bg-[#181015] border border-burgundy/40 shadow-lg mb-2.5 flex items-center justify-center">
-            <img src="/logo.svg" alt={`${brandName} Logo`} className="w-full h-full object-contain" />
-          </div>
-          <span className="font-serif text-2xl font-bold tracking-[0.2em] text-ivory-light uppercase leading-none">
-            {brandName}
-          </span>
-          <span className="text-[9px] uppercase tracking-[0.28em] font-sans text-gold font-medium mt-1 leading-none">
-            Literary Bookstore
-          </span>
-        </div>
-
-        <ul className="flex flex-col gap-4 sm:gap-6 list-none m-0 p-0 text-center w-full max-w-sm my-auto">
-          {navLinks.map((link) => (
-            <li key={link.name}>
+      {/* Desktop Nav Links */}
+      <nav className="hidden lg:flex items-center gap-5 xl:gap-8 list-none m-0 p-0 ml-auto mr-5 xl:mr-8">
+        {navLinks.map((link) => {
+          const isActive = activeItem === link.name;
+          return (
+            <div key={link.name} className="relative">
               <a
                 href={link.href}
-                onClick={() => handleSelect(link.name)}
-                className={`block py-1.5 text-xl sm:text-2xl font-light tracking-tight transition-colors duration-200 ${
-                  activeItem === link.name ? 'text-rose-light font-medium' : 'text-ivory/80 hover:text-white'
+                onClick={(e) => handleNavClick(e, link)}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                className={`text-xs xl:text-sm tracking-wide font-medium transition-all duration-300 py-1 inline-block ${
+                  scrolled
+                    ? isBurgundy
+                      ? isActive
+                        ? 'text-rose-light font-semibold'
+                        : 'text-ivory/80 hover:text-rose-light'
+                      : isActive
+                      ? 'text-neutral-900 font-semibold'
+                      : 'text-neutral-600 hover:text-neutral-950'
+                    : isActive
+                    ? 'text-white font-semibold'
+                    : 'text-white/80 hover:text-white'
                 }`}
                 style={{
                   fontFamily: isBurgundy
@@ -628,24 +533,28 @@ function FloatingNavbar({
               >
                 {link.name}
               </a>
-            </li>
-          ))}
-          <li className="pt-4 sm:pt-6">
-            <a
-              href={ctaHref}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`inline-block w-full py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase ${
-                isBurgundy
-                  ? 'bg-burgundy text-ivory-light border border-burgundy-rose/40 shadow-xl'
-                  : 'bg-white text-neutral-900 shadow-xl'
-              } transition-transform active:scale-95 text-center`}
-            >
-              {ctaText}
-            </a>
-          </li>
-        </ul>
+            </div>
+          );
+        })}
+      </nav>
+
+      {/* CTA Button (Clean & accessible on both Desktop and Mobile UI) */}
+      <div className="flex items-center">
+        <a
+          href={ctaHref}
+          onClick={handleCtaClick}
+          className={`px-3.5 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-sm hover:shadow hover:scale-105 active:scale-95 ${
+            isBurgundy
+              ? 'bg-burgundy hover:bg-burgundy-light text-ivory-light border border-burgundy-rose/40 shadow-[0_4px_16px_rgba(155,44,70,0.4)]'
+              : scrolled
+              ? 'bg-neutral-900 text-white hover:bg-neutral-800'
+              : 'bg-white/90 backdrop-blur-md text-neutral-900 hover:bg-white'
+          }`}
+        >
+          {ctaText}
+        </a>
       </div>
-    </>
+    </header>
   );
 }
 
