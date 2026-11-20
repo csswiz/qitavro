@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingBag, ArrowRight, ArrowLeft, Tag, ShieldCheck, Truck, BookOpen, Trash2, MessageSquare } from 'lucide-react';
+import { ShoppingBag, ArrowRight, ArrowLeft, Tag, ShieldCheck, Download, BookOpen, Trash2, MessageSquare } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import CartItem from '../components/CartItem';
 import BookGrid from '../components/BookGrid';
@@ -114,29 +114,15 @@ export default function Cart() {
                 )}
 
                 <div className="flex justify-between text-ivory/80">
-                  <span>{cart.every(i => i.isEbook || i.format?.toLowerCase().includes('ebook') || i.condition?.toLowerCase() === 'ebook') ? 'Digital Delivery' : 'Archival Delivery'}</span>
+                  <span>Digital Delivery</span>
                   <span className="font-serif font-bold text-sm text-gold">
-                    {cart.every(i => i.isEbook || i.format?.toLowerCase().includes('ebook') || i.condition?.toLowerCase() === 'ebook') ? (
-                      <span className="text-gold">Instant Access (Free)</span>
-                    ) : shippingFee === 0 ? (
-                      <span className="text-gold">Complimentary</span>
-                    ) : (
-                      `₹${shippingFee}`
-                    )}
+                    Instant & Complimentary (₹0)
                   </span>
                 </div>
 
-                {!cart.every(i => i.isEbook || i.format?.toLowerCase().includes('ebook') || i.condition?.toLowerCase() === 'ebook') && subtotal < 499 && (
-                  <p className="text-[11px] text-rose-light font-sans">
-                    Add ₹{499 - subtotal} more for complimentary delivery.
-                  </p>
-                )}
-
-                {cart.every(i => i.isEbook || i.format?.toLowerCase().includes('ebook') || i.condition?.toLowerCase() === 'ebook') && (
-                  <p className="text-[11px] text-gold font-sans">
-                    ✦ Instant EPUB & PDF download link delivered to your email after checkout.
-                  </p>
-                )}
+                <p className="text-[11px] text-gold font-sans">
+                  ✦ Instant EPUB & PDF download links accessible immediately post-checkout and sent to your email & WhatsApp.
+                </p>
               </div>
 
               {/* Coupon Form */}
@@ -212,8 +198,8 @@ export default function Cart() {
                   <span>Secure literary acquisition guarantee</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Truck className="w-3.5 h-3.5 text-gold" />
-                  <span>Reinforced book-grade packaging</span>
+                  <Download className="w-3.5 h-3.5 text-gold" />
+                  <span>DRM-free EPUB & high-resolution PDF included</span>
                 </div>
               </div>
             </div>

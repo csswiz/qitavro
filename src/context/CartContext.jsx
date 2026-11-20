@@ -69,14 +69,9 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   const shippingFee = useMemo(() => {
-    if (cart.length === 0) return 0;
-    // Digital eBooks require no physical courier dispatch
-    const isAllEbooks = cart.every(
-      (item) => item.isEbook || item.format?.toLowerCase().includes('ebook') || item.condition?.toLowerCase() === 'ebook'
-    );
-    if (isAllEbooks) return 0;
-    return subtotal >= 499 ? 0 : 49;
-  }, [subtotal, cart]);
+    // Pure digital store: all editions are delivered digitally with zero shipping fees
+    return 0;
+  }, []);
 
   const discountAmount = useMemo(() => {
     if (!appliedCoupon || cart.length === 0) return 0;
@@ -91,8 +86,8 @@ export const CartProvider = ({ children }) => {
 
   const total = useMemo(() => {
     if (cart.length === 0) return 0;
-    return Math.max(0, subtotal - discountAmount + shippingFee);
-  }, [subtotal, discountAmount, shippingFee, cart.length]);
+    return Math.max(0, subtotal - discountAmount);
+  }, [subtotal, discountAmount, cart.length]);
 
   const applyCoupon = (code) => {
     const cleanCode = (code || '').trim().toUpperCase();

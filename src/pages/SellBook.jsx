@@ -28,7 +28,7 @@ export default function SellBook() {
     author: '',
     price: '',
     category: 'Romance',
-    condition: 'Pre-loved (Very Good)',
+    condition: 'Digital Edition (EPUB & PDF)',
     sellerName: '',
     phone: '',
     email: '',
@@ -205,7 +205,7 @@ export default function SellBook() {
                   <span className="w-4 h-4 rounded-full bg-burgundy text-gold font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">
                     3
                   </span>
-                  <span>Click <strong>"Send Details on WhatsApp"</strong> to dispatch your payment screenshot & info to the curation team for instant listing!</span>
+                  <span>Click <strong>"Send Details on WhatsApp"</strong> to submit your payment screenshot & info to the curation team for instant listing!</span>
                 </div>
               </div>
 
@@ -326,10 +326,10 @@ export default function SellBook() {
                   </div>
                 </div>
 
-                {/* Format / Condition */}
+                {/* Format / eBook Specification */}
                 <div>
                   <label className="block text-xs font-sans uppercase tracking-wider text-ivory/80 mb-1.5">
-                    Format & Condition Grade <span className="text-rose-light">*</span>
+                    eBook Format & File Type <span className="text-rose-light">*</span>
                   </label>
                   <select
                     name="condition"
@@ -337,11 +337,10 @@ export default function SellBook() {
                     onChange={handleChange}
                     className="w-full bg-[#181015] border border-burgundy/35 focus:border-rose-light rounded py-2.5 px-3 text-xs sm:text-sm font-sans text-ivory-light outline-none"
                   >
-                    <option value="Digital Edition (eBook)">Digital Edition (eBook - EPUB/PDF)</option>
-                    <option value="Pre-loved (Like New)">Pre-loved (Like New - Pristine uncreased)</option>
-                    <option value="Pre-loved (Very Good)">Pre-loved (Very Good - Gentle patina)</option>
-                    <option value="Pre-loved (Good / Reading Copy)">Pre-loved (Good - Complete structural integrity)</option>
-                    <option value="Rare / Collector Edition">Rare / Out-of-print Collector Copy</option>
+                    <option value="Digital Edition (EPUB & PDF)">Digital Edition (EPUB & PDF bundle)</option>
+                    <option value="Digital Edition (EPUB)">Digital Edition (Reflowable EPUB)</option>
+                    <option value="Digital Edition (PDF)">Digital Edition (High-Res PDF)</option>
+                    <option value="Author Manuscript / Pre-release">Author Manuscript / Pre-release eBook</option>
                   </select>
                 </div>
 
@@ -482,7 +481,7 @@ export default function SellBook() {
               </div>
               <h4 className="font-serif font-bold text-base text-ivory-light">Curated Editorial Showcase</h4>
               <p className="text-xs font-sans text-ivory/70 mt-1 leading-relaxed">
-                Your book receives our signature velvet burgundy book card, condition grading badge, and placement on our active shelf.
+                Your eBook receives our signature velvet burgundy book card, digital format badge, and placement on our active shelf.
               </p>
             </div>
 

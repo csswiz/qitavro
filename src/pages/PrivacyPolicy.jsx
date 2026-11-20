@@ -26,10 +26,10 @@ export default function PrivacyPolicy() {
           <p>We only gather data necessary to deliver your curated volumes and provide a seamless reading experience:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>Patron Details:</strong> Full name, email address, telephone contact, and delivery street address for parcel dispatch.
+              <strong>Reader Details:</strong> Full name, email address, and WhatsApp contact number for digital eBook access and order confirmation.
             </li>
             <li>
-              <strong>Order Records:</strong> Books purchased, invoice totals, order date, and shipping tracking references.
+              <strong>Order Records:</strong> eBook titles acquired, invoice totals, order date, and digital fulfillment references.
             </li>
             <li>
               <strong>Client-Side Storage (LocalStorage):</strong> We store your Shopping Bag items and Wishlist items locally in your browser's private storage so your selections persist without tracking your identity across external sites.
@@ -46,8 +46,8 @@ export default function PrivacyPolicy() {
             2. How Your Information Is Used
           </h2>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li>To process, pack, and courier your book orders directly to your doorstep.</li>
-            <li>To send digital order confirmations, courier tracking links, and customer care responses.</li>
+            <li>To generate, deliver, and verify your digital eBook download links and access tokens.</li>
+            <li>To send order receipts, digital access backup links, and reader support communications via email and WhatsApp.</li>
             <li>To deliver our curated literary dispatch (<em>Letters for the Love of Reading</em>) only if you deliberately opt in.</li>
             <li>To maintain accounting integrity and comply with statutory tax guidelines in India.</li>
           </ul>
@@ -75,8 +75,8 @@ export default function PrivacyPolicy() {
             We do not monetize your reading habits. We only share essential details with certified partners who perform core logistics and infrastructure operations on our behalf:
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li><strong>Logistics Partners:</strong> Regulated courier services (e.g., Blue Dart, Delhivery, India Post) to physically transport and deliver your books.</li>
-            <li><strong>Transactional Communication:</strong> Email and SMS notification delivery providers to send real-time tracking numbers.</li>
+            <li><strong>Digital Delivery Infrastructure:</strong> Secure cloud file delivery networks used to transmit DRM-free EPUB and PDF download packages.</li>
+            <li><strong>Transactional Communication:</strong> Verified email and messaging gateways to deliver receipts and instant download links.</li>
             <li><strong>Legal Compliance:</strong> When required by lawful court order, statutory regulation, or law enforcement within Indian jurisdiction.</li>
           </ul>
         </section>

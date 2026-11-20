@@ -58,7 +58,7 @@ export default function Newsletter() {
                 Welcome to our reader circle.
               </p>
               <p className="font-sans text-xs text-ivory/70 mt-0.5">
-                A confirmation missive has been dispatched to <span className="font-medium text-rose-light">{email}</span>.
+                A confirmation missive has been sent to <span className="font-medium text-rose-light">{email}</span>.
               </p>
             </div>
           </div>

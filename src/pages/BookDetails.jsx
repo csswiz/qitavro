@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Star, Heart, ShoppingBag, ArrowLeft, Check, ShieldCheck, Truck, RotateCcw, BookOpen, Share2, Download, Sparkles, Smartphone, MessageSquare } from 'lucide-react';
+import { Star, Heart, ShoppingBag, ArrowLeft, Check, ShieldCheck, RotateCcw, BookOpen, Share2, Download, Sparkles, Smartphone, MessageSquare } from 'lucide-react';
 import booksData from '../data/books.json';
 import BookCoverImage from '../components/BookCoverImage';
 import BookGrid from '../components/BookGrid';
@@ -106,17 +106,8 @@ export default function BookDetails() {
                 <span>Original Guaranteed</span>
               </div>
               <div className="flex items-center gap-2 p-2 sm:p-2.5 bg-[#140D12] rounded border border-burgundy/30">
-                {isEbook ? (
-                  <>
-                    <Download className="w-4 h-4 text-rose-light flex-shrink-0" />
-                    <span>Instant Download</span>
-                  </>
-                ) : (
-                  <>
-                    <Truck className="w-4 h-4 text-rose-light flex-shrink-0" />
-                    <span>Dispatched in 24h</span>
-                  </>
-                )}
+                <Download className="w-4 h-4 text-rose-light flex-shrink-0" />
+                <span>Instant Download</span>
               </div>
             </div>
           </div>
@@ -212,11 +203,7 @@ export default function BookDetails() {
             {/* Stock status */}
             <div className="flex items-center gap-2 text-xs font-sans text-ivory/80 mb-5 sm:mb-6">
               <span className="w-2 h-2 rounded-full bg-rose-light flex-shrink-0 animate-pulse" />
-              <span>
-                {isEbook
-                  ? 'Digital Edition Available — Instant Download & Email Delivery'
-                  : `In Stock — ${book.stock || 18} archival copies ready for dispatch`}
-              </span>
+              <span>Digital Edition Available — Instant Download & Email Delivery</span>
             </div>
 
             {/* WhatsApp Direct Buying Highlight */}
@@ -297,20 +284,14 @@ export default function BookDetails() {
               </div>
             </div>
 
-            {/* Packaging / Delivery Notice */}
+            {/* Digital Delivery Notice */}
             <div className="mt-6 sm:mt-8 p-3.5 sm:p-4 bg-[#140D12] rounded border border-burgundy/30 text-[11px] sm:text-xs font-sans text-ivory/75 leading-relaxed">
               <strong className="text-gold font-semibold block mb-0.5">
-                {isEbook ? 'QITAVRO Digital eBook Delivery:' : 'QITAVRO Archival Standard:'}
+                QITAVRO Digital eBook Delivery:
               </strong>
-              {isEbook ? (
-                <span>
-                  Immediate digital delivery after checkout. You will receive an instant download link on screen and via email containing DRM-free EPUB and PDF formats. Compatible with Apple Books, Kindle, Kobo, Android, iOS, PC, and Mac.
-                </span>
-              ) : (
-                <span>
-                  Protected in moisture-barrier paper, acid-free bookmarks included, shipped in rigid bookfold cartons to prevent edge wear.
-                </span>
-              )}
+              <span>
+                Immediate digital delivery after checkout. You will receive an instant download link on screen and via email containing DRM-free EPUB and PDF formats. Compatible with Apple Books, Kindle, Kobo, Android, iOS, PC, and Mac.
+              </span>
             </div>
 
           </div>
@@ -407,7 +388,7 @@ export default function BookDetails() {
                   </div>
                   <div>
                     <dt className="text-ivory/50 uppercase tracking-wider">Format</dt>
-                    <dd className="font-serif text-gold text-sm mt-0.5">{book.format || (isEbook ? 'Digital Edition (eBook)' : 'Hardcover Archive')}</dd>
+                    <dd className="font-serif text-gold text-sm mt-0.5">{book.format || 'Digital Edition (eBook • EPUB & PDF)'}</dd>
                   </div>
                   {isEbook && (
                     <>

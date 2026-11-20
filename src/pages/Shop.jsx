@@ -235,7 +235,7 @@ export default function Shop() {
                 </span>
               </div>
               <p className="text-xs sm:text-sm font-sans text-ivory/80 mt-1 leading-relaxed max-w-2xl">
-                To acquire any book from our catalogue, simply connect with our curatorial desk on WhatsApp. We provide verified UPI / card payment coordination and immediate digital delivery or tracked dispatch!
+                To acquire any book from our catalogue, simply connect with our curatorial desk on WhatsApp. We provide verified UPI / card payment coordination and immediate digital delivery straight to your email and WhatsApp!
               </p>
             </div>
           </div>

@@ -6,35 +6,35 @@ export default function BuyingSellingDisclaimer() {
   return (
     <LegalLayout
       title="Buying & Selling Disclaimer"
-      subtitle="Important disclosures regarding pre-loved book patina, condition grading, authenticity, and inventory limits."
-      lastUpdated="November 18, 2024"
+      subtitle="Important disclosures regarding digital eBook editions, device compatibility, file integrity, and curated publications."
+      lastUpdated="November 20, 2024"
     >
       <div className="space-y-8 font-serif text-ivory/90 text-sm sm:text-base leading-relaxed">
         
         {/* Intro */}
         <section className="border-b border-burgundy/25 pb-6">
           <p className="text-base sm:text-lg italic text-ivory/80 leading-relaxed font-serif">
-            This Buying & Selling Disclaimer provides clear disclosures regarding the nature of the books sold on <strong className="text-rose-light">QITAVRO</strong>, including pre-loved volumes, limited editions, transit precautions, and authorial views. Please read this notice carefully before acquiring any title from our catalogue.
+            This Buying & Selling Disclaimer provides clear disclosures regarding the nature of the books sold and listed on <strong className="text-rose-light">QITAVRO</strong>, including digital eBook editions, formatting compatibility, and authorial views. Please read this notice carefully before acquiring any title from our catalogue.
           </p>
         </section>
 
         {/* Section 1 */}
         <section className="space-y-3">
           <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
-            1. Nature of Pre-Loved & Vintage Literature
+            1. Digital Editions & eBook Formatting
           </h2>
           <p>
-            When you purchase a book marked with the <strong>"Pre-loved"</strong> badge, or our digital releases such as the <em>Darling in Red's</em> eBook edition:
+            When you purchase a book on QITAVRO (such as <em>Darling in Red's</em> by Ace):
           </p>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>Patina & Natural Aging:</strong> Pre-loved books carry the tactile beauty of previous lives. While we inspect each book to guarantee structural integrity and complete readability, books may possess subtle vintage characteristics—including warm paper toning, gentle spine creases, or micro-scuffs on cover foils.
+              <strong>Dual Format Delivery:</strong> Every purchase includes both reflowable EPUB (optimal for Apple Books, Google Play Books, Kindle, and eReaders) and fixed-layout PDF (for high-fidelity desktop reading).
             </li>
             <li>
-              <strong>Sensory Characteristics:</strong> Older books and certain archival papers have an inherent, natural scent of cellulose and aged ink. This is a natural consequence of time and not a manufacturing defect.
+              <strong>Reader Customization:</strong> In reflowable EPUB format, typography, line spacing, margins, and dark/light mode are determined by your reading application settings. Page numbering dynamically adjusts to your chosen font size.
             </li>
             <li>
-              <strong>Single-Copy Scarcity:</strong> Most pre-loved and vintage editions in our collection are strictly <strong>one-of-a-kind (1-of-1) copies</strong>. If multiple patrons attempt to purchase the exact same edition simultaneously, our system fulfills the order with the earliest verified timestamp.
+              <strong>DRM-Free Freedom:</strong> Our eBooks do not enforce invasive digital rights management (DRM) locks, enabling you to read your editions across all personal devices without platform lock-in.
             </li>
           </ul>
         </section>
@@ -42,12 +42,12 @@ export default function BuyingSellingDisclaimer() {
         {/* Section 2 */}
         <section className="space-y-3">
           <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
-            2. Photography & Color Fidelity
+            2. Cover Artwork & Screen Fidelity
           </h2>
           <div className="bg-[#181015] p-4 rounded border-l-2 border-gold font-sans text-xs sm:text-sm text-ivory/80 space-y-1.5">
-            <strong className="text-gold">Visual Representation Notice:</strong>
+            <strong className="text-gold">Visual Display Notice:</strong>
             <p>
-              We photograph or render covers with faithful natural lighting. However, due to color calibration differences across monitors, mobile OLED screens, and ambient room illumination, the physical hue of clothbound covers or metallic foil stampings may vary slightly from your screen preview.
+              Cover artwork is designed and calibrated for high-resolution digital displays. Subtle color differences may occur depending on your screen technology (OLED, AMOLED, Retina, e-ink) and display color profile.
             </p>
           </div>
         </section>
@@ -61,8 +61,8 @@ export default function BuyingSellingDisclaimer() {
             QITAVRO exercises rigorous good-faith diligence in inspecting editions, verifying ISBN credentials, and validating copyright imprints. However:
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li>We do not provide certified third-party museum appraisals or forensic chemical age verifications unless explicitly stated on rare collector certificates.</li>
-            <li>Bibliographic data (such as page counts, publication dates, and translator notes) is synchronized from publisher records and historical catalogues. Occasional publisher printing variances in edition print runs remain outside our direct manufacturing control.</li>
+            <li>We do not provide certified third-party appraisals unless explicitly stated.</li>
+            <li>Bibliographic data (such as page counts, publication dates, and author biographies) is synchronized from author records and official releases.</li>
           </ul>
         </section>
 
@@ -76,28 +76,28 @@ export default function BuyingSellingDisclaimer() {
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>The perspectives, ideologies, moral decisions, and creative choices expressed in novels, essays, or poetry belong solely to their respective authors and creators.</li>
-            <li>Listing a book on QITAVRO represents an acknowledgement of its literary, narrative, or historical significance; it does not constitute an institutional endorsement by QITAVRO of any character's conduct, philosophical dogma, or political doctrine.</li>
+            <li>Listing a book on QITAVRO represents an acknowledgement of its literary and narrative merit; it does not constitute an institutional endorsement by QITAVRO of any character's conduct or authorial doctrine.</li>
           </ul>
         </section>
 
         {/* Section 5 */}
         <section className="space-y-3">
           <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
-            5. In-Transit Courier Liability
+            5. Digital Delivery Guarantee & Technical Assistance
           </h2>
           <p>
-            We deploy reinforced, corner-padded archival parcels to safeguard your books against transit hazards. While we partner exclusively with reputed express couriers:
+            Because QITAVRO delivers pure digital editions with zero physical transit delays:
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li>Unforeseen regional transit delays caused by extreme weather, floods, customs inspections, or public holidays are beyond our immediate logistical control.</li>
-            <li>In any confirmed instance of loss or physical transit ruin, our liability is strictly limited to providing a full refund or an equivalent replacement edition, as outlined in our Terms of Service.</li>
+            <li>Download links are generated instantly on-screen upon order confirmation and permanently archived to your registered email and WhatsApp.</li>
+            <li>In any confirmed instance of file corruption or network download failure, our curatorial desk provides immediate fresh download tokens or direct file transfer via WhatsApp.</li>
           </ul>
         </section>
 
         {/* Section 6 */}
         <section className="space-y-2 pt-4 border-t border-burgundy/25 text-xs font-sans text-ivory/70">
           <p>
-            For condition inquiries on specific individual books before placing an order, please contact our curatorial desk at:
+            For edition inquiries or reading technical assistance, please contact our curatorial desk at:
             <a href="mailto:curate@qitavro.com" className="text-gold font-semibold ml-1 hover:underline">
               curate@qitavro.com
             </a>

@@ -24,10 +24,10 @@ export default function TermsOfService() {
             1. Nature of the Literary Platform
           </h2>
           <p>
-            QITAVRO is an independent, curated online bookstore offering new editions, clothbound classics, independent press publications, and authentic pre-loved literary works. Every book displayed in our catalogue is vetted for authenticity, legible typesetting, and editorial merit.
+            QITAVRO is an independent, curated digital bookstore offering eBooks, independent press publications, and authentic literary works. Every book displayed in our catalogue is vetted for authenticity, legible typesetting, and editorial merit.
           </p>
           <div className="bg-[#181015] p-4 rounded border-l-2 border-gold font-sans text-xs sm:text-sm text-ivory/80">
-            <strong className="text-gold">Editorial Standard:</strong> We do not operate an open marketplace for unverified mass-scraping. Books presented on QITAVRO are curated or authenticated by our team before dispatch.
+            <strong className="text-gold">Editorial Standard:</strong> We do not operate an open marketplace for unverified mass-scraping. Books presented on QITAVRO are curated and authenticated by our team before listing.
           </div>
         </section>
 
@@ -38,13 +38,13 @@ export default function TermsOfService() {
           </h2>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>Currency:</strong> All prices listed on QITAVRO are in Indian Rupees (INR ₹) and are inclusive of applicable goods and service taxes unless explicitly stated.
+              <strong>Currency:</strong> All prices listed on QITAVRO are in Indian Rupees (INR ₹) and are inclusive of applicable taxes unless explicitly stated.
             </li>
             <li>
-              <strong>Price Accuracy:</strong> While we strive for absolute typographical precision, in the rare event that an edition is mispriced due to an error, we reserve the right to cancel or adjust the order before dispatch, with immediate written notification and full refund.
+              <strong>Price Accuracy:</strong> While we strive for absolute typographical precision, in the rare event that an edition is mispriced due to an error, we reserve the right to cancel or adjust the order, with immediate written notification and full refund.
             </li>
             <li>
-              <strong>Order Confirmation:</strong> An order confirmation email or receipt signifies receipt of your purchase intent. A binding contract is formed once the book has been packed and handed to our logistics partner.
+              <strong>Order Confirmation:</strong> An order confirmation email or WhatsApp notification signifies receipt of your purchase intent. A binding digital transaction is formed once download links are issued.
             </li>
           </ul>
         </section>
@@ -52,52 +52,48 @@ export default function TermsOfService() {
         {/* Section 3 */}
         <section className="space-y-3">
           <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
-            3. Digital Editions, eBooks & Curated Volumes
+            3. Digital Editions & eBook Licensing
           </h2>
           <p>
             When purchasing an eBook or Digital Edition (such as <em>Darling in Red's</em> by Ace):
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li><strong>Instant Digital Delivery:</strong> eBooks are delivered immediately upon checkout completion via on-screen download links and sent directly to your email address with zero shipping delays.</li>
-            <li><strong>Formats & Compatibility:</strong> Our digital volumes are provided in standard EPUB and PDF formats, compatible with Kindle, Apple Books, Kobo, Android, iOS, PC, and Mac reading apps.</li>
+            <li><strong>Instant Digital Delivery:</strong> eBooks are delivered immediately upon checkout completion via on-screen download links and sent directly to your email address and WhatsApp with zero shipping delays.</li>
+            <li><strong>Formats & Compatibility:</strong> Our digital volumes are provided in standard DRM-free EPUB and PDF formats, compatible with Kindle, Apple Books, Kobo, Android, iOS, PC, and Mac reading apps.</li>
             <li><strong>Personal License:</strong> The acquisition of an eBook grants you a personal, perpetual, non-exclusive license for personal reading. Redistribution, unauthorized file sharing, or reproduction is strictly prohibited under copyright laws.</li>
-            <li><strong>Physical & Pre-Loved Works:</strong> Physical editions listed in our catalogue follow our archival condition grading matrix and tracked courier dispatch.</li>
           </ul>
         </section>
 
         {/* Section 4 */}
         <section className="space-y-3">
           <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
-            4. Archival Shipping & Packaging
+            4. Digital Delivery & eBook Access Charter
           </h2>
           <p>
-            We treat every book like a fragile cultural heirloom. All parcels are packaged with rigid protective corners and moisture-resistant archival paper to prevent spine bruising or edge crushing during transit.
+            QITAVRO is exclusively an eBook and digital publication bookstore. We eliminate physical shipping delays, parcel handling damage, and courier transit fees.
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li><strong>Dispatch Time:</strong> Orders are typically inspected and dispatched within 24 to 48 business hours.</li>
-            <li><strong>Transit Timelines:</strong> Standard domestic delivery in India ranges from 3 to 7 business days depending on delivery pincode.</li>
-            <li><strong>Risk of Loss:</strong> We partner with premier tracked couriers. In the rare event of in-transit damage or total loss, QITAVRO provides full replacement or refund upon photographic verification.</li>
+            <li><strong>Zero Shipping Fees:</strong> Because all publications are digital, no shipping, courier, or packaging fees are ever charged.</li>
+            <li><strong>Immediate Fulfillment:</strong> Download links generate on-screen instantly upon order confirmation, with an encrypted backup sent to your email.</li>
+            <li><strong>Permanent Re-Download Guarantee:</strong> If you switch devices or inadvertently delete your download file, contact our team with your Order ID or email for a complimentary replacement download token.</li>
           </ul>
         </section>
 
         {/* Section 5 */}
         <section className="space-y-3">
           <h2 className="font-serif font-bold text-xl sm:text-2xl text-gold border-b border-burgundy/20 pb-2">
-            5. Cancellation, Return & Replacement Charter
+            5. Refund & Digital File Guarantee
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-3 font-sans text-xs">
             <div className="p-3 bg-[#181015] rounded border border-burgundy/30">
-              <span className="font-bold text-rose-light block mb-1">Before Dispatch</span>
-              You may cancel any order before it is dispatched by writing to us with your Order ID for a 100% refund.
+              <span className="font-bold text-rose-light block mb-1">File Integrity Guarantee</span>
+              If a file download is interrupted or fails to render properly on your verified device, we provide an immediate fresh link or alternate format within 24 hours.
             </div>
             <div className="p-3 bg-[#181015] rounded border border-burgundy/30">
-              <span className="font-bold text-rose-light block mb-1">Damaged on Arrival</span>
-              If a parcel arrives torn or water-damaged, notify us within 48 hours with photos for an immediate replacement or full refund.
+              <span className="font-bold text-rose-light block mb-1">Refund Considerations</span>
+              Because eBooks are non-returnable digital goods, refunds are honored for accidental duplicate orders or unresolvable technical incompatibility.
             </div>
           </div>
-          <p>
-            Due to the rare and irreplaceable nature of certain pre-loved single-copy editions, returns for buyer's remorse (e.g., changed reading preference) are not accepted once the seal is broken, unless the book differs significantly from its listed condition grade.
-          </p>
         </section>
 
         {/* Section 6 */}
