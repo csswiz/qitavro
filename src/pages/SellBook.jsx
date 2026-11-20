@@ -16,7 +16,7 @@ import {
   AlertCircle 
 } from 'lucide-react';
 import { useToast } from '../context/ToastContext';
-import { getWhatsAppListingUrl, WHATSAPP_NUMBER } from '../utils/whatsapp';
+import { getWhatsAppListingUrl, WHATSAPP_NUMBER, DISPLAY_WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function SellBook() {
   const { addToast } = useToast();
@@ -220,7 +220,7 @@ export default function SellBook() {
                   className="inline-flex items-center gap-1.5 text-xs font-sans text-rose-light hover:text-gold transition-colors font-semibold"
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-gold" />
-                  <span>Need help? Chat with Seller Support</span>
+                  <span>Need help? WhatsApp: {DISPLAY_WHATSAPP_NUMBER}</span>
                 </a>
               </div>
 

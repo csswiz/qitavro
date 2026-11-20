@@ -39,7 +39,14 @@ export default function Navbar() {
         <div className="bg-[#200A11] border-b border-burgundy/30 text-ivory-light text-[10px] sm:text-[11px] font-sans py-1.5 px-3 text-center tracking-wider font-light flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
           <span>QITAVRO Literary Sanctuary</span>
           <span className="text-gold">•</span>
-          <span>Acquire Any Book via WhatsApp</span>
+          <a
+            href="https://wa.me/917838354944?text=Hi%20QITAVRO%20Team!%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20purchasing%20or%20listing%20books."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gold text-ivory/90 transition-colors underline decoration-gold/40 underline-offset-2"
+          >
+            WhatsApp Desk: +91 78383 54944
+          </a>
           <span className="text-gold">•</span>
           <Link to="/sell" className="hover:text-gold text-rose-light font-medium underline">
             List your book for sale (₹99) →

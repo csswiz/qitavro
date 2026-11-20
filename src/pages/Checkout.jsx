@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import BookCoverImage from '../components/BookCoverImage';
-import { getWhatsAppCartUrl, WHATSAPP_NUMBER } from '../utils/whatsapp';
+import { getWhatsAppCartUrl, WHATSAPP_NUMBER, DISPLAY_WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function Checkout() {
   const { cart, subtotal, discountAmount, total, appliedCoupon } = useCart();
@@ -84,7 +84,7 @@ export default function Checkout() {
             <strong className="font-semibold block text-sm font-serif text-ivory-light">
               Demonstration Store Notice:
             </strong>
-            QITAVRO is an interactive editorial demonstration application. Real payment gateways and live automated merchant accounts are intentionally disengaged. Orders can be completed directly through our curatorial desk on WhatsApp.
+            QITAVRO is an interactive editorial demonstration application. Real payment gateways and live automated merchant accounts are intentionally disengaged. Orders can be completed directly through our curatorial desk on WhatsApp ({DISPLAY_WHATSAPP_NUMBER}).
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 // QITAVRO Official WhatsApp Desk & Order Routing
-export const WHATSAPP_NUMBER = '919876543210'; // QITAVRO Team WhatsApp Number
+export const WHATSAPP_NUMBER = '917838354944'; // QITAVRO Team WhatsApp Number (+91 78383 54944)
+export const DISPLAY_WHATSAPP_NUMBER = '+91 78383 54944';
 
 /**
  * Generate WhatsApp redirect URL to purchase a specific book
@@ -17,7 +18,7 @@ I would like to purchase the following book from your store:
 📖 *Book:* ${book.title}
 ✍️ *Author:* ${book.author}
 💰 *Price:* ₹${book.price}
-📦 *Format:* ${book.format || (book.isEbook ? 'Digital Edition (eBook)' : 'Pre-loved Volume')}
+📖 *Format:* ${book.format || 'Digital Edition (eBook • EPUB & PDF)'}
 
 Please guide me with payment and delivery. Thank you!`;
 
@@ -63,7 +64,7 @@ I have completed the *₹99 listing fee payment* to list my book for selling on 
 • *Author:* ${author || 'Not specified'}
 • *Target Selling Price:* ₹${price || 'Not specified'}
 • *Category:* ${category || 'Literature / Fiction'}
-• *Condition / Format:* ${condition || 'Pre-loved / Digital'}
+• *Format:* ${condition || 'Digital Edition (EPUB & PDF)'}
 • *Seller Name:* ${sellerName || 'Reader'}
 • *UPI Transaction / UTR No:* ${utrNumber || 'Attached in screenshot below'}
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Compass, Feather, ShieldCheck, Mail, ArrowUpRight } from 'lucide-react';
+import { BookOpen, Compass, Feather, ShieldCheck, Mail, ArrowUpRight, MessageSquare } from 'lucide-react';
+import { WHATSAPP_NUMBER, DISPLAY_WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function Footer() {
   return (
@@ -156,6 +157,17 @@ export default function Footer() {
                 <Link to="/disclaimer" className="hover:text-rose-light transition-colors">
                   Buying & Selling Disclaimer
                 </Link>
+              </li>
+              <li>
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi QITAVRO Team! 👋 I have a query regarding books / listing.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-rose-light hover:text-gold transition-colors font-medium flex items-center gap-1.5"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
+                  <span>WhatsApp: {DISPLAY_WHATSAPP_NUMBER}</span>
+                </a>
               </li>
               <li>
                 <span className="text-ivory/50">Reading Queries: curate@qitavro.com</span>
