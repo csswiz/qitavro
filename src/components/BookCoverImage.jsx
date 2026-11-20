@@ -23,9 +23,10 @@ export default function BookCoverImage({
             src={src}
             alt={alt}
             loading="lazy"
+            decoding="async"
             onLoad={() => setIsLoaded(true)}
             onError={() => setImageError(true)}
-            className={`w-full h-full object-cover transition-opacity duration-500 ${
+            className={`w-full h-full object-cover transition-opacity duration-300 ${
               isLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           />

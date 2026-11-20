@@ -754,35 +754,42 @@ export default function Dock({
     const onFocusOut = event => {
       if (!root.contains(event.relatedTarget)) hideLater();
     };
+    let winMovePending = false;
     const onWindowMove = event => {
       const s = settingsRef.current;
-      if (!s.autoHide || pointer.inside) return;
-      const host = root.offsetParent;
-      const rect = host
-        ? host.getBoundingClientRect()
-        : { left: 0, top: 0, right: window.innerWidth, bottom: window.innerHeight };
-      const zone = EDGE + s.thickness * 0.6;
-      const x = event.clientX;
-      const y = event.clientY;
-      const within = x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
-      const near = {
-        bottom: y >= rect.bottom - zone,
-        top: y <= rect.top + zone,
-        left: x <= rect.left + zone,
-        right: x >= rect.right - zone
-      }[s.side];
-      if (within && near) show();
-      else hideLater();
+      if (!s.autoHide || pointer.inside || winMovePending) return;
+      winMovePending = true;
+
+      requestAnimationFrame(() => {
+        winMovePending = false;
+        if (!alive) return;
+        const host = root.offsetParent;
+        const rect = host
+          ? host.getBoundingClientRect()
+          : { left: 0, top: 0, right: window.innerWidth, bottom: window.innerHeight };
+        const zone = EDGE + s.thickness * 0.6;
+        const x = event.clientX;
+        const y = event.clientY;
+        const within = x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+        const near = {
+          bottom: y >= rect.bottom - zone,
+          top: y <= rect.top + zone,
+          left: x <= rect.left + zone,
+          right: x >= rect.right - zone
+        }[s.side];
+        if (within && near) show();
+        else hideLater();
+      });
     };
 
-    root.addEventListener('pointermove', onMove);
-    root.addEventListener('pointerdown', onMove);
-    root.addEventListener('pointerleave', onLeave);
-    root.addEventListener('pointercancel', onLeave);
+    root.addEventListener('pointermove', onMove, { passive: true });
+    root.addEventListener('pointerdown', onMove, { passive: true });
+    root.addEventListener('pointerleave', onLeave, { passive: true });
+    root.addEventListener('pointercancel', onLeave, { passive: true });
     root.addEventListener('focusin', show);
     root.addEventListener('focusout', onFocusOut);
-    window.addEventListener('pointermove', onWindowMove);
-    window.addEventListener('pointerdown', onWindowMove);
+    window.addEventListener('pointermove', onWindowMove, { passive: true });
+    window.addEventListener('pointerdown', onWindowMove, { passive: true });
     wake();
 
     return () => {

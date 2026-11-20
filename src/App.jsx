@@ -1,26 +1,37 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import Home from './pages/Home';
-import Shop from './pages/Shop';
-import BookDetails from './pages/BookDetails';
-import Collections from './pages/Collections';
-import ReadingRoom from './pages/ReadingRoom';
-import About from './pages/About';
-import Cart from './pages/Cart';
-import Wishlist from './pages/Wishlist';
-import Checkout from './pages/Checkout';
-import TermsOfService from './pages/TermsOfService';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import ListingPolicy from './pages/ListingPolicy';
-import BuyingSellingDisclaimer from './pages/BuyingSellingDisclaimer';
-import SellBook from './pages/SellBook';
 import { ToastProvider } from './context/ToastContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { CartProvider } from './context/CartContext';
-import { BookOpen } from 'lucide-react';
+
+// Route-level code splitting: loads each page asynchronously on demand
+const Home = lazy(() => import('./pages/Home'));
+const Shop = lazy(() => import('./pages/Shop'));
+const BookDetails = lazy(() => import('./pages/BookDetails'));
+const Collections = lazy(() => import('./pages/Collections'));
+const ReadingRoom = lazy(() => import('./pages/ReadingRoom'));
+const About = lazy(() => import('./pages/About'));
+const Cart = lazy(() => import('./pages/Cart'));
+const Wishlist = lazy(() => import('./pages/Wishlist'));
+const Checkout = lazy(() => import('./pages/Checkout'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const ListingPolicy = lazy(() => import('./pages/ListingPolicy'));
+const BuyingSellingDisclaimer = lazy(() => import('./pages/BuyingSellingDisclaimer'));
+const SellBook = lazy(() => import('./pages/SellBook'));
+
+function PageFallback() {
+  return (
+    <div className="min-h-[60vh] flex flex-col items-center justify-center bg-black-obsidian">
+      <div className="w-10 h-10 rounded-[4px] p-1 bg-[#181015] border border-burgundy/40 shadow-sm flex items-center justify-center animate-pulse">
+        <img src="/logo.svg" alt="Loading" className="w-full h-full object-contain opacity-50" />
+      </div>
+    </div>
+  );
+}
 
 function NotFound() {
   return (
@@ -57,26 +68,28 @@ export default function App() {
             <div className="min-h-screen flex flex-col bg-black-obsidian text-ivory-light antialiased selection:bg-burgundy/45 selection:text-ivory-light">
               <Navbar />
               <main className="flex-1 pb-16 lg:pb-0">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/shop" element={<Shop />} />
-                  <Route path="/book/:slug" element={<BookDetails />} />
-                  <Route path="/collections" element={<Collections />} />
-                  <Route path="/reading-room" element={<ReadingRoom />} />
-                  <Route path="/reading-room/:slug" element={<ReadingRoom />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/wishlist" element={<Wishlist />} />
-                  <Route path="/checkout" element={<Checkout />} />
-                  <Route path="/terms" element={<TermsOfService />} />
-                  <Route path="/privacy" element={<PrivacyPolicy />} />
-                  <Route path="/listing-policy" element={<ListingPolicy />} />
-                  <Route path="/disclaimer" element={<BuyingSellingDisclaimer />} />
-                  <Route path="/sell" element={<SellBook />} />
-                  <Route path="/list-book" element={<SellBook />} />
-                  <Route path="/payment" element={<SellBook />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
+                <Suspense fallback={<PageFallback />}>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/shop" element={<Shop />} />
+                    <Route path="/book/:slug" element={<BookDetails />} />
+                    <Route path="/collections" element={<Collections />} />
+                    <Route path="/reading-room" element={<ReadingRoom />} />
+                    <Route path="/reading-room/:slug" element={<ReadingRoom />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/wishlist" element={<Wishlist />} />
+                    <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/terms" element={<TermsOfService />} />
+                    <Route path="/privacy" element={<PrivacyPolicy />} />
+                    <Route path="/listing-policy" element={<ListingPolicy />} />
+                    <Route path="/disclaimer" element={<BuyingSellingDisclaimer />} />
+                    <Route path="/sell" element={<SellBook />} />
+                    <Route path="/list-book" element={<SellBook />} />
+                    <Route path="/payment" element={<SellBook />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Suspense>
               </main>
               <Footer />
             </div>

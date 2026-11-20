@@ -17,10 +17,12 @@ import booksData from '../data/books.json';
 import BookGrid from '../components/BookGrid';
 import Newsletter from '../components/Newsletter';
 import QuickViewModal from '../components/QuickViewModal';
-import HeroDragon3D from '../components/HeroDragon3D';
 import FluidHeroNavbar from '../components/ui/woodpeck-hero-landing-animation';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
+
+// Lazy-load 3D components so Three.js is not loaded synchronously upfront
+const HeroDragon3D = React.lazy(() => import('../components/HeroDragon3D'));
 
 export default function Home() {
   const { addToCart } = useCart();
@@ -64,8 +66,10 @@ export default function Home() {
       />
 
       <div id="explore-shelf" className="relative">
-        {/* Live 3D Mythic Guardian Dragon (Hanging souvenir) */}
-        <HeroDragon3D modelUrl="/models/dragon.glb" />
+        {/* Live 3D Mythic Guardian Dragon (Hanging souvenir, lazy-loaded on desktop) */}
+        <React.Suspense fallback={null}>
+          <HeroDragon3D modelUrl="/models/dragon.glb" />
+        </React.Suspense>
       </div>
 
       {/* 2. BRAND PHILOSOPHY */}

@@ -10,4 +10,29 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/three') || id.includes('three/examples')) {
+            return 'vendor-three';
+          }
+          if (
+            id.includes('node_modules/react/') ||
+            id.includes('node_modules/react-dom/') ||
+            id.includes('node_modules/react-router-dom/')
+          ) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules/lucide-react') || id.includes('node_modules/@tabler')) {
+            return 'vendor-icons';
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 800,
+    cssCodeSplit: true,
+    minify: 'esbuild',
+    target: 'es2020',
+  },
 });

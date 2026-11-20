@@ -230,44 +230,51 @@ export default function HeroDragon3D({
     let activePlaceholder = createPlaceholder();
     dragonModelWrapper.add(activePlaceholder);
 
-    // 5. Load GLB Model
-    const loader = new GLTFLoader();
+    // 5. Defer 3D Model load using requestIdleCallback so initial paint is instant (0 lag)
     let loadedModel = null;
+    const loadDeferredGLB = () => {
+      const loader = new GLTFLoader();
+      loader.load(
+        modelUrl,
+        (gltf) => {
+          loadedModel = gltf.scene;
 
-    loader.load(
-      modelUrl,
-      (gltf) => {
-        loadedModel = gltf.scene;
+          const box = new THREE.Box3().setFromObject(loadedModel);
+          const center = box.getCenter(new THREE.Vector3());
+          const size = box.getSize(new THREE.Vector3());
+          const maxDim = Math.max(size.x, size.y, size.z) || 1;
 
-        const box = new THREE.Box3().setFromObject(loadedModel);
-        const center = box.getCenter(new THREE.Vector3());
-        const size = box.getSize(new THREE.Vector3());
-        const maxDim = Math.max(size.x, size.y, size.z) || 1;
+          const normScale = 1.0 / maxDim;
+          loadedModel.position.set(
+            -center.x * normScale,
+            -center.y * normScale,
+            -center.z * normScale
+          );
+          loadedModel.scale.setScalar(normScale);
 
-        const normScale = 1.0 / maxDim;
-        loadedModel.position.set(
-          -center.x * normScale,
-          -center.y * normScale,
-          -center.z * normScale
-        );
-        loadedModel.scale.setScalar(normScale);
+          loadedModel.traverse((child) => {
+            if (child.isMesh && child.material) {
+              child.material.roughness = Math.max(0.25, child.material.roughness || 0.4);
+              child.material.metalness = Math.min(0.88, child.material.metalness || 0.6);
+              child.material.envMapIntensity = 1.35;
+            }
+          });
 
-        loadedModel.traverse((child) => {
-          if (child.isMesh && child.material) {
-            child.material.roughness = Math.max(0.25, child.material.roughness || 0.4);
-            child.material.metalness = Math.min(0.88, child.material.metalness || 0.6);
-            child.material.envMapIntensity = 1.35;
-          }
-        });
+          dragonModelWrapper.remove(activePlaceholder);
+          dragonModelWrapper.add(loadedModel);
+        },
+        undefined,
+        (err) => {
+          console.warn('HeroDragon3D: Using stylized souvenir placeholder.', err);
+        }
+      );
+    };
 
-        dragonModelWrapper.remove(activePlaceholder);
-        dragonModelWrapper.add(loadedModel);
-      },
-      undefined,
-      (err) => {
-        console.warn('HeroDragon3D: Using stylized souvenir placeholder.', err);
-      }
-    );
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => setTimeout(loadDeferredGLB, 1000), { timeout: 4000 });
+    } else {
+      setTimeout(loadDeferredGLB, 1500);
+    }
 
     // 6. Responsive Bounds & String Sizing
     const getBounds = () => {
@@ -324,65 +331,81 @@ export default function HeroDragon3D({
       dragonCharmGroup.scale.setScalar(scale);
     };
 
-    // Window Mouse / Pointer Move
+    // Cached container rect to avoid expensive getBoundingClientRect() on every pointermove
+    let cachedRect = container.getBoundingClientRect();
+    const updateCachedRect = () => {
+      if (container) cachedRect = container.getBoundingClientRect();
+    };
+
+    // Window Mouse / Pointer Move (Throttled & using cached rect)
+    let pointerPending = false;
     const handlePointerMove = (e) => {
-      const now = performance.now();
-      const dt = Math.max(0.001, (now - lastPointerPos.time) / 1000);
-      pointerVelocity.x = (e.clientX - lastPointerPos.x) / dt;
-      pointerVelocity.y = (e.clientY - lastPointerPos.y) / dt;
-      lastPointerPos = { x: e.clientX, y: e.clientY, time: now };
+      if (pointerPending) return;
+      pointerPending = true;
 
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-      if (rect.width <= 0 || rect.height <= 0) return;
+      requestAnimationFrame(() => {
+        pointerPending = false;
+        if (!container || !isVisible) return;
 
-      mouseNorm.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      mouseNorm.y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+        const now = performance.now();
+        const dt = Math.max(0.001, (now - lastPointerPos.time) / 1000);
+        pointerVelocity.x = (e.clientX - lastPointerPos.x) / dt;
+        pointerVelocity.y = (e.clientY - lastPointerPos.y) / dt;
+        lastPointerPos = { x: e.clientX, y: e.clientY, time: now };
 
-      // Raycast check against hit sphere
-      raycaster.setFromCamera(mouseNorm, camera);
-      const intersects = raycaster.intersectObject(hitSphere, false);
+        const rect = cachedRect;
+        if (!rect || rect.width <= 0 || rect.height <= 0) return;
 
-      const hit = intersects.length > 0;
-      if (hit !== isHovered) {
-        isHovered = hit;
-      }
+        mouseNorm.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouseNorm.y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
 
-      // Dynamic pointer-events: only intercept mouse when directly touching/hovering the souvenir
-      if (isHovered || isDragging) {
-        renderer.domElement.style.pointerEvents = 'auto';
-        renderer.domElement.style.cursor = isDragging ? 'grabbing' : 'grab';
-      } else {
-        renderer.domElement.style.pointerEvents = 'none';
-        renderer.domElement.style.cursor = 'default';
-      }
-
-      // If user drags the souvenir
-      if (isDragging) {
-        dragPlane.setFromNormalAndCoplanarPoint(
-          new THREE.Vector3(0, 0, 1),
-          anchorGroup.position
-        );
-        if (raycaster.ray.intersectPlane(dragPlane, dragPoint)) {
-          // Relative vector from top anchor to drag point
-          const dx = dragPoint.x - anchorGroup.position.x;
-          const dy = dragPoint.y - anchorGroup.position.y;
-          const dz = dragPoint.z - anchorGroup.position.z;
-
-          // Compute target angles
-          const targetZ = Math.max(-0.85, Math.min(0.85, Math.atan2(dx, -dy)));
-          const targetX = Math.max(-0.65, Math.min(0.65, Math.atan2(dz, -dy)));
-
-          thetaZ += (targetZ - thetaZ) * 0.35;
-          thetaX += (targetX - thetaX) * 0.35;
-          thetaY += (dx * 0.5 - thetaY) * 0.2;
+        // Raycast check against hit sphere only if mouse is in general vicinity
+        if (mouseNorm.x < 0.2) {
+          raycaster.setFromCamera(mouseNorm, camera);
+          const intersects = raycaster.intersectObject(hitSphere, false);
+          const hit = intersects.length > 0;
+          if (hit !== isHovered) {
+            isHovered = hit;
+          }
+        } else {
+          isHovered = false;
         }
-      } else if (isHovered && Math.hypot(pointerVelocity.x, pointerVelocity.y) > 250) {
-        // Swift hover breeze nudge!
-        velZ += (pointerVelocity.x / 1400);
-        velX += (-pointerVelocity.y / 1800);
-        velY += (pointerVelocity.x / 1800);
-      }
+
+        // Dynamic pointer-events: only intercept mouse when directly touching/hovering the souvenir
+        if (isHovered || isDragging) {
+          renderer.domElement.style.pointerEvents = 'auto';
+          renderer.domElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+        } else {
+          renderer.domElement.style.pointerEvents = 'none';
+          renderer.domElement.style.cursor = 'default';
+        }
+
+        // If user drags the souvenir
+        if (isDragging) {
+          dragPlane.setFromNormalAndCoplanarPoint(
+            new THREE.Vector3(0, 0, 1),
+            anchorGroup.position
+          );
+          if (raycaster.ray.intersectPlane(dragPlane, dragPoint)) {
+            const dx = dragPoint.x - anchorGroup.position.x;
+            const dy = dragPoint.y - anchorGroup.position.y;
+            const dz = dragPoint.z - anchorGroup.position.z;
+
+            // Compute target angles
+            const targetZ = Math.max(-0.85, Math.min(0.85, Math.atan2(dx, -dy)));
+            const targetX = Math.max(-0.65, Math.min(0.65, Math.atan2(dz, -dy)));
+
+            thetaZ += (targetZ - thetaZ) * 0.35;
+            thetaX += (targetX - thetaX) * 0.35;
+            thetaY += (dx * 0.5 - thetaY) * 0.2;
+          }
+        } else if (isHovered && Math.hypot(pointerVelocity.x, pointerVelocity.y) > 250) {
+          // Swift hover breeze nudge!
+          velZ += (pointerVelocity.x / 1400);
+          velX += (-pointerVelocity.y / 1800);
+          velY += (pointerVelocity.x / 1800);
+        }
+      });
     };
 
     // Pointer Down (Click / Tap Start)
@@ -447,28 +470,53 @@ export default function HeroDragon3D({
 
     // IntersectionObserver to pause rendering when off-screen
     let isVisible = true;
+    let animId = null;
+
+    const startLoop = () => {
+      if (!animId && isVisible && !document.hidden) {
+        clock.getDelta();
+        animId = requestAnimationFrame(renderLoop);
+      }
+    };
+
+    const stopLoop = () => {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           isVisible = entry.isIntersecting;
+          if (isVisible) startLoop();
+          else stopLoop();
         });
       },
       { threshold: 0.02 }
     );
     observer.observe(container);
 
+    const onVisibilityChange = () => {
+      if (document.hidden) stopLoop();
+      else if (isVisible) startLoop();
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
     // Initial bounds calculation
     const initialBounds = getBounds();
     updateStringGeometry(initialBounds.len, initialBounds.scale);
 
-    // 9. Animation Loop with Harmonic Physics
+    // 9. Animation Loop with Harmonic Physics (Zero CPU when offscreen/backgrounded)
     const clock = new THREE.Clock();
-    let animId;
 
     const renderLoop = () => {
+      if (!isVisible || document.hidden) {
+        animId = null;
+        return;
+      }
       animId = requestAnimationFrame(renderLoop);
-
-      if (!isVisible) return;
 
       const delta = Math.min(0.04, clock.getDelta());
       const time = clock.getElapsedTime();
@@ -539,14 +587,16 @@ export default function HeroDragon3D({
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
+      updateCachedRect();
       const b = getBounds();
       updateStringGeometry(b.len, b.scale);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
     // Cleanup on unmount
     return () => {
-      cancelAnimationFrame(animId);
+      stopLoop();
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('pointermove', handlePointerMove);

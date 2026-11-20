@@ -113,3 +113,12 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Rendering performance & GPU optimizations */
+img {
+  content-visibility: auto;
+}
+
+.will-change-transform {
+  will-change: transform;
+}

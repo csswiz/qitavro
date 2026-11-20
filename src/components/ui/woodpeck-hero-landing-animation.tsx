@@ -296,9 +296,24 @@ function IntroOverlay({
     onCompleteRef.current = onComplete;
   }, [onComplete]);
 
+  const skipIntro = useCallback(() => {
+    setStage(4);
+    if (onCompleteRef.current) {
+      onCompleteRef.current();
+    }
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('intro-animation-complete'));
+    }
+    setTimeout(() => {
+      setStage(5);
+      setUnmounted(true);
+    }, 350);
+  }, []);
+
   useEffect(() => {
-    const t1 = setTimeout(() => setStage(2), 100);
-    const t2 = setTimeout(() => setStage(3), 1200);
+    // Ultra-snappy intro animation (1.8s total vs previous 3.4s)
+    const t1 = setTimeout(() => setStage(2), 50);
+    const t2 = setTimeout(() => setStage(3), 500);
     const t3 = setTimeout(() => {
       setStage(4);
       if (onCompleteRef.current) {
@@ -307,11 +322,11 @@ function IntroOverlay({
       if (typeof window !== 'undefined') {
         window.dispatchEvent(new CustomEvent('intro-animation-complete'));
       }
-    }, 2400);
+    }, 1200);
     const t4 = setTimeout(() => {
       setStage(5);
       setUnmounted(true);
-    }, 3400);
+    }, 1800);
 
     return () => {
       clearTimeout(t1);
@@ -332,7 +347,9 @@ function IntroOverlay({
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden px-4 select-none transition-all duration-[1100ms] ease-[cubic-bezier(0.65,0,0.35,1)] ${
+      onClick={skipIntro}
+      title="Click anywhere to enter bookstore immediately"
+      className={`fixed inset-0 z-[99999] cursor-pointer flex items-center justify-center overflow-hidden px-4 select-none transition-all duration-[800ms] ease-[cubic-bezier(0.65,0,0.35,1)] ${
         isBurgundy ? 'bg-[#0E050A] text-ivory-light' : 'bg-white text-neutral-900'
       } ${
         isFading ? 'opacity-0 scale-[1.02] invisible pointer-events-none' : 'opacity-100 scale-100 pointer-events-auto'
@@ -715,6 +732,8 @@ function HeroBannerSection({
               alt="QITAVRO Classical Library Sanctuary"
               className="w-full h-full object-cover object-center select-none"
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           )}
 
