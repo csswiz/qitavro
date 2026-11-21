@@ -255,24 +255,31 @@ function IntroOverlay({
   const [stage, setStage] = useState(1);
   const [unmounted, setUnmounted] = useState(false);
   const onCompleteRef = useRef(onComplete);
+  const hasTriggeredCompleteRef = useRef(false);
 
   useEffect(() => {
     onCompleteRef.current = onComplete;
   }, [onComplete]);
 
-  const skipIntro = useCallback(() => {
-    setStage(4);
+  const triggerComplete = useCallback(() => {
+    if (hasTriggeredCompleteRef.current) return;
+    hasTriggeredCompleteRef.current = true;
     if (onCompleteRef.current) {
       onCompleteRef.current();
     }
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('intro-animation-complete'));
     }
+  }, []);
+
+  const skipIntro = useCallback(() => {
+    setStage(4);
+    triggerComplete();
     setTimeout(() => {
       setStage(5);
       setUnmounted(true);
     }, 350);
-  }, []);
+  }, [triggerComplete]);
 
   useEffect(() => {
     // Ultra-snappy intro animation (1.8s total vs previous 3.4s)
@@ -280,12 +287,7 @@ function IntroOverlay({
     const t2 = setTimeout(() => setStage(3), 500);
     const t3 = setTimeout(() => {
       setStage(4);
-      if (onCompleteRef.current) {
-        onCompleteRef.current();
-      }
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('intro-animation-complete'));
-      }
+      triggerComplete();
     }, 1200);
     const t4 = setTimeout(() => {
       setStage(5);
@@ -298,7 +300,7 @@ function IntroOverlay({
       clearTimeout(t3);
       clearTimeout(t4);
     };
-  }, []);
+  }, [triggerComplete]);
 
   if (unmounted) return null;
 
@@ -760,8 +762,18 @@ export default function FluidHeroNavbar({
     showIntroAnimation ? 'idle' : 'done'
   );
   const [navbarVisible, setNavbarVisible] = useState(!showIntroAnimation);
+  const hasStartedHeroRef = useRef(false);
+  const fallbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const startHeroAnimation = useCallback(() => {
+    if (hasStartedHeroRef.current) return;
+    hasStartedHeroRef.current = true;
+
+    if (fallbackTimerRef.current) {
+      clearTimeout(fallbackTimerRef.current);
+      fallbackTimerRef.current = null;
+    }
+
     setStage('animating');
 
     setTimeout(() => {
@@ -780,14 +792,23 @@ export default function FluidHeroNavbar({
   }, [onIntroComplete, startHeroAnimation]);
 
   useEffect(() => {
-    if (!showIntroAnimation) return;
+    if (!showIntroAnimation) {
+      setStage('done');
+      setNavbarVisible(true);
+      return;
+    }
 
     // Safety fallback timer if intro completes or is skipped
-    const fallbackTimer = setTimeout(() => {
+    fallbackTimerRef.current = setTimeout(() => {
       startHeroAnimation();
     }, 2800);
 
-    return () => clearTimeout(fallbackTimer);
+    return () => {
+      if (fallbackTimerRef.current) {
+        clearTimeout(fallbackTimerRef.current);
+        fallbackTimerRef.current = null;
+      }
+    };
   }, [showIntroAnimation, startHeroAnimation]);
 
   return (

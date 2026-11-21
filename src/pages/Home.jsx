@@ -29,9 +29,12 @@ export default function Home() {
   // Check if first-time visit in this session for the intro splash animation
   const [shouldPlayIntro, setShouldPlayIntro] = useState(() => {
     try {
-      return !sessionStorage.getItem('qitavro_intro_seen');
-    } catch {
+      const seen = sessionStorage.getItem('qitavro_intro_seen');
+      if (seen) return false;
+      sessionStorage.setItem('qitavro_intro_seen', 'true');
       return true;
+    } catch {
+      return false;
     }
   });
 
@@ -56,6 +59,7 @@ export default function Home() {
         showNavbar={true}
         accentColor="#9B2C46"
         onIntroComplete={() => {
+          setShouldPlayIntro(false);
           try {
             sessionStorage.setItem('qitavro_intro_seen', 'true');
           } catch {}

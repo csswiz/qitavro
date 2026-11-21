@@ -7,8 +7,9 @@ import { ToastProvider } from './context/ToastContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { CartProvider } from './context/CartContext';
 
-// Route-level code splitting: loads each page asynchronously on demand
-const Home = lazy(() => import('./pages/Home'));
+import Home from './pages/Home';
+
+// Route-level code splitting: secondary pages load asynchronously on demand
 const Shop = lazy(() => import('./pages/Shop'));
 const BookDetails = lazy(() => import('./pages/BookDetails'));
 const Collections = lazy(() => import('./pages/Collections'));
