@@ -162,9 +162,14 @@ export default function Shop() {
               <ArrowLeft className="w-3.5 h-3.5 text-gold" />
               <span>Back to Home</span>
             </Link>
-            <span className="block text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
-              The Digital Sanctuary
-            </span>
+            <div className="inline-flex items-center gap-2 mb-1">
+              <div className="w-5 h-5 rounded-[3px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+                <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
+                The Digital Sanctuary
+              </span>
+            </div>
             <h1 className="font-serif font-bold text-2xl sm:text-4xl md:text-5xl text-ivory-light mt-1">
               {activeCollection ? activeCollection.title : 'The eBook Catalogue'}
             </h1>

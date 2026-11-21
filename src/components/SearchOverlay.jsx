@@ -80,9 +80,14 @@ export default function SearchOverlay({ isOpen, onClose }) {
               <span className="font-medium">Back</span>
             </button>
 
-            <span className="font-serif italic text-xs sm:text-sm text-gold tracking-wide">
-              Search Catalogue
-            </span>
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-[3px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+                <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
+              </div>
+              <span className="font-serif italic text-xs sm:text-sm text-gold tracking-wide">
+                Search Catalogue
+              </span>
+            </div>
 
             <button
               onClick={onClose}
@@ -192,7 +197,9 @@ export default function SearchOverlay({ isOpen, onClose }) {
                 </div>
               ) : (
                 <div className="py-8 sm:py-12 text-center">
-                  <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 mx-auto text-ivory/30 mb-2 stroke-[1.2]" />
+                  <div className="w-12 h-12 rounded-[5px] p-2 bg-[#181015] border border-burgundy/40 shadow-sm mx-auto mb-3 flex items-center justify-center opacity-85">
+                    <img src="/logo.svg" alt="QITAVRO Seal" className="w-full h-full object-contain" />
+                  </div>
                   <p className="font-serif text-base sm:text-lg text-ivory-light">No editions found matching "{searchTerm}"</p>
                   <p className="font-sans text-xs text-ivory/60 mt-1 max-w-sm mx-auto">
                     Try searching for Romance or Darling in Red's.

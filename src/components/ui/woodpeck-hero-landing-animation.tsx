@@ -638,22 +638,14 @@ function HeroBannerSection({
               className="w-full h-full object-cover object-center"
             />
           ) : (
-            <picture className="w-full h-full block">
-              <source
-                srcSet={heroImage.replace(/\.(jpe?g|png)$/i, '.webp')}
-                type="image/webp"
-              />
-              <img
-                src={heroImage}
-                alt="QITAVRO Classical Library Sanctuary"
-                className="w-full h-full object-cover object-center select-none"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                width="1920"
-                height="1080"
-              />
-            </picture>
+            <img
+              src={heroImage}
+              alt="QITAVRO Classical Library Sanctuary"
+              className="w-full h-full object-cover object-center select-none"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
           )}
 
           {/* Luxury dark gradient tint overlay */}

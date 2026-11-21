@@ -63,9 +63,14 @@ export default function QuickViewModal({ book, isOpen, onClose }) {
             <span className="font-medium">Back</span>
           </button>
 
-          <span className="font-serif italic text-xs text-gold/80 truncate px-2 hidden sm:inline">
-            Quick Preview · {book.title}
-          </span>
+          <div className="flex items-center gap-2 max-w-[70%]">
+            <div className="w-5 h-5 rounded-[3px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+              <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
+            </div>
+            <span className="font-serif italic text-xs text-gold/90 truncate">
+              Quick Preview · {book.title}
+            </span>
+          </div>
 
           <button
             onClick={onClose}

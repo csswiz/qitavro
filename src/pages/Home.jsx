@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  BookOpen, 
-  Star, 
-  Heart, 
-  ShoppingBag, 
-  Smartphone, 
-  Tablet, 
-  Check, 
-  Sparkles, 
-  ShieldCheck, 
-  Feather 
+import {
+  ArrowRight,
+  BookOpen,
+  Star,
+  Heart,
+  ShoppingBag,
+  Smartphone,
+  Tablet,
+  Check,
+  Sparkles,
+  ShieldCheck,
+  Feather
 } from 'lucide-react';
 import booksData from '../data/books.json';
 import BookGrid from '../components/BookGrid';
@@ -62,7 +62,7 @@ export default function Home() {
           setShouldPlayIntro(false);
           try {
             sessionStorage.setItem('qitavro_intro_seen', 'true');
-          } catch {}
+          } catch { }
         }}
       />
 

@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  QrCode, 
-  Copy, 
-  Check, 
-  Sparkles, 
-  ShieldCheck, 
-  ArrowRight, 
-  MessageSquare, 
-  HelpCircle, 
-  BookOpen, 
-  CheckCircle2, 
-  Tag, 
-  Clock, 
+import {
+  QrCode,
+  Copy,
+  Check,
+  Sparkles,
+  ShieldCheck,
+  ArrowRight,
+  MessageSquare,
+  HelpCircle,
+  BookOpen,
+  CheckCircle2,
+  Tag,
+  Clock,
   AlertCircle,
   ArrowLeft,
-  X 
+  X
 } from 'lucide-react';
 import { useToast } from '../context/ToastContext';
 import { getWhatsAppListingUrl, WHATSAPP_NUMBER } from '../utils/whatsapp';
@@ -125,7 +125,7 @@ export default function SellBook() {
           {/* Left Column: Dedicated QR Payment & Beneficiary Card */}
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="bg-[#140D12] rounded-[6px] border-2 border-burgundy/50 p-6 sm:p-8 shadow-2xl sticky top-24">
-              
+
               <div className="flex items-center justify-between pb-4 border-b border-burgundy/30">
                 <div>
                   <span className="text-[10px] font-sans uppercase tracking-widest text-rose-light font-semibold block">
@@ -160,15 +160,11 @@ export default function SellBook() {
               <div className="mt-5 flex flex-col items-center justify-center">
                 <div className="relative p-2.5 rounded-[8px] bg-black-obsidian border-2 border-gold/50 shadow-2xl max-w-[240px] sm:max-w-[260px] w-full overflow-hidden group">
                   <img
-                    src="/images/payment/upi-qr.jpg"
-                    alt="Scan UPI QR Code to complete ₹99 listing verification fee"
+                    src="/images/payments/listing-qr.jpg"
+                    alt="Scan UPI QR Code to pay ₹99 listing fee to Janvi Sethi"
                     className="w-full h-auto rounded-[4px] object-contain transition-transform duration-300 group-hover:scale-102"
-                    width="260"
-                    height="260"
-                    loading="lazy"
-                    decoding="async"
                   />
-                  
+
                   {/* Subtle scan line indicator */}
                   <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-75 animate-pulse" />
                 </div>
@@ -251,7 +247,7 @@ export default function SellBook() {
           {/* Right Column: Book Submission Form */}
           <div className="lg:col-span-7 order-1 lg:order-2">
             <div className="bg-[#140D12] rounded-[6px] border border-burgundy/35 p-6 sm:p-8 shadow-xl">
-              
+
               <div className="mb-6">
                 <span className="text-[10px] font-sans uppercase tracking-widest text-rose-light font-semibold block">
                   Step 1 & 2
@@ -265,7 +261,7 @@ export default function SellBook() {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
-                
+
                 {/* Book Title & Author */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>

@@ -18,6 +18,9 @@ export default function ReadingRoom() {
     if (!article) {
       return (
         <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-16 bg-black-obsidian text-ivory-light">
+          <div className="w-12 h-12 rounded-[5px] p-2 bg-[#181015] border border-burgundy/40 mb-3.5 flex items-center justify-center shadow-md">
+            <img src="/logo.svg" alt="QITAVRO Emblem" className="w-full h-full object-contain" />
+          </div>
           <h2 className="font-serif text-3xl font-bold text-ivory-light">Article Not Found</h2>
           <Link
             to="/reading-room"
@@ -174,9 +177,14 @@ export default function ReadingRoom() {
       <div className="bg-[#120C10] border-b border-burgundy/25 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
-              Literary Magazine
-            </span>
+            <div className="inline-flex items-center gap-2 mb-1">
+              <div className="w-5 h-5 rounded-[3px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+                <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
+                Literary Magazine
+              </span>
+            </div>
             <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-ivory-light mt-1">
               The Reading Room
             </h1>

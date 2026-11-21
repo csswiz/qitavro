@@ -13,31 +13,22 @@ export default function BookCoverImage({
   const [imageError, setImageError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const isStandardImg = src && /\.(jpe?g|png)$/i.test(src);
-  const webpSrc = isStandardImg ? src.replace(/\.(jpe?g|png)$/i, '.webp') : null;
-
   return (
     <div
       className={`relative overflow-hidden rounded-[2px] bg-wine/10 ${aspectRatio} ${className} book-spine-effect select-none shadow-book transition-shadow duration-300 hover:shadow-book-hover`}
     >
       {!imageError && src ? (
         <>
-          <picture className="w-full h-full block">
-            {webpSrc && <source srcSet={webpSrc} type="image/webp" />}
-            <img
-              src={src}
-              alt={alt}
-              width="400"
-              height="600"
-              loading="lazy"
-              decoding="async"
-              onLoad={() => setIsLoaded(true)}
-              onError={() => setImageError(true)}
-              className={`w-full h-full object-cover transition-opacity duration-300 ${
-                isLoaded ? 'opacity-100' : 'opacity-0'
+          <img
+            src={src}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setIsLoaded(true)}
+            onError={() => setImageError(true)}
+            className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'
               }`}
-            />
-          </picture>
+          />
           {!isLoaded && (
             <div className="absolute inset-0 bg-stone/20 animate-pulse flex items-center justify-center">
               <BookOpen className="w-6 h-6 text-charcoal/20" />

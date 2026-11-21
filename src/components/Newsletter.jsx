@@ -34,6 +34,10 @@ export default function Newsletter() {
     <section className="relative overflow-hidden bg-[#0E080C] border-y border-burgundy/30 py-16 px-4 sm:px-6 lg:px-8">
       {/* Decorative Literary Flourish */}
       <div className="max-w-3xl mx-auto text-center">
+        <div className="w-10 h-10 rounded-[5px] p-1.5 bg-[#181015] border border-burgundy/40 shadow-sm mx-auto mb-3 flex items-center justify-center">
+          <img src="/logo.svg" alt="QITAVRO Emblem" className="w-full h-full object-contain" />
+        </div>
+
         <div className="inline-flex items-center gap-2 mb-3">
           <span className="w-8 h-[1px] bg-gold" />
           <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-burgundy-rose font-semibold">
