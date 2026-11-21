@@ -66,9 +66,14 @@ export default function Checkout() {
               <ArrowLeft className="w-3.5 h-3.5 text-gold" />
               <span>Back to Bag</span>
             </Link>
-            <h1 className="font-serif font-bold text-xl sm:text-3xl text-ivory-light">
-              Digital Edition Checkout & Instant Access
-            </h1>
+            <div className="flex items-center gap-2.5 mt-1">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-[4px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+                <img src="/logo.svg" alt="QITAVRO Emblem" className="w-full h-full object-contain" />
+              </div>
+              <h1 className="font-serif font-bold text-xl sm:text-3xl text-ivory-light">
+                Digital Edition Checkout & Instant Access
+              </h1>
+            </div>
           </div>
           <div className="flex items-center gap-2 text-xs font-sans text-ivory/60">
             <Lock className="w-4 h-4 text-rose-light" />

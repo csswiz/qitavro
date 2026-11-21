@@ -30,8 +30,10 @@ export default function BookCoverImage({
               }`}
           />
           {!isLoaded && (
-            <div className="absolute inset-0 bg-stone/20 animate-pulse flex items-center justify-center">
-              <BookOpen className="w-6 h-6 text-charcoal/20" />
+            <div className="absolute inset-0 bg-[#160E13] animate-pulse flex items-center justify-center">
+              <div className="w-6 h-6 rounded-[3px] p-0.5 bg-[#1C0D15] border border-burgundy/40 shadow-xs flex items-center justify-center opacity-60">
+                <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
+              </div>
             </div>
           )}
         </>
@@ -50,10 +52,13 @@ export default function BookCoverImage({
                 {author || 'Literary Classic'}
               </p>
             </div>
-            <div className="flex items-center justify-center gap-1 opacity-70">
-              <span className="w-4 h-[1px] bg-gold" />
-              <span className="text-[8px] uppercase tracking-wider text-stone">QITAVRO</span>
-              <span className="w-4 h-[1px] bg-gold" />
+            <div className="flex items-center justify-center gap-1.5 opacity-80">
+              <span className="w-3 h-[1px] bg-gold" />
+              <div className="w-3.5 h-3.5 flex items-center justify-center flex-shrink-0">
+                <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-[8px] uppercase tracking-wider text-gold font-sans font-medium">QITAVRO</span>
+              <span className="w-3 h-[1px] bg-gold" />
             </div>
           </div>
         </div>
