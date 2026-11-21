@@ -160,9 +160,13 @@ export default function SellBook() {
               <div className="mt-5 flex flex-col items-center justify-center">
                 <div className="relative p-2.5 rounded-[8px] bg-black-obsidian border-2 border-gold/50 shadow-2xl max-w-[240px] sm:max-w-[260px] w-full overflow-hidden group">
                   <img
-                    src="/images/payments/listing-qr.jpg"
-                    alt="Scan UPI QR Code to pay ₹99 listing fee to Janvi Sethi"
+                    src="/images/payment/upi-qr.jpg"
+                    alt="Scan UPI QR Code to complete ₹99 listing verification fee"
                     className="w-full h-auto rounded-[4px] object-contain transition-transform duration-300 group-hover:scale-102"
+                    width="260"
+                    height="260"
+                    loading="lazy"
+                    decoding="async"
                   />
                   
                   {/* Subtle scan line indicator */}
