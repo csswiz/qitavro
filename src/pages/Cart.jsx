@@ -45,7 +45,7 @@ export default function Cart() {
             <span>Back to Shop</span>
           </Link>
           <div className="inline-flex items-center gap-2 mb-1">
-            <div className="w-5 h-5 rounded-[3px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+            <div className="w-5 h-5 rounded-full p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
               <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
             </div>
             <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
@@ -221,7 +221,7 @@ export default function Cart() {
           /* Empty Cart State with Recommendations */
           <div className="py-12">
             <div className="max-w-md mx-auto text-center bg-[#140D12] p-8 rounded-[4px] border border-burgundy/30 shadow-subtle text-ivory-light">
-              <div className="w-16 h-16 rounded-[6px] p-2 bg-[#1C0D15] mx-auto flex items-center justify-center mb-4 border border-burgundy/40 shadow-md">
+              <div className="w-16 h-16 rounded-full p-2 bg-[#1C0D15] mx-auto flex items-center justify-center mb-4 border border-burgundy/40 shadow-md">
                 <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
               </div>
               <h2 className="font-serif font-bold text-2xl text-ivory-light">

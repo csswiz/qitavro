@@ -19,7 +19,7 @@ export default function About() {
           </div>
 
           {/* Brand Seal */}
-          <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 p-2.5 rounded-[6px] bg-[#181015] border border-burgundy/40 shadow-book flex items-center justify-center">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 p-2.5 rounded-full bg-[#181015] border border-burgundy/40 shadow-book flex items-center justify-center">
             <img src="/logo.svg" alt="QITAVRO Official Logo" className="w-full h-full object-contain" />
           </div>
 

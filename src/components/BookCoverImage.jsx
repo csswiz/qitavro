@@ -31,7 +31,7 @@ export default function BookCoverImage({
           />
           {!isLoaded && (
             <div className="absolute inset-0 bg-[#160E13] animate-pulse flex items-center justify-center">
-              <div className="w-6 h-6 rounded-[3px] p-0.5 bg-[#1C0D15] border border-burgundy/40 shadow-xs flex items-center justify-center opacity-60">
+              <div className="w-6 h-6 rounded-full p-0.5 bg-[#1C0D15] border border-burgundy/40 shadow-xs flex items-center justify-center opacity-60">
                 <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
               </div>
             </div>

@@ -51,7 +51,7 @@ export default function Footer() {
           {/* Brand Col with Official Logo */}
           <div className="md:col-span-4 flex flex-col">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-[4px] p-1 bg-[#160E13] border border-burgundy/40 flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+              <div className="w-10 h-10 rounded-full p-1 bg-[#160E13] border border-burgundy/40 flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
                 <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">

@@ -213,7 +213,7 @@ export function BrandWordmark({
   return (
     <div className="flex items-center gap-2.5 sm:gap-3 select-none group">
       {/* Official QITAVRO Emblem Logo */}
-      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-[4px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full p-0.5 bg-[#181015] border border-burgundy/40 shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
         <img
           src="/logo.svg"
           alt={`${brandName} Logo`}

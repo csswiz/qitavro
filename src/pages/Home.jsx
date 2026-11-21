@@ -71,7 +71,7 @@ export default function Home() {
       {/* 2. BRAND PHILOSOPHY */}
       <section className="py-12 sm:py-16 md:py-20 bg-[#10090D] border-b border-burgundy/25">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="w-12 h-12 rounded-[5px] p-1.5 bg-[#181015] border border-burgundy/40 shadow-md mx-auto mb-4 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full p-1.5 bg-[#181015] border border-burgundy/40 shadow-md mx-auto mb-4 flex items-center justify-center">
             <img src="/logo.svg" alt="QITAVRO Emblem" className="w-full h-full object-contain" />
           </div>
           <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-sans font-semibold text-rose-light">

@@ -28,7 +28,7 @@ export default function Wishlist() {
               <span>Back to Shop</span>
             </Link>
             <div className="inline-flex items-center gap-2 mb-1">
-              <div className="w-5 h-5 rounded-[3px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+              <div className="w-5 h-5 rounded-full p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
                 <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
               </div>
               <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
@@ -140,7 +140,7 @@ export default function Wishlist() {
         ) : (
           /* Empty Wishlist State */
           <div className="py-12 sm:py-16 text-center max-w-md mx-auto bg-[#140D12] p-6 sm:p-8 rounded-[4px] border border-burgundy/30 text-ivory-light shadow-subtle">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[6px] p-2 bg-[#1C0D15] mx-auto flex items-center justify-center mb-4 border border-burgundy/40 shadow-md">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-2 bg-[#1C0D15] mx-auto flex items-center justify-center mb-4 border border-burgundy/40 shadow-md">
               <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
             </div>
             <h2 className="font-serif font-bold text-xl sm:text-2xl text-ivory-light">

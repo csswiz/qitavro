@@ -67,7 +67,7 @@ export default function Checkout() {
               <span>Back to Bag</span>
             </Link>
             <div className="flex items-center gap-2.5 mt-1">
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-[4px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
                 <img src="/logo.svg" alt="QITAVRO Emblem" className="w-full h-full object-contain" />
               </div>
               <h1 className="font-serif font-bold text-xl sm:text-3xl text-ivory-light">
@@ -333,7 +333,7 @@ export default function Checkout() {
               <X className="w-4 h-4" />
             </button>
 
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[6px] bg-[#181015] p-2 mx-auto mb-3 sm:mb-4 border border-burgundy/40 shadow-sm flex items-center justify-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#181015] p-2 mx-auto mb-3 sm:mb-4 border border-burgundy/40 shadow-sm flex items-center justify-center">
               <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
             </div>
 

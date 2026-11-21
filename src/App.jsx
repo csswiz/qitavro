@@ -27,7 +27,7 @@ const SellBook = lazy(() => import('./pages/SellBook'));
 function PageFallback() {
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center bg-black-obsidian">
-      <div className="w-10 h-10 rounded-[4px] p-1 bg-[#181015] border border-burgundy/40 shadow-sm flex items-center justify-center animate-pulse">
+      <div className="w-10 h-10 rounded-full p-1 bg-[#181015] border border-burgundy/40 shadow-sm flex items-center justify-center animate-pulse">
         <img src="/logo.svg" alt="Loading" className="w-full h-full object-contain opacity-50" />
       </div>
     </div>
@@ -37,7 +37,7 @@ function PageFallback() {
 function NotFound() {
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 py-20 bg-black-obsidian">
-      <div className="w-16 h-16 rounded-[6px] bg-[#181015] p-2.5 flex items-center justify-center border border-burgundy/40 mb-4 shadow-lg shadow-burgundy/20">
+      <div className="w-16 h-16 rounded-full bg-[#181015] p-2.5 flex items-center justify-center border border-burgundy/40 mb-4 shadow-lg shadow-burgundy/20">
         <img src="/logo.svg" alt="QITAVRO Logo" className="w-full h-full object-contain" />
       </div>
       <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-burgundy-rose font-semibold">

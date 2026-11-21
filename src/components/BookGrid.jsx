@@ -15,7 +15,7 @@ export default function BookGrid({
   if (!books || books.length === 0) {
     return (
       <div className="py-16 px-4 text-center bg-[#140D12] border border-burgundy/30 rounded-[4px] my-6 text-ivory-light">
-        <div className="w-12 h-12 rounded-[5px] p-2 bg-[#181015] border border-burgundy/40 mx-auto mb-3.5 flex items-center justify-center opacity-80 shadow-xs">
+        <div className="w-12 h-12 rounded-full p-2 bg-[#181015] border border-burgundy/40 mx-auto mb-3.5 flex items-center justify-center opacity-80 shadow-xs">
           <img src="/logo.svg" alt="QITAVRO Seal" className="w-full h-full object-contain" />
         </div>
         <h3 className="font-serif text-xl text-ivory-light font-semibold">{emptyTitle}</h3>

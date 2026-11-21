@@ -65,7 +65,7 @@ export default function Navbar() {
               <div className="flex items-center">
                 <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
                   {/* Official QITAVRO Logo */}
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-[4px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full p-0.5 bg-[#181015] border border-burgundy/40 shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
                     <img
                       src="/logo.svg"
                       alt="QITAVRO Logo"

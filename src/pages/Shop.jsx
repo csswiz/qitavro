@@ -163,7 +163,7 @@ export default function Shop() {
               <span>Back to Home</span>
             </Link>
             <div className="inline-flex items-center gap-2 mb-1">
-              <div className="w-5 h-5 rounded-[3px] p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
+              <div className="w-5 h-5 rounded-full p-0.5 bg-[#181015] border border-burgundy/40 shadow-xs flex items-center justify-center flex-shrink-0">
                 <img src="/logo.svg" alt="QITAVRO" className="w-full h-full object-contain" />
               </div>
               <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-rose-light font-semibold">
